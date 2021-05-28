@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import BackButton from './Component/BackButton';
 
 export default StyleSheet.create({
   background: {
@@ -6,6 +7,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(57,62,70)',
     borderBottomLeftRadius: 231,
     borderTopRightRadius: 100,
+    alignItems: 'center',
   },
   greenPartDownPage: {
     backgroundColor: 'rgb(0,173,181)',
@@ -47,5 +49,50 @@ export default StyleSheet.create({
     borderRadius: 18,
     borderWidth: 1.5,
     borderColor: 'rgba(0,0,0, 0.4)',
+  },
+  customTextInput: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(34,40,49)',
+    borderWidth: 1,
+    borderColor: 'grey',
+    height: '6.4%',
+    width: '80%',
+    borderRadius: 20,
+  },
+  iconImage: {
+    resizeMode: 'stretch',
+    width: '16%',
+    height: '80%',
+    marginRight: '3%',
+  },
+  searchSection: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  searchIcon: {
+    padding: 10,
+  },
+  input: {
+    flex: 1,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    backgroundColor: '#fff',
+    color: '#424242',
+  },
+  forgetPassword: {
+    color: 'white',
+    fontSize: 15,
+    opacity: 0.4,
+    fontWeight: '900',
+  },
+  BackButton: {
+    marginRight: '75%',
   },
 });
