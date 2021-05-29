@@ -8,7 +8,7 @@ import {Image, View} from 'react-native';
 import FaraKhuText from './Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
 
-export default function SecondSignUp(props) {
+export default function SecondSignUpPage(props) {
   return (
     <View style={styles.background}>
       <BackButton

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Image} from 'react-native';
 import styles from './styles';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
@@ -7,6 +7,7 @@ import BackButton from './Component/BackButton';
 import FaraKhuText from './Component/FaraKhuText';
 
 export default function ForgetPasswordPage(props) {
+  const [email, setEmail] = useState('salam');
   return (
     <View style={styles.background}>
       <BackButton
@@ -36,6 +37,9 @@ export default function ForgetPasswordPage(props) {
         marginTop={'7%'}
         isPasswordInput={false}
         icon={'envelope'}
+        onChangeText={data => {
+          setEmail(data);
+        }}
       />
       <View style={styles.greenPartDownPage}>
         <FaraKhuButton
@@ -47,6 +51,9 @@ export default function ForgetPasswordPage(props) {
           fontSize={20}
           fontWeight={'bold'}
           color={'white'}
+          function={() => {
+            props.navigation.push('VerificationCodePage', {mail: email});
+          }}
         />
       </View>
     </View>

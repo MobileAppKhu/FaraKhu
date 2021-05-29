@@ -34,7 +34,7 @@ export default function (props) {
           opacity={1}
           fontSize={16}
           function={() => {
-            props.navigation.push('LogIn');
+            props.navigation.push('LogInPage');
           }}
           backgroundColor={'rgb(57,62,70)'}
         />

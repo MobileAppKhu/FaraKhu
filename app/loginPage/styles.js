@@ -157,4 +157,10 @@ export default StyleSheet.create({
     height: '12.3%',
     marginTop: '24%',
   },
+  verificationCodeImage: {
+    resizeMode: 'stretch',
+    width: '22%',
+    height: '12.6%',
+    marginTop: '22%',
+  },
 });

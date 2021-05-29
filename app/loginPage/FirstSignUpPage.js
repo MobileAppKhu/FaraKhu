@@ -2,7 +2,7 @@ import React from 'react';
 import BackButton from './Component/BackButton';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
-import SecondSignUp from './SecondSignUp';
+import SecondSignUpPage from './SecondSignUpPage';
 import styles from './styles';
 import {Image, View} from 'react-native';
 import FaraKhuText from './Component/FaraKhuText';
@@ -95,7 +95,7 @@ export default function FirstSignUpPage(props) {
           fontWeight={'bold'}
           color={'white'}
           function={() => {
-            props.navigation.push('SecondSignUp');
+            props.navigation.push('SecondSignUpPage');
           }}
         />
       </View>
