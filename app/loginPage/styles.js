@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import BackButton from './Component/BackButton';
 
 export default StyleSheet.create({
   background: {
@@ -35,10 +34,40 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  image: {
+  faraKhuLogo: {
     marginTop: '-15%',
     height: '40%',
     resizeMode: 'contain',
+  },
+  addUserLogo: {
+    resizeMode: 'stretch',
+    height: '7%',
+    width: '12.4%',
+    marginTop: '7.3%',
+  },
+  progressBar: {
+    marginTop: '2%',
+    width: '56%',
+    height: '5%',
+    resizeMode: 'stretch',
+  },
+  professorLogo: {
+    height: '100%',
+    width: 93,
+    marginLeft: '2.5%',
+    resizeMode: 'stretch',
+  },
+  studentLogo: {
+    height: '100%',
+    width: 93,
+    marginRight: '2.5%',
+    resizeMode: 'stretch',
+  },
+  signUp: {
+    marginTop: '1%',
+    width: '25.8%',
+    height: '15%',
+    resizeMode: 'stretch',
   },
   buttonLogIn: {
     width: '63%',
@@ -52,7 +81,7 @@ export default StyleSheet.create({
   },
   customTextInput: {
     flexDirection: 'row-reverse',
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgb(34,40,49)',
     borderWidth: 1,
@@ -88,11 +117,44 @@ export default StyleSheet.create({
   },
   forgetPassword: {
     color: 'white',
-    fontSize: 15,
+    fontSize: 16,
     opacity: 0.4,
-    fontWeight: '900',
+    fontWeight: '700',
+  },
+  whoAreYou: {
+    fontSize: 22,
+    color: 'rgb(238,238,238)',
+    marginTop: '7%',
+    fontWeight: '400',
   },
   BackButton: {
     marginRight: '75%',
+  },
+  logoSortView: {
+    marginTop: '3%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  firstSignUpPageText: {
+    marginTop: 1,
+    fontSize: 15,
+    color: 'rgb(238,238,238)',
+  },
+  iconFaraKhuTextInput: {
+    // marginRight: '2%',
+  },
+  toolTipIconView: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+  },
+  toolTipIcon: {
+    marginLeft: '-5%',
+  },
+  forgetPasswordImage: {
+    resizeMode: 'stretch',
+    width: '21.5%',
+    height: '12.3%',
+    marginTop: '24%',
   },
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import styles from '../styles';
-import CustomText from './CustomText';
-export default function CustomButton(props) {
+import FaraKhuText from './FaraKhuText';
+export default function FaraKhuButton(props) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -15,15 +15,14 @@ export default function CustomButton(props) {
         },
       ]}
       onPress={props.function}>
-      <CustomText
+      <FaraKhuText
         style={{
           color: props.color,
-          fontFamily: 'Samim Regular',
           fontSize: props.fontSize,
-          opacity: props.opacity,
+          opacity: props.textOpacity,
         }}>
-        {props.string}
-      </CustomText>
+        {props.buttonText}
+      </FaraKhuText>
     </TouchableOpacity>
   );
 }

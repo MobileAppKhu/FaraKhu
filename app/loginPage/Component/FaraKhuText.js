@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 
-export default function CustomText({children, style, ...props}: Props) {
+export default function FaraKhuText({children, style, ...props}: Props) {
   const fontWeight = style ? StyleSheet.flatten(style).fontWeight : undefined;
   return (
     <Text
+      onPress={props.function}
       style={[
         style,
         {
@@ -17,6 +18,7 @@ export default function CustomText({children, style, ...props}: Props) {
     </Text>
   );
 }
+
 export function getFontFamily(
   fontWeight?:
     | 'normal'
