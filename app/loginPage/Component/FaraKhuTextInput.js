@@ -20,7 +20,7 @@ export default function FaraKhuTextInput(props) {
         type={props.iconType}
         name={props.icon}
         size={props.sizeOfIcon}
-        style={styles.iconFaraKhuTextInput}
+        style={[styles.iconFaraKhuTextInput, {marginRight: props.marginRight}]}
         color={'rgb(0,173,181)'}
       />
       <View
@@ -40,6 +40,7 @@ export default function FaraKhuTextInput(props) {
         textAlign={'right'}
         secureTextEntry={hidePass}
         onChangeText={props.onChangeText}
+        keyboardType={props.keyboardType}
       />
       {props.isPasswordInput && (
         <View

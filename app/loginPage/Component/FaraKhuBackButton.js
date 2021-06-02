@@ -3,7 +3,7 @@ import {TouchableOpacity, View} from 'react-native';
 import styles from '../styles';
 import {Icon} from 'react-native-elements';
 
-export default function BackButton(props) {
+export default function FaraKhuBackButton(props) {
   return (
     <View style={styles.BackButton}>
       <TouchableOpacity onPress={props.function}>

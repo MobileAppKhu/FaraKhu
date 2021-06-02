@@ -1,18 +1,27 @@
-import React from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  ToastAndroid,
+  Platform,
+  AlertIOS,
+} from 'react-native';
 import styles from './styles';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
-import BackButton from './Component/BackButton';
+import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import FaraKhuText from './Component/FaraKhuText';
 
 export default function (props) {
   const backToMainPage = () => {
     props.navigation.popToTop();
   };
+  const [getEmail, setEmail] = useState('');
+  const [getPassword, setPassword] = useState('');
   return (
     <View style={styles.background}>
-      <BackButton function={backToMainPage} />
+      <FaraKhuBackButton function={backToMainPage} />
       <Image
         source={require('../resources/photos/signUp-gradient.png')}
         style={styles.signUp}
@@ -25,6 +34,9 @@ export default function (props) {
         marginBottom={'2%'}
         marginTop={'10%'}
         icon={'envelope'}
+        onChangeText={data => {
+          setEmail(data);
+        }}
       />
       <FaraKhuTextInput
         sizeOfIcon={60}
@@ -33,6 +45,9 @@ export default function (props) {
         marginBottom={'2%'}
         isPasswordInput={true}
         icon={'lock'}
+        onChangeText={data => {
+          setPassword(data);
+        }}
       />
       <TouchableOpacity>
         <FaraKhuText
@@ -52,6 +67,17 @@ export default function (props) {
           fontSize={18}
           fontWeight={'bold'}
           color={'white'}
+          pressAble={getPassword.trim() === '' || getEmail.trim() === ''}
+          function={() => {
+            if (getEmail.endsWith('@khu.ac.ir')) {
+            } else {
+              if (Platform.OS === 'android') {
+                ToastAndroid.show('ایمیل نامعتبر است', ToastAndroid.TOP);
+              } else {
+                AlertIOS.alert('ایمیل نامعتبر است');
+              }
+            }
+          }}
         />
       </View>
     </View>

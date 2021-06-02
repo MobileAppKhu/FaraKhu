@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, Image, TextInput} from 'react-native';
+import {View, Image, TextInput, Alert} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
-import BackButton from './Component/BackButton';
+import FaraKhuBackButton from './Component/FaraKhuBackButton';
 
 export default function VerificationCodePage(props) {
   return (
     <View style={styles.background}>
-      <BackButton
+      <FaraKhuBackButton
         function={() => {
           props.navigation.pop();
         }}
@@ -43,6 +43,15 @@ export default function VerificationCodePage(props) {
           fontSize={20}
           fontWeight={'bold'}
           color={'white'}
+          function={() => {
+            if (props.route.params.isChangePasswordPage) {
+              props.navigation.push('ChangePasswordPage');
+            } else {
+              Alert.alert('وضعیت ثبت نام', 'ثبت نام با موفقیت انجام شد');
+              props.navigation.popToTop();
+              props.navigation.push('LogInPage');
+            }
+          }}
         />
       </View>
     </View>

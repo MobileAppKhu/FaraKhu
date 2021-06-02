@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, ToastAndroid, Platform, AlertIOS} from 'react-native';
 import styles from './styles';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
-import BackButton from './Component/BackButton';
+import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import FaraKhuText from './Component/FaraKhuText';
 
 export default function ForgetPasswordPage(props) {
-  const [email, setEmail] = useState('salam');
+  const [getEmail, setEmail] = useState('');
   return (
     <View style={styles.background}>
-      <BackButton
+      <FaraKhuBackButton
         function={() => {
           props.navigation.pop();
         }}
@@ -52,8 +52,23 @@ export default function ForgetPasswordPage(props) {
           fontWeight={'bold'}
           color={'white'}
           function={() => {
-            props.navigation.push('VerificationCodePage', {mail: email});
+            if (getEmail.endsWith('@khu.ac.ir')) {
+              props.navigation.push('VerificationCodePage', {
+                mail: getEmail,
+                isChangePasswordPage: true,
+              });
+            } else {
+              if (Platform.OS === 'android') {
+                ToastAndroid.show(
+                  'پسوند ایمیل باید khu.ac.ir@ باشد',
+                  ToastAndroid.TOP,
+                );
+              } else {
+                AlertIOS.alert('پسوند ایمیل باید khu.ac.ir@ باشد');
+              }
+            }
           }}
+          pressAble={getEmail.trim() === ''}
         />
       </View>
     </View>

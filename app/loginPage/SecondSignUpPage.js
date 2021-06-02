@@ -1,17 +1,17 @@
-import React from 'react';
-import BackButton from './Component/BackButton';
+import React, {useState} from 'react';
+import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
-import FirstSignUpPage from './FirstSignUpPage';
 import styles from './styles';
-import {Image, View} from 'react-native';
-import FaraKhuText from './Component/FaraKhuText';
-import {Icon} from 'react-native-elements';
+import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
 
 export default function SecondSignUpPage(props) {
+  const [getFirstName, setFirstName] = useState('');
+  const [getLastName, setLastName] = useState('');
+  const [getID, setID] = useState('');
   return (
     <View style={styles.background}>
-      <BackButton
+      <FaraKhuBackButton
         function={() => {
           props.navigation.pop(1);
         }}
@@ -27,8 +27,12 @@ export default function SecondSignUpPage(props) {
         marginBottom={'1.5%'}
         marginTop={'15%'}
         height={'7%'}
+        marginRight={'2%'}
         isPasswordInput={false}
         icon={'md-person-sharp'}
+        onChangeText={firstName => {
+          setFirstName(firstName);
+        }}
       />
       <FaraKhuTextInput
         sizeOfIcon={40}
@@ -36,19 +40,28 @@ export default function SecondSignUpPage(props) {
         placeholderText={'نام خانوادگی'}
         marginBottom={'1.5%'}
         marginTop={'2%'}
+        marginRight={'2%'}
         height={'7%'}
         isPasswordInput={false}
         icon={'md-person-sharp'}
+        onChangeText={lastName => {
+          setLastName(lastName);
+        }}
       />
       <FaraKhuTextInput
         sizeOfIcon={40}
-        iconType={'ionicon'}
+        iconType={'antdesign'}
         placeholderText={'شماره دانشجویی/استادی'}
         marginBottom={'1.5%'}
         marginTop={'2%'}
+        marginRight={'2%'}
         height={'7%'}
+        keyboardType={'numeric'}
         isPasswordInput={false}
-        icon={'md-person-sharp'}
+        icon={'idcard'}
+        onChangeText={id => {
+          setID(id);
+        }}
       />
 
       <View style={styles.greenPartDownPage}>
@@ -61,6 +74,26 @@ export default function SecondSignUpPage(props) {
           fontSize={20}
           fontWeight={'bold'}
           color={'white'}
+          function={() => {
+            if (
+              getFirstName.trim() === '' ||
+              getLastName.trim() === '' ||
+              getID.trim() === ''
+            ) {
+              if (Platform.OS === 'android') {
+                ToastAndroid.show(
+                  'تمامی فیلد ها باید کامل شوند',
+                  ToastAndroid.TOP,
+                );
+              } else {
+                AlertIOS.alert('تمامی فیلد ها باید کامل شوند');
+              }
+            } else {
+              props.navigation.push('VerificationCodePage', {
+                mail: props.route.params.email,
+              });
+            }
+          }}
         />
       </View>
     </View>

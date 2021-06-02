@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import styles from '../styles';
 import FaraKhuText from './FaraKhuText';
 export default function FaraKhuButton(props) {
   return (
     <TouchableOpacity
+      disabled={props.pressAble}
       activeOpacity={0.8}
       style={[
         styles.buttonLogIn,

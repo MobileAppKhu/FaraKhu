@@ -46,7 +46,7 @@ export default StyleSheet.create({
     marginTop: '7.3%',
   },
   progressBar: {
-    marginTop: '2%',
+    marginTop: '3%',
     width: '56%',
     height: '5%',
     resizeMode: 'stretch',
@@ -124,7 +124,7 @@ export default StyleSheet.create({
   whoAreYou: {
     fontSize: 22,
     color: 'rgb(238,238,238)',
-    marginTop: '7%',
+    marginTop: '23%',
     fontWeight: '400',
   },
   BackButton: {
@@ -162,5 +162,11 @@ export default StyleSheet.create({
     width: '22%',
     height: '12.6%',
     marginTop: '22%',
+  },
+  lockLogoImage: {
+    resizeMode: 'stretch',
+    width: '25.4%',
+    height: '14.7%',
+    marginTop: '14%',
   },
 });
