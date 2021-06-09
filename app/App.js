@@ -9,6 +9,7 @@ import ForgetPasswordPage from './loginPage/ForgetPasswordPage';
 import VerificationCodePage from './loginPage/VerificationCodePage';
 import ChangePasswordPage from './loginPage/ChangePasswordPage';
 import PasswordChangeSuccessfully from './loginPage/PasswordChangeSuccessfully';
+import SignUpSuccessfully from './loginPage/SignUpSuccessfully';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -37,6 +38,10 @@ export default function App() {
         <Stack.Screen
           name={'PasswordChangeSuccessfully'}
           component={PasswordChangeSuccessfully}
+        />
+        <Stack.Screen
+          name={'SignUpSuccessfully'}
+          component={SignUpSuccessfully}
         />
       </Stack.Navigator>
     </NavigationContainer>

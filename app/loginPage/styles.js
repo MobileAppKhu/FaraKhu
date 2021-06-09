@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import FaraKhuText, {getFontFamily} from './Component/FaraKhuText';
+import {getFontFamily} from './Component/FaraKhuText';
 
 export default StyleSheet.create({
   background: {
@@ -185,5 +185,13 @@ export default StyleSheet.create({
     color: 'rgb(238,238,238)',
     fontSize: 28,
     fontFamily: getFontFamily('normal'),
+  },
+  signUpSuccessfully: {
+    resizeMode: 'stretch',
+    width: '100%',
+    height: ' 51%',
+    marginTop: '3.5%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

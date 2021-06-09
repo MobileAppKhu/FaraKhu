@@ -4,6 +4,7 @@ import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
 import FaraKhuBackButton from './Component/FaraKhuBackButton';
+import SignUpSuccessfully from './SignUpSuccessfully';
 
 export default function VerificationCodePage(props) {
   return (
@@ -47,9 +48,10 @@ export default function VerificationCodePage(props) {
             if (props.route.params.isChangePasswordPage) {
               props.navigation.push('ChangePasswordPage');
             } else {
-              Alert.alert('وضعیت ثبت نام', 'ثبت نام با موفقیت انجام شد');
-              props.navigation.popToTop();
-              props.navigation.push('LogInPage');
+              // Alert.alert('وضعیت ثبت نام', 'ثبت نام با موفقیت انجام شد');
+              // props.navigation.popToTop();
+              // props.navigation.push('LogInPage');
+              props.navigation.push('SignUpSuccessfully');
             }
           }}
         />

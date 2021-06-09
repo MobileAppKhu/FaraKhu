@@ -4,7 +4,6 @@ import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
 import styles from './styles';
 import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
-
 export default function SecondSignUpPage(props) {
   const [getFirstName, setFirstName] = useState('');
   const [getLastName, setLastName] = useState('');
