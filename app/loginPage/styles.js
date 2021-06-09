@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import FaraKhuText, {getFontFamily} from './Component/FaraKhuText';
 
 export default StyleSheet.create({
   background: {
@@ -70,8 +71,8 @@ export default StyleSheet.create({
     resizeMode: 'stretch',
   },
   buttonLogIn: {
-    width: '63%',
-    height: '16%',
+    width: 268,
+    height: 60,
     backgroundColor: 'rgb(57,62,70)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -168,5 +169,21 @@ export default StyleSheet.create({
     width: '25.4%',
     height: '14.7%',
     marginTop: '14%',
+  },
+  keyLogosImage: {
+    resizeMode: 'stretch',
+    width: '100%',
+    height: ' 100%',
+    marginTop: '3.5%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  passwordChangeSuccessfullyText: {
+    position: 'absolute',
+    top: '40%',
+    right: '12%',
+    color: 'rgb(238,238,238)',
+    fontSize: 28,
+    fontFamily: getFontFamily('normal'),
   },
 });

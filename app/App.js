@@ -8,6 +8,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ForgetPasswordPage from './loginPage/ForgetPasswordPage';
 import VerificationCodePage from './loginPage/VerificationCodePage';
 import ChangePasswordPage from './loginPage/ChangePasswordPage';
+import PasswordChangeSuccessfully from './loginPage/PasswordChangeSuccessfully';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -32,6 +33,10 @@ export default function App() {
         <Stack.Screen
           name={'ChangePasswordPage'}
           component={ChangePasswordPage}
+        />
+        <Stack.Screen
+          name={'PasswordChangeSuccessfully'}
+          component={PasswordChangeSuccessfully}
         />
       </Stack.Navigator>
     </NavigationContainer>

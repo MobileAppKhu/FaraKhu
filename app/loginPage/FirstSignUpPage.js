@@ -3,14 +3,7 @@ import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
 import styles from './styles';
-import {
-  Image,
-  View,
-  ToastAndroid,
-  Platform,
-  AlertIOS,
-  Text,
-} from 'react-native';
+import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
 import FaraKhuText from './Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
 
@@ -37,9 +30,6 @@ export default function FirstSignUpPage(props) {
   const [getEmail, setEmail] = useState('');
   const [getPassword, setPassword] = useState('');
   const [getRepeatPassword, setRepeatPassword] = useState('');
-  const checkEmail = email => {
-    return email.endsWith('@khu.ac.ir');
-  };
   return (
     <View style={styles.background}>
       <FaraKhuBackButton

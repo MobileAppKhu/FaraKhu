@@ -89,7 +89,7 @@ export default function ChangePasswordPage(props) {
           pressAble={getRepeatPassword !== getPassword}
           function={() => {
             if (getRepeatPassword === getPassword) {
-              /////function
+              props.navigation.push('PasswordChangeSuccessfully');
             }
           }}
         />

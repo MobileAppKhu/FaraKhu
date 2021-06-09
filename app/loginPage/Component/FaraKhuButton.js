@@ -1,7 +1,8 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import styles from '../styles';
-import FaraKhuText from './FaraKhuText';
+import FaraKhuText, {getFontFamily} from './FaraKhuText';
+
 export default function FaraKhuButton(props) {
   return (
     <TouchableOpacity
@@ -21,6 +22,7 @@ export default function FaraKhuButton(props) {
           color: props.color,
           fontSize: props.fontSize,
           opacity: props.textOpacity,
+          fontFamily: getFontFamily('normal'),
         }}>
         {props.buttonText}
       </FaraKhuText>
