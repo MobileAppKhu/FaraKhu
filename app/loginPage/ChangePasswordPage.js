@@ -28,6 +28,32 @@ const IconReturn = props => {
 export default function ChangePasswordPage(props) {
   const [getPassword, setPassword] = useState('');
   const [getRepeatPassword, setRepeatPassword] = useState('');
+
+  async function changePassword() {
+    try {
+      const data = await fetch(
+        'https://api.farakhu.markop.ir/api/Account/ResetPassword',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            Accept: '*/*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Email: props.route.params.email,
+            NewPassword: getPassword,
+          }),
+        },
+      );
+      console.log(props.route.params.email + '    ' + getPassword);
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <View style={styles.background}>
       <FaraKhuBackButton
@@ -89,7 +115,11 @@ export default function ChangePasswordPage(props) {
           pressAble={getRepeatPassword !== getPassword}
           function={() => {
             if (getRepeatPassword === getPassword) {
-              props.navigation.push('PasswordChangeSuccessfully');
+              changePassword().then(response => {
+                if (response.status === 200) {
+                  props.navigation.push('PasswordChangeSuccessfully');
+                }
+              });
             }
           }}
         />

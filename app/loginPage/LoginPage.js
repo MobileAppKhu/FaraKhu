@@ -17,6 +17,30 @@ export default function (props) {
   const backToMainPage = () => {
     props.navigation.popToTop();
   };
+
+  async function loginFunction() {
+    try {
+      const data = await fetch(
+        'https://api.farakhu.markop.ir/api/Account/SignIn',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            Accept: '*/*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Logon: getEmail,
+            Password: getPassword,
+          }),
+        },
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   const [getEmail, setEmail] = useState('');
   const [getPassword, setPassword] = useState('');
   return (
@@ -69,7 +93,11 @@ export default function (props) {
           color={'white'}
           pressAble={getPassword.trim() === '' || getEmail.trim() === ''}
           function={() => {
-            if (getEmail.endsWith('@khu.ac.ir')) {
+            if (getEmail.endsWith('@FaraKhu.app')) {
+              loginFunction().then(async response => {
+                const data = await response.json();
+                console.log(data.profileDto);
+              });
             } else {
               if (Platform.OS === 'android') {
                 ToastAndroid.show('ایمیل نامعتبر است', ToastAndroid.TOP);

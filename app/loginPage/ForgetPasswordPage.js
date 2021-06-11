@@ -15,6 +15,36 @@ import FaraKhuText from './Component/FaraKhuText';
 
 export default function ForgetPasswordPage(props) {
   const [getEmail, setEmail] = useState('');
+  const sendMessage = message => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(message, ToastAndroid.TOP);
+    } else {
+      AlertIOS.alert(message);
+    }
+  };
+
+  async function forgetPassword() {
+    try {
+      const data = await fetch(
+        'https://api.farakhu.markop.ir/api/Account/ForgetPassword',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            Accept: '*/*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Email: getEmail,
+          }),
+        },
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <View style={styles.background}>
       <FaraKhuBackButton
@@ -70,19 +100,18 @@ export default function ForgetPasswordPage(props) {
           color={'white'}
           function={() => {
             if (getEmail.endsWith('@khu.ac.ir')) {
-              props.navigation.push('VerificationCodePage', {
-                mail: getEmail,
-                isChangePasswordPage: true,
+              forgetPassword().then(response => {
+                if (response.status === 200) {
+                  props.navigation.push('VerificationCodePage', {
+                    email: getEmail,
+                    isChangePasswordPage: true,
+                  });
+                } else {
+                  sendMessage('ایمیل یافت نشد');
+                }
               });
             } else {
-              if (Platform.OS === 'android') {
-                ToastAndroid.show(
-                  'پسوند ایمیل باید khu.ac.ir@ باشد',
-                  ToastAndroid.TOP,
-                );
-              } else {
-                AlertIOS.alert('پسوند ایمیل باید khu.ac.ir@ باشد');
-              }
+              sendMessage('پسوند ایمیل باید khu.ac.ir@ باشد');
             }
           }}
           pressAble={getEmail.trim() === ''}

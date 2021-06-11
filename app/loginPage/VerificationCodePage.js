@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Image, TextInput, Alert} from 'react-native';
+import React, {useState} from 'react';
+import {View, Image, TextInput} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
@@ -7,6 +7,34 @@ import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import SignUpSuccessfully from './SignUpSuccessfully';
 
 export default function VerificationCodePage(props) {
+  async function verificationCode() {
+    const address = props.route.params.isChangePasswordPage
+      ? 'https://api.farakhu.markop.ir/api/Account/ResetPasswordValidation'
+      : 'https://api.farakhu.markop.ir/api/Account/EmailVerify';
+    try {
+      const {data, status} = await fetch(address, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          Email: props.route.params.email,
+          Token: getCode,
+        }),
+      });
+      // console.log(props.route.params.email + '  ' + getCode);
+      //console.log(status);
+      console.log(address);
+      return status;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  const [getCode, setCode] = useState('');
+  const [isCorrect, setIsCorrect] = useState(true);
   return (
     <View style={styles.background}>
       <FaraKhuBackButton
@@ -25,15 +53,47 @@ export default function VerificationCodePage(props) {
           marginTop: 25,
           marginBottom: 35,
         }}>
-        کد تایید به {props.route.params.mail} ارسال گردید
+        کد تایید به {props.route.params.email} ارسال گردید
       </FaraKhuText>
       <View style={{flexDirection: 'row'}}>
-        <WhiteTextInput />
-        <WhiteTextInput />
-        <WhiteTextInput />
-        <WhiteTextInput />
-        <WhiteTextInput />
+        <WhiteTextInput
+          onChangeText={id => {
+            setCode(getCode.substr(0, 0) + id + getCode.substr(0 + id.length));
+            setIsCorrect(true);
+          }}
+        />
+        <WhiteTextInput
+          onChangeText={id => {
+            setCode(getCode.substr(0, 1) + id + getCode.substr(1 + id.length));
+            setIsCorrect(true);
+          }}
+        />
+        <WhiteTextInput
+          onChangeText={id => {
+            setCode(getCode.substr(0, 2) + id + getCode.substr(2 + id.length));
+            setIsCorrect(true);
+          }}
+        />
+        <WhiteTextInput
+          onChangeText={id => {
+            setCode(getCode.substr(0, 3) + id + getCode.substr(3 + id.length));
+            setIsCorrect(true);
+          }}
+        />
+        <WhiteTextInput
+          onChangeText={id => {
+            setCode(getCode.substr(0, 4) + id + getCode.substr(4 + id.length));
+            setIsCorrect(true);
+          }}
+        />
       </View>
+      {!isCorrect && (
+        <View>
+          <FaraKhuText style={{color: 'rgb(225,74,74)'}}>
+            کد وارد شده صحیح نمی باشد
+          </FaraKhuText>
+        </View>
+      )}
       <View style={styles.greenPartDownPage}>
         <FaraKhuButton
           marginTop={'5%'}
@@ -45,14 +105,20 @@ export default function VerificationCodePage(props) {
           fontWeight={'bold'}
           color={'white'}
           function={() => {
-            if (props.route.params.isChangePasswordPage) {
-              props.navigation.push('ChangePasswordPage');
-            } else {
-              // Alert.alert('وضعیت ثبت نام', 'ثبت نام با موفقیت انجام شد');
-              // props.navigation.popToTop();
-              // props.navigation.push('LogInPage');
-              props.navigation.push('SignUpSuccessfully');
-            }
+            verificationCode().then(responseJson => {
+              console.log(responseJson);
+              if (responseJson === 200) {
+                if (props.route.params.isChangePasswordPage) {
+                  props.navigation.push('ChangePasswordPage', {
+                    email: props.route.params.email,
+                  });
+                } else {
+                  props.navigation.push('SignUpSuccessfully');
+                }
+              } else {
+                setIsCorrect(false);
+              }
+            });
           }}
         />
       </View>
@@ -60,7 +126,7 @@ export default function VerificationCodePage(props) {
   );
 }
 
-export function WhiteTextInput() {
+export function WhiteTextInput(props) {
   return (
     <View>
       <TextInput
@@ -76,6 +142,7 @@ export function WhiteTextInput() {
         }}
         textAlign={'center'}
         maxLength={1}
+        onChangeText={props.onChangeText}
       />
     </View>
   );

@@ -3,11 +3,41 @@ import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
 import styles from './styles';
-import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
+import {AlertIOS, Image, Platform, ToastAndroid, View} from 'react-native';
+import FaraKhuText from './Component/FaraKhuText';
+
 export default function SecondSignUpPage(props) {
   const [getFirstName, setFirstName] = useState('');
   const [getLastName, setLastName] = useState('');
   const [getID, setID] = useState('');
+
+  async function signUpFunction() {
+    try {
+      const data = await fetch(
+        'https://api.farakhu.markop.ir/api/Account/SignUp',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            Accept: '*/*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            FirstName: getFirstName,
+            LastName: getLastName,
+            Email: props.route.params.email,
+            UserType: 2,
+            Id: getID,
+            Password: props.route.params.password,
+          }),
+        },
+      );
+      return data.status;
+    } catch (err) {
+      return err;
+    }
+  }
+
   return (
     <View style={styles.background}>
       <FaraKhuBackButton
@@ -88,9 +118,23 @@ export default function SecondSignUpPage(props) {
                 AlertIOS.alert('تمامی فیلد ها باید کامل شوند');
               }
             } else {
-              props.navigation.push('VerificationCodePage', {
-                mail: props.route.params.email,
+              signUpFunction().then(response => {
+                if (response === 200) {
+                  props.navigation.push('VerificationCodePage', {
+                    email: props.route.params.email,
+                  });
+                } else {
+                  if (Platform.OS === 'android') {
+                    ToastAndroid.show(
+                      'اطلاعات کاربردی تکراری است',
+                      ToastAndroid.TOP,
+                    );
+                  } else {
+                    AlertIOS.alert('اطلاعات کاربردی تکراری است');
+                  }
+                }
               });
+              // console.log(data);
             }
           }}
         />
