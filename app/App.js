@@ -10,6 +10,8 @@ import VerificationCodePage from './loginPage/VerificationCodePage';
 import ChangePasswordPage from './loginPage/ChangePasswordPage';
 import PasswordChangeSuccessfully from './loginPage/PasswordChangeSuccessfully';
 import SignUpSuccessfully from './loginPage/SignUpSuccessfully';
+import FirstLoadingPage from './loginPage/FirstLoadingPage';
+import SecondLoadingPage from './loginPage/SecondLoadingPage';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -21,6 +23,11 @@ export default function App() {
         }}>
         <Stack.Screen name="MainPage" component={MainPage} />
         <Stack.Screen name="LogInPage" component={LogInPage} />
+        <Stack.Screen name="LoadingPage" component={FirstLoadingPage} />
+        <Stack.Screen
+          name={'SecondLoadingPage'}
+          component={SecondLoadingPage}
+        />
         <Stack.Screen name="FirstSignUpPage" component={FirstSignUpPage} />
         <Stack.Screen name="SecondSignUpPage" component={SecondSignUpPage} />
         <Stack.Screen

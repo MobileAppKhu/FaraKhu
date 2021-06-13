@@ -4,7 +4,6 @@ import FaraKhuTextInput from './Component/FaraKhuTextInput';
 import FaraKhuButton from './Component/FaraKhuButton';
 import styles from './styles';
 import {AlertIOS, Image, Platform, ToastAndroid, View} from 'react-native';
-import FaraKhuText from './Component/FaraKhuText';
 
 export default function SecondSignUpPage(props) {
   const [getFirstName, setFirstName] = useState('');
@@ -17,9 +16,7 @@ export default function SecondSignUpPage(props) {
         'https://api.farakhu.markop.ir/api/Account/SignUp',
         {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
-            Accept: '*/*',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({

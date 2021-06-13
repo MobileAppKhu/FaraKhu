@@ -29,9 +29,7 @@ export default function ForgetPasswordPage(props) {
         'https://api.farakhu.markop.ir/api/Account/ForgetPassword',
         {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
-            Accept: '*/*',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({

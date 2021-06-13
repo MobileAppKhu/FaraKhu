@@ -6,7 +6,7 @@ import {Icon} from 'react-native-elements';
 export default function FaraKhuBackButton(props) {
   return (
     <View style={styles.BackButton}>
-      <TouchableOpacity onPress={props.function}>
+      <TouchableOpacity onPress={props.function} activeOpacity={0.7}>
         <Icon
           name={'chevron-thin-left'}
           size={50}

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {
-  View,
-  Image,
-  TouchableOpacity,
-  ToastAndroid,
-  Platform,
   AlertIOS,
+  Image,
+  Platform,
+  ToastAndroid,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import styles from './styles';
 import FaraKhuTextInput from './Component/FaraKhuTextInput';
@@ -20,22 +20,16 @@ export default function (props) {
 
   async function loginFunction() {
     try {
-      const data = await fetch(
-        'https://api.farakhu.markop.ir/api/Account/SignIn',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            Accept: '*/*',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Logon: getEmail,
-            Password: getPassword,
-          }),
+      return await fetch('https://api.farakhu.markop.ir/api/Account/SignIn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
-      return data;
+        body: JSON.stringify({
+          Logon: getEmail,
+          Password: getPassword,
+        }),
+      });
     } catch (err) {
       console.log(err);
     }
@@ -93,10 +87,11 @@ export default function (props) {
           color={'white'}
           pressAble={getPassword.trim() === '' || getEmail.trim() === ''}
           function={() => {
-            if (getEmail.endsWith('@FaraKhu.app')) {
+            if (getEmail.endsWith('@khu.ac.ir')) {
               loginFunction().then(async response => {
                 const data = await response.json();
-                console.log(data.profileDto);
+                console.log(data);
+                props.navigation.push('LoadingPage');
               });
             } else {
               if (Platform.OS === 'android') {

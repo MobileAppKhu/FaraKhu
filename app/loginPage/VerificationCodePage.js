@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, Image, TextInput} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
@@ -7,6 +7,12 @@ import FaraKhuBackButton from './Component/FaraKhuBackButton';
 import SignUpSuccessfully from './SignUpSuccessfully';
 
 export default function VerificationCodePage(props) {
+  const input1Ref = useRef();
+  const input2Ref = useRef();
+  const input3Ref = useRef();
+  const input4Ref = useRef();
+  const input5Ref = useRef();
+
   async function verificationCode() {
     const address = props.route.params.isChangePasswordPage
       ? 'https://api.farakhu.markop.ir/api/Account/ResetPasswordValidation'
@@ -14,14 +20,12 @@ export default function VerificationCodePage(props) {
     try {
       const {data, status} = await fetch(address, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          Accept: '*/*',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           Email: props.route.params.email,
-          Token: getCode,
+          Token: getCode.toUpperCase(),
         }),
       });
       // console.log(props.route.params.email + '  ' + getCode);
@@ -57,33 +61,60 @@ export default function VerificationCodePage(props) {
       </FaraKhuText>
       <View style={{flexDirection: 'row'}}>
         <WhiteTextInput
+          ref={input1Ref}
           onChangeText={id => {
             setCode(getCode.substr(0, 0) + id + getCode.substr(0 + id.length));
             setIsCorrect(true);
+            if (id) {
+              input2Ref.current.focus();
+            }
           }}
         />
         <WhiteTextInput
+          ref={input2Ref}
           onChangeText={id => {
             setCode(getCode.substr(0, 1) + id + getCode.substr(1 + id.length));
             setIsCorrect(true);
+
+            if (id) {
+              input3Ref.current.focus();
+            } else {
+              input1Ref.current.focus();
+            }
           }}
         />
         <WhiteTextInput
+          ref={input3Ref}
           onChangeText={id => {
             setCode(getCode.substr(0, 2) + id + getCode.substr(2 + id.length));
             setIsCorrect(true);
+            if (id) {
+              input4Ref.current.focus();
+            } else {
+              input2Ref.current.focus();
+            }
           }}
         />
         <WhiteTextInput
+          ref={input4Ref}
           onChangeText={id => {
             setCode(getCode.substr(0, 3) + id + getCode.substr(3 + id.length));
             setIsCorrect(true);
+            if (id) {
+              input5Ref.current.focus();
+            } else {
+              input3Ref.current.focus();
+            }
           }}
         />
         <WhiteTextInput
+          ref={input5Ref}
           onChangeText={id => {
             setCode(getCode.substr(0, 4) + id + getCode.substr(4 + id.length));
             setIsCorrect(true);
+            if (!id) {
+              input4Ref.current.focus();
+            }
           }}
         />
       </View>
@@ -126,11 +157,12 @@ export default function VerificationCodePage(props) {
   );
 }
 
-export function WhiteTextInput(props) {
+export const WhiteTextInput = React.forwardRef((props, ref) => {
+  // keyboardType={''}
   return (
     <View>
       <TextInput
-        keyboardType={'numeric'}
+        ref={ref}
         style={{
           height: 45,
           width: 45,
@@ -146,4 +178,4 @@ export function WhiteTextInput(props) {
       />
     </View>
   );
-}
+});
