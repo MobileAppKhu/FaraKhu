@@ -45,7 +45,7 @@ export default class FirstLoadingPage extends Component {
       <View style={styles.loadingBackground}>
         <View style={styles.rectangleOfLoadingTop} />
         <Animated.Image
-          source={require('../resources/photos/loadingImage.png')}
+          source={require('../../resources/photos/loadingImage.png')}
           style={[
             styles.firstLoadingImage,
             {

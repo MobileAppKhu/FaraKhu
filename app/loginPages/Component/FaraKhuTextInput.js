@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
-import styles from '../styles';
+import styles from './styles';
 import {Icon} from 'react-native-elements';
 import FaraKhuText from './FaraKhuText';
 
@@ -20,19 +20,10 @@ export default function FaraKhuTextInput(props) {
         type={props.iconType}
         name={props.icon}
         size={props.sizeOfIcon}
-        style={[styles.iconFaraKhuTextInput, {marginRight: props.marginRight}]}
+        style={{marginRight: props.marginRight}}
         color={'rgb(0,173,181)'}
       />
-      <View
-        style={{
-          width: StyleSheet.hairlineWidth,
-          height: 35,
-          backgroundColor: 'grey',
-          borderRadius: 5,
-          opacity: 0.8,
-          margin: 2,
-        }}
-      />
+      <View style={styles.faraKhuTextInputStyle} />
       <TextInput
         placeholderTextColor="grey"
         placeholder={props.placeholderText}

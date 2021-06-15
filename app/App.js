@@ -1,19 +1,20 @@
-import React from 'react';
-import MainPage from './loginPage/MainPage';
-import LogInPage from './loginPage/LoginPage';
-import FirstSignUpPage from './loginPage/FirstSignUpPage';
-import SecondSignUpPage from './loginPage/SecondSignUpPage';
+import React, {useEffect} from 'react';
+import MainPage from './loginPages/MainPage';
+import LogInPage from './loginPages/logIn/LoginPage';
+import FirstSignUpPage from './loginPages/signUp/FirstSignUpPage';
+import SecondSignUpPage from './loginPages/signUp/SecondSignUpPage';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import ForgetPasswordPage from './loginPage/ForgetPasswordPage';
-import VerificationCodePage from './loginPage/VerificationCodePage';
-import ChangePasswordPage from './loginPage/ChangePasswordPage';
-import PasswordChangeSuccessfully from './loginPage/PasswordChangeSuccessfully';
-import SignUpSuccessfully from './loginPage/SignUpSuccessfully';
-import FirstLoadingPage from './loginPage/FirstLoadingPage';
-import SecondLoadingPage from './loginPage/SecondLoadingPage';
+import ForgetPasswordPage from './loginPages/forgetPassword/ForgetPasswordPage';
+import VerificationCodePage from './loginPages/signUp/VerificationCodePage';
+import ChangePasswordPage from './loginPages/forgetPassword/ChangePasswordPage';
+import PasswordChangeSuccessfully from './loginPages/forgetPassword/PasswordChangeSuccessfully';
+import SignUpSuccessfully from './loginPages/signUp/SignUpSuccessfully';
+import FirstLoadingPage from './loginPages/logIn/FirstLoadingPage';
+import SecondLoadingPage from './loginPages/logIn/SecondLoadingPage';
 
 const Stack = createStackNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>

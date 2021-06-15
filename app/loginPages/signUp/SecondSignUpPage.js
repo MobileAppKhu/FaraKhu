@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
-import FaraKhuTextInput from './Component/FaraKhuTextInput';
-import FaraKhuButton from './Component/FaraKhuButton';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import FaraKhuTextInput from '../Component/FaraKhuTextInput';
+import FaraKhuButton from '../Component/FaraKhuButton';
 import styles from './styles';
 import {AlertIOS, Image, Platform, ToastAndroid, View} from 'react-native';
 
@@ -39,11 +39,11 @@ export default function SecondSignUpPage(props) {
     <View style={styles.background}>
       <FaraKhuBackButton
         function={() => {
-          props.navigation.pop(1);
+          props.navigation.pop();
         }}
       />
       <Image
-        source={require('../resources/photos/progressBarSecond.png')}
+        source={require('../../resources/photos/progressBarSecond.png')}
         style={styles.progressBar}
       />
       <FaraKhuTextInput
@@ -131,7 +131,6 @@ export default function SecondSignUpPage(props) {
                   }
                 }
               });
-              // console.log(data);
             }
           }}
         />

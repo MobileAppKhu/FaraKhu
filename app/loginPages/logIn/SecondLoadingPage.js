@@ -24,7 +24,7 @@ export default class SecondLoadingPage extends Component {
         <View style={styles.rectangleOfLoadingTop} />
         <Animated.Image
           style={[styles.secondLoadingImage, {transform: [{translateY: logo}]}]}
-          source={require('../resources/photos/faraKhuLogoOfLoadingPage.png')}
+          source={require('../../resources/photos/faraKhuLogoOfLoadingPage.png')}
         />
         <View style={styles.rectangleOfLoadingBottom} />
       </View>

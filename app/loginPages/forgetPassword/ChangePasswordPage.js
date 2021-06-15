@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
-import FaraKhuTextInput from './Component/FaraKhuTextInput';
-import FaraKhuButton from './Component/FaraKhuButton';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import FaraKhuTextInput from '../Component/FaraKhuTextInput';
+import FaraKhuButton from '../Component/FaraKhuButton';
 import styles from './styles';
 import {AlertIOS, Image, Platform, ToastAndroid, View} from 'react-native';
 import {Icon} from 'react-native-elements';
-import FaraKhuText from './Component/FaraKhuText';
+import FaraKhuText from '../Component/FaraKhuText';
 
 const IconReturn = props => {
   return (
@@ -31,13 +31,11 @@ export default function ChangePasswordPage(props) {
 
   async function changePassword() {
     try {
-      const data = await fetch(
+      return await fetch(
         'https://api.farakhu.markop.ir/api/Account/ResetPassword',
         {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
-            Accept: '*/*',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -46,9 +44,6 @@ export default function ChangePasswordPage(props) {
           }),
         },
       );
-      console.log(props.route.params.email + '    ' + getPassword);
-      console.log(data);
-      return data;
     } catch (err) {
       console.log(err);
     }
@@ -62,7 +57,7 @@ export default function ChangePasswordPage(props) {
         }}
       />
       <Image
-        source={require('../resources/photos/lockLogo.png')}
+        source={require('../../resources/photos/lockLogo.png')}
         style={styles.lockLogoImage}
       />
       <View style={styles.toolTipIconView}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import SuccessfullyPages from '../loginPage/SuccessfullyPages';
+import SuccessfullyPages from '../Component/SuccessfullyPages';
 import styles from './styles';
 
 export default function (props) {
@@ -9,7 +9,7 @@ export default function (props) {
   return (
     <SuccessfullyPages
       message={'رمز عبور با موفقیت تغییر یافت'}
-      imageAddress={require('../resources/photos/keyLogos.png')}
+      imageAddress={require('../../resources/photos/keyLogos.png')}
       style={styles.keyLogosImage}
     />
   );

@@ -8,10 +8,10 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import FaraKhuTextInput from './Component/FaraKhuTextInput';
-import FaraKhuButton from './Component/FaraKhuButton';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
-import FaraKhuText from './Component/FaraKhuText';
+import FaraKhuTextInput from '../Component/FaraKhuTextInput';
+import FaraKhuButton from '../Component/FaraKhuButton';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import FaraKhuText from '../Component/FaraKhuText';
 
 export default function (props) {
   const backToMainPage = () => {
@@ -41,7 +41,7 @@ export default function (props) {
     <View style={styles.background}>
       <FaraKhuBackButton function={backToMainPage} />
       <Image
-        source={require('../resources/photos/signUp-gradient.png')}
+        source={require('../../resources/photos/signUp-gradient.png')}
         style={styles.signUp}
       />
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import styles from '../styles';
+import styles from './styles';
 import FaraKhuText, {getFontFamily} from './FaraKhuText';
 
 export default function FaraKhuButton(props) {

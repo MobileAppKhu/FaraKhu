@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
-import styles from '../styles';
+import styles from './styles';
 import {Icon} from 'react-native-elements';
 
 export default function FaraKhuBackButton(props) {

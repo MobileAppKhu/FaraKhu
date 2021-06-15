@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import {
-  View,
-  Image,
-  ToastAndroid,
-  Platform,
   AlertIOS,
+  Image,
+  Platform,
   Text,
+  ToastAndroid,
+  View,
 } from 'react-native';
 import styles from './styles';
-import FaraKhuTextInput from './Component/FaraKhuTextInput';
-import FaraKhuButton from './Component/FaraKhuButton';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
-import FaraKhuText from './Component/FaraKhuText';
+import FaraKhuTextInput from '../Component/FaraKhuTextInput';
+import FaraKhuButton from '../Component/FaraKhuButton';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import FaraKhuText from '../Component/FaraKhuText';
 
 export default function ForgetPasswordPage(props) {
   const [getEmail, setEmail] = useState('');
@@ -25,7 +25,7 @@ export default function ForgetPasswordPage(props) {
 
   async function forgetPassword() {
     try {
-      const data = await fetch(
+      return await fetch(
         'https://api.farakhu.markop.ir/api/Account/ForgetPassword',
         {
           method: 'POST',
@@ -37,7 +37,6 @@ export default function ForgetPasswordPage(props) {
           }),
         },
       );
-      return data;
     } catch (err) {
       console.log(err);
     }
@@ -51,27 +50,10 @@ export default function ForgetPasswordPage(props) {
         }}
       />
       <Image
-        source={require('../resources/photos/sendEmailLogo.png')}
+        source={require('../../resources/photos/sendEmailLogo.png')}
         style={styles.forgetPasswordImage}
       />
-      <Text
-        style={{
-          fontWeight: 'bold',
-          color: 'white',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-        }}>
-        Hello World
-      </Text>
-      <FaraKhuText
-        style={{
-          fontSize: 16,
-          fontWeight: 'bold',
-          color: 'rgb(238,238,238)',
-          opacity: 0.75,
-          marginTop: '4.5%',
-        }}>
+      <FaraKhuText style={styles.textOfForgetPassword}>
         تغییر با استفاده از ایمیل
       </FaraKhuText>
       <FaraKhuTextInput

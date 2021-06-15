@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
-import FaraKhuTextInput from './Component/FaraKhuTextInput';
-import FaraKhuButton from './Component/FaraKhuButton';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import FaraKhuTextInput from '../Component/FaraKhuTextInput';
+import FaraKhuButton from '../Component/FaraKhuButton';
 import styles from './styles';
 import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
-import FaraKhuText from './Component/FaraKhuText';
+import FaraKhuText from '../Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
 
 const IconReturn = props => {
@@ -38,7 +38,7 @@ export default function FirstSignUpPage(props) {
         }}
       />
       <Image
-        source={require('../resources/photos/progressBarFirst.png')}
+        source={require('../../resources/photos/progressBarFirst.png')}
         style={styles.progressBar}
       />
       {/*<Image*/}
@@ -49,7 +49,7 @@ export default function FirstSignUpPage(props) {
       <View style={[styles.logoSortView, {height: '13%'}]}>
         <View style={styles.studentLogo}>
           <Image
-            source={require('../resources/photos/studentLogo.png')}
+            source={require('../../resources/photos/studentLogo.png')}
             style={styles.studentLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>
@@ -58,7 +58,7 @@ export default function FirstSignUpPage(props) {
         </View>
         <View style={styles.professorLogo}>
           <Image
-            source={require('../resources/photos/professorLogo.png')}
+            source={require('../../resources/photos/professorLogo.png')}
             style={styles.professorLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>

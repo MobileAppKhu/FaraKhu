@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, View, Animated} from 'react-native';
 import styles from './styles';
 
-export default class PasswordChangeSuccessfully extends Component {
+export default class SuccessfullyPages extends Component {
   constructor(props) {
     super(props);
     this.animated = new Animated.Value(0);

@@ -1,9 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {View, Image, TextInput} from 'react-native';
 import styles from './styles';
-import FaraKhuButton from './Component/FaraKhuButton';
-import FaraKhuText from './Component/FaraKhuText';
-import FaraKhuBackButton from './Component/FaraKhuBackButton';
+import FaraKhuButton from '../Component/FaraKhuButton';
+import FaraKhuText from '../Component/FaraKhuText';
+import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SignUpSuccessfully from './SignUpSuccessfully';
 
 export default function VerificationCodePage(props) {
@@ -28,8 +28,6 @@ export default function VerificationCodePage(props) {
           Token: getCode.toUpperCase(),
         }),
       });
-      // console.log(props.route.params.email + '  ' + getCode);
-      //console.log(status);
       console.log(address);
       return status;
     } catch (e) {
@@ -47,16 +45,10 @@ export default function VerificationCodePage(props) {
         }}
       />
       <Image
-        source={require('../resources/photos/emailSentLogo.png')}
+        source={require('../../resources/photos/emailSentLogo.png')}
         style={styles.verificationCodeImage}
       />
-      <FaraKhuText
-        style={{
-          fontSize: 14,
-          color: 'rgb(238,238,238)',
-          marginTop: 25,
-          marginBottom: 35,
-        }}>
+      <FaraKhuText style={styles.codeSent}>
         کد تایید به {props.route.params.email} ارسال گردید
       </FaraKhuText>
       <View style={{flexDirection: 'row'}}>
@@ -137,7 +129,6 @@ export default function VerificationCodePage(props) {
           color={'white'}
           function={() => {
             verificationCode().then(responseJson => {
-              console.log(responseJson);
               if (responseJson === 200) {
                 if (props.route.params.isChangePasswordPage) {
                   props.navigation.push('ChangePasswordPage', {
@@ -158,20 +149,11 @@ export default function VerificationCodePage(props) {
 }
 
 export const WhiteTextInput = React.forwardRef((props, ref) => {
-  // keyboardType={''}
   return (
     <View>
       <TextInput
         ref={ref}
-        style={{
-          height: 45,
-          width: 45,
-          backgroundColor: 'white',
-          borderRadius: 5,
-          margin: 3,
-          borderWidth: 1,
-          borderColor: 'rgb(0,173,181)',
-        }}
+        style={styles.whiteTextInput}
         textAlign={'center'}
         maxLength={1}
         onChangeText={props.onChangeText}
