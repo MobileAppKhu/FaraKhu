@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import MainPage from './loginPages/MainPage';
 import LogInPage from './loginPages/logIn/LoginPage';
 import FirstSignUpPage from './loginPages/signUp/FirstSignUpPage';
@@ -12,6 +12,7 @@ import PasswordChangeSuccessfully from './loginPages/forgetPassword/PasswordChan
 import SignUpSuccessfully from './loginPages/signUp/SignUpSuccessfully';
 import FirstLoadingPage from './loginPages/logIn/FirstLoadingPage';
 import SecondLoadingPage from './loginPages/logIn/SecondLoadingPage';
+import HomePage from './panelPages/HomePage';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
           name={'SecondLoadingPage'}
           component={SecondLoadingPage}
         />
+        <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="FirstSignUpPage" component={FirstSignUpPage} />
         <Stack.Screen name="SecondSignUpPage" component={SecondSignUpPage} />
         <Stack.Screen

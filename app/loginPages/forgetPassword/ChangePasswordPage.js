@@ -57,7 +57,7 @@ export default function ChangePasswordPage(props) {
         }}
       />
       <Image
-        source={require('../../resources/photos/lockLogo.png')}
+        source={require('../../resources/photos/LoginPages/lockLogo.png')}
         style={styles.lockLogoImage}
       />
       <View style={styles.toolTipIconView}>

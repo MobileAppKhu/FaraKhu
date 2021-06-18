@@ -33,7 +33,7 @@ export default class MainPage extends Component {
       <View style={styles.background}>
         <View style={styles.textCenterView}>
           <Animated.Image
-            source={require('../resources/photos/faraKhuLogo.png')}
+            source={require('../resources/photos/LoginPages/faraKhuLogo.png')}
             style={[styles.faraKhuLogo, {transform: [{translateY: logo}]}]}
           />
           <FaraKhuText

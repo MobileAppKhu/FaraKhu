@@ -9,7 +9,7 @@ export default function (props) {
   return (
     <SuccessfullyPages
       message={'رمز عبور با موفقیت تغییر یافت'}
-      imageAddress={require('../../resources/photos/keyLogos.png')}
+      imageAddress={require('../../resources/photos/LoginPages/keyLogos.png')}
       style={styles.keyLogosImage}
     />
   );

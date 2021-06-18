@@ -43,7 +43,7 @@ export default function SecondSignUpPage(props) {
         }}
       />
       <Image
-        source={require('../../resources/photos/progressBarSecond.png')}
+        source={require('../../resources/photos/LoginPages/progressBarSecond.png')}
         style={styles.progressBar}
       />
       <FaraKhuTextInput

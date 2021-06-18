@@ -45,7 +45,7 @@ export default function VerificationCodePage(props) {
         }}
       />
       <Image
-        source={require('../../resources/photos/emailSentLogo.png')}
+        source={require('../../resources/photos/LoginPages/emailSentLogo.png')}
         style={styles.verificationCodeImage}
       />
       <FaraKhuText style={styles.codeSent}>

@@ -38,7 +38,7 @@ export default function FirstSignUpPage(props) {
         }}
       />
       <Image
-        source={require('../../resources/photos/progressBarFirst.png')}
+        source={require('../../resources/photos/LoginPages/progressBarFirst.png')}
         style={styles.progressBar}
       />
       {/*<Image*/}
@@ -49,7 +49,7 @@ export default function FirstSignUpPage(props) {
       <View style={[styles.logoSortView, {height: '13%'}]}>
         <View style={styles.studentLogo}>
           <Image
-            source={require('../../resources/photos/studentLogo.png')}
+            source={require('../../resources/photos/LoginPages/studentLogo.png')}
             style={styles.studentLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>
@@ -58,7 +58,7 @@ export default function FirstSignUpPage(props) {
         </View>
         <View style={styles.professorLogo}>
           <Image
-            source={require('../../resources/photos/professorLogo.png')}
+            source={require('../../resources/photos/LoginPages/professorLogo.png')}
             style={styles.professorLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>

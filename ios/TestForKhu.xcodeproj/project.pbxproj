@@ -31,6 +31,11 @@
 		231695CEEFD444E08F55BC76 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E4864E418D8477A8EA7E311 /* Octicons.ttf */; };
 		FE125E927B744D57ACD29E1E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 481B85FF4BD3464793C527AA /* SimpleLineIcons.ttf */; };
 		B6A55C1603F44B1B91084662 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A393B74F0204C06AEF80E15 /* Zocial.ttf */; };
+		C44A7A0F2713467EB48D0F2C /* IranSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9B1A804F5A641339F08BC82 /* IranSans.ttf */; };
+		E1B364525A104158AB963CCB /* WasmFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F7101800B8243B7A0D058EA /* WasmFont.ttf */; };
+		DE00D33A085C41A6B36F7A4D /* WasmFontBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AFCFFDBF934009A7DE0EC6 /* WasmFontBold.ttf */; };
+		7EA8527ABDBF49E1A4A29C11 /* WasmFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAEB0D65D2C3411BAA24A8DC /* WasmFont.ttf */; };
+		705FAFC629A549639D3E5600 /* WasmFontBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52F0079F1D4B42D09F462425 /* WasmFontBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,11 @@
 		7E4864E418D8477A8EA7E311 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		481B85FF4BD3464793C527AA /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		6A393B74F0204C06AEF80E15 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9B1A804F5A641339F08BC82 /* IranSans.ttf */ = {isa = PBXFileReference; name = "IranSans.ttf"; path = "../app/resources/font/IranSans/IranSans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F7101800B8243B7A0D058EA /* WasmFont.ttf */ = {isa = PBXFileReference; name = "WasmFont.ttf"; path = "../app/resources/font/Wasm/WasmFont.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		53AFCFFDBF934009A7DE0EC6 /* WasmFontBold.ttf */ = {isa = PBXFileReference; name = "WasmFontBold.ttf"; path = "../app/resources/font/Wasm/WasmFontBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BAEB0D65D2C3411BAA24A8DC /* WasmFont.ttf */ = {isa = PBXFileReference; name = "WasmFont.ttf"; path = "../app/resources/font/WasmFont/WasmFont.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		52F0079F1D4B42D09F462425 /* WasmFontBold.ttf */ = {isa = PBXFileReference; name = "WasmFontBold.ttf"; path = "../app/resources/font/WasmFont/WasmFontBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +195,11 @@
 				7E4864E418D8477A8EA7E311 /* Octicons.ttf */,
 				481B85FF4BD3464793C527AA /* SimpleLineIcons.ttf */,
 				6A393B74F0204C06AEF80E15 /* Zocial.ttf */,
+				A9B1A804F5A641339F08BC82 /* IranSans.ttf */,
+				9F7101800B8243B7A0D058EA /* WasmFont.ttf */,
+				53AFCFFDBF934009A7DE0EC6 /* WasmFontBold.ttf */,
+				BAEB0D65D2C3411BAA24A8DC /* WasmFont.ttf */,
+				52F0079F1D4B42D09F462425 /* WasmFontBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -299,6 +314,11 @@
 				231695CEEFD444E08F55BC76 /* Octicons.ttf in Resources */,
 				FE125E927B744D57ACD29E1E /* SimpleLineIcons.ttf in Resources */,
 				B6A55C1603F44B1B91084662 /* Zocial.ttf in Resources */,
+				C44A7A0F2713467EB48D0F2C /* IranSans.ttf in Resources */,
+				E1B364525A104158AB963CCB /* WasmFont.ttf in Resources */,
+				DE00D33A085C41A6B36F7A4D /* WasmFontBold.ttf in Resources */,
+				7EA8527ABDBF49E1A4A29C11 /* WasmFont.ttf in Resources */,
+				705FAFC629A549639D3E5600 /* WasmFontBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

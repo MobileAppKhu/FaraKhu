@@ -41,7 +41,7 @@ export default function (props) {
     <View style={styles.background}>
       <FaraKhuBackButton function={backToMainPage} />
       <Image
-        source={require('../../resources/photos/signUp-gradient.png')}
+        source={require('../../resources/photos/LoginPages/signUp-gradient.png')}
         style={styles.signUp}
       />
 
@@ -90,8 +90,15 @@ export default function (props) {
             if (getEmail.endsWith('@khu.ac.ir')) {
               loginFunction().then(async response => {
                 const data = await response.json();
-                console.log(data);
-                props.navigation.push('LoadingPage');
+                if (response.status === 200) {
+                  props.navigation.push('LoadingPage');
+                } else {
+                  if (Platform.OS === 'android') {
+                    ToastAndroid.show(data.errors[0].message, ToastAndroid.TOP);
+                  } else {
+                    AlertIOS.alert(data.errors[0].message);
+                  }
+                }
               });
             } else {
               if (Platform.OS === 'android') {

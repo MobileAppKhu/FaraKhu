@@ -19,12 +19,15 @@ export default class SecondLoadingPage extends Component {
       inputRange: [0, 1],
       outputRange: [-650, 1],
     });
+    setTimeout(() => {
+      this.props.navigation.replace('HomePage');
+    }, 2000);
     return (
       <View style={styles.loadingBackground}>
         <View style={styles.rectangleOfLoadingTop} />
         <Animated.Image
           style={[styles.secondLoadingImage, {transform: [{translateY: logo}]}]}
-          source={require('../../resources/photos/faraKhuLogoOfLoadingPage.png')}
+          source={require('../../resources/photos/LoginPages/faraKhuLogoOfLoadingPage.png')}
         />
         <View style={styles.rectangleOfLoadingBottom} />
       </View>

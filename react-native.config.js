@@ -3,6 +3,6 @@ module.exports = {
     ios: {},
     android: {}, // grouped into "project"
   },
-  assets: ['./app/resources/font/samim', './app/resources/font/IranSans'],
+  assets: ['./app/resources/font'],
   // stays the same
 };

@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  AlertIOS,
-  Image,
-  Platform,
-  Text,
-  ToastAndroid,
-  View,
-} from 'react-native';
+import {AlertIOS, Image, Platform, ToastAndroid, View} from 'react-native';
 import styles from './styles';
 import FaraKhuTextInput from '../Component/FaraKhuTextInput';
 import FaraKhuButton from '../Component/FaraKhuButton';
@@ -50,7 +43,7 @@ export default function ForgetPasswordPage(props) {
         }}
       />
       <Image
-        source={require('../../resources/photos/sendEmailLogo.png')}
+        source={require('../../resources/photos/LoginPages/sendEmailLogo.png')}
         style={styles.forgetPasswordImage}
       />
       <FaraKhuText style={styles.textOfForgetPassword}>

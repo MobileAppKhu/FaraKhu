@@ -9,7 +9,7 @@ export default function SignUpSuccessfully(props) {
   return (
     <SuccessfullyPages
       message={'ثبت نام شما با موفقیت انجام شد'}
-      imageAddress={require('../../resources/photos/signUpFinish.png')}
+      imageAddress={require('../../resources/photos/LoginPages/signUpFinish.png')}
       style={styles.signUpSuccessfully}
     />
   );
