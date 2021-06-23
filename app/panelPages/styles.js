@@ -68,4 +68,18 @@ export default StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
+  customDrawerStyle: {alignItems: 'center', height: '20%', marginBottom: '7%'},
+  faraKhuTextLogoStyle: {
+    fontFamily: 'Wasm-font-Bold',
+    fontSize: 20,
+    marginRight: '27%',
+    color: 'rgb(238,238,238)',
+    fontWeight: 'bold',
+  },
+  profileTextStyle: {
+    color: 'white',
+    marginTop: 40,
+    fontFamily: 'IranSans',
+    fontWeight: 'bold',
+  },
 });

@@ -1,26 +1,14 @@
 import React, {useEffect} from 'react';
-import {
-  Image,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import {Image, Text, TouchableWithoutFeedback, View} from 'react-native';
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItem,
-} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import BigButtonOfMainMenu from './Component/BigButtonOfMainMenu';
 import SmallButtonOfMainMenu from './Component/SmallButtonOfMainMenu';
 import ProfileButton from './Component/ProfileButton';
 import Colors from './colors';
 import {Icon} from 'react-native-elements';
+import ContactUs from './drawerPages/ContactUs';
 
 const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
   return (
@@ -33,10 +21,10 @@ const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
   );
 };
 
-export function CustomDrawer() {
+export function CustomDrawer(props) {
   return (
     <View>
-      <View style={{alignItems: 'center', height: '20%', marginBottom: '7%'}}>
+      <View style={styles.customDrawerStyle}>
         <Image
           source={require('../resources/photos/PanelPages/faraKhuLogo.png')}
           style={styles.faraKhuLogo}
@@ -76,7 +64,9 @@ export function CustomDrawer() {
       <View style={styles.separatorLine} />
       <DrawerItem
         label={''}
-        onPress={() => {}}
+        onPress={() => {
+          props.navigation.push('contactUs');
+        }}
         icon={() => (
           <IconForDrawerItem
             iconSize={30}
@@ -123,7 +113,7 @@ export function CustomDrawer() {
 }
 
 const Drawer = createDrawerNavigator();
-export default function HomePage() {
+export default function HomePage({navigation}) {
   return (
     <Drawer.Navigator
       drawerContent={CustomDrawer}
@@ -133,20 +123,8 @@ export default function HomePage() {
         backgroundColor: Colors.topColor(),
         width: '49%',
       }}>
-      <Drawer.Screen
-        name={'home'}
-        component={Home}
-        options={{
-          drawerIcon: config => (
-            <Icon
-              size={40}
-              name={'envelope'}
-              type={'evilicon'}
-              color={'white'}
-            />
-          ),
-        }}
-      />
+      <Drawer.Screen name={'home'} component={Home} />
+      <Drawer.Screen name={'contactUs'} component={ContactUs} />
     </Drawer.Navigator>
   );
 }
@@ -170,16 +148,7 @@ function Home({navigation}) {
             style={styles.menuLogoImage}
           />
         </TouchableWithoutFeedback>
-        <Text
-          style={{
-            fontFamily: 'Wasm-font-Bold',
-            fontSize: 20,
-            marginRight: '27%',
-            color: 'rgb(238,238,238)',
-            fontWeight: 'bold',
-          }}>
-          فراخو
-        </Text>
+        <Text style={styles.faraKhuTextLogoStyle}>فراخو</Text>
       </View>
       <BigButtonOfMainMenu
         message={'درس های من'}
@@ -230,15 +199,7 @@ function Home({navigation}) {
       </View>
 
       <View style={styles.bottomPart}>
-        <Text
-          style={{
-            color: 'white',
-            marginTop: 40,
-            fontFamily: 'IranSans',
-            fontWeight: 'bold',
-          }}>
-          پروفایل
-        </Text>
+        <Text style={styles.profileTextStyle}>پروفایل</Text>
       </View>
       <ProfileButton />
     </View>
