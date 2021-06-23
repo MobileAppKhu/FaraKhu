@@ -12,6 +12,7 @@ import FaraKhuTextInput from '../Component/FaraKhuTextInput';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import FaraKhuText from '../Component/FaraKhuText';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function (props) {
   const backToMainPage = () => {
@@ -91,6 +92,7 @@ export default function (props) {
               loginFunction().then(async response => {
                 const data = await response.json();
                 if (response.status === 200) {
+                  await AsyncStorage.setItem('isLogin', 'is');
                   props.navigation.push('LoadingPage');
                 } else {
                   if (Platform.OS === 'android') {

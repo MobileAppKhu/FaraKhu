@@ -3,6 +3,7 @@ import {Animated, View} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -13,6 +14,15 @@ export default class MainPage extends Component {
       duration: 2000,
       useNativeDriver: true,
     }).start();
+    this.checkIsLogin().then(isLogin => {
+      if (isLogin.toString() === 'is') {
+        this.props.navigation.replace('HomePage');
+      }
+    });
+  }
+
+  async checkIsLogin() {
+    return await AsyncStorage.getItem('isLogin');
   }
 
   render() {

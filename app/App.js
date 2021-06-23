@@ -13,6 +13,7 @@ import SignUpSuccessfully from './loginPages/signUp/SignUpSuccessfully';
 import FirstLoadingPage from './loginPages/logIn/FirstLoadingPage';
 import SecondLoadingPage from './loginPages/logIn/SecondLoadingPage';
 import HomePage from './panelPages/HomePage';
+import {AsyncStorage, View} from 'react-native';
 
 const Stack = createStackNavigator();
 
