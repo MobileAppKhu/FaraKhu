@@ -15,6 +15,8 @@ import SecondLoadingPage from './loginPages/logIn/SecondLoadingPage';
 import HomePage from './panelPages/HomePage';
 import {AsyncStorage, View} from 'react-native';
 import ContactUs from './panelPages/drawerPages/ContactUs';
+import SuggestionPage from './panelPages/drawerPages/SuggestionPage';
+import SuggestionSuccessfully from './panelPages/drawerPages/SuggestionSuccessfully';
 
 const Stack = createStackNavigator();
 
@@ -56,6 +58,11 @@ export default function App() {
           component={SignUpSuccessfully}
         />
         <Stack.Screen name={'contactUs'} component={ContactUs} />
+        <Stack.Screen name={'SuggestionPage'} component={SuggestionPage} />
+        <Stack.Screen
+          name={'SuggestionSuccessfully'}
+          component={SuggestionSuccessfully}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

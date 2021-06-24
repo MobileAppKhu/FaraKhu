@@ -51,7 +51,9 @@ export function CustomDrawer(props) {
       <View style={styles.separatorLine} />
       <DrawerItem
         label={''}
-        onPress={() => {}}
+        onPress={() => {
+          props.navigation.push('SuggestionPage');
+        }}
         icon={() => (
           <IconForDrawerItem
             text={'انتقادات و پیشنهادات'}
@@ -113,7 +115,7 @@ export function CustomDrawer(props) {
 }
 
 const Drawer = createDrawerNavigator();
-export default function HomePage({navigation}) {
+export default function HomePage() {
   return (
     <Drawer.Navigator
       drawerContent={CustomDrawer}

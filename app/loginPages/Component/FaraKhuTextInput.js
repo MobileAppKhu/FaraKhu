@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextInput, View, StyleSheet} from 'react-native';
+import {TextInput, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
 import FaraKhuText from './FaraKhuText';
