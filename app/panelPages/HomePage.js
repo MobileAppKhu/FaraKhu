@@ -22,6 +22,20 @@ const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
 };
 
 export function CustomDrawer(props) {
+  async function singOutFunction() {
+    try {
+      return await fetch('https://api.farakhu.markop.ir/api/Account/SignOut', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <View>
       <View style={styles.customDrawerStyle}>
@@ -94,7 +108,12 @@ export function CustomDrawer(props) {
       <View style={styles.separatorLine} />
       <DrawerItem
         label={''}
-        onPress={() => {}}
+        onPress={() => {
+          singOutFunction().then(async () => {
+            await AsyncStorage.setItem('isLogin', 'not');
+            props.navigation.replace('MainPage');
+          });
+        }}
         icon={() => (
           <IconForDrawerItem
             iconSize={25}
