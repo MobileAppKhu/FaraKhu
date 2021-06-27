@@ -50,8 +50,11 @@ export default function SuggestionPage(props) {
             pressAble={getData.trim() === ''}
             message={'ارسال'}
             onPressFunction={() => {
-              suggestionFunction().then(() => {});
-              props.navigation.push('SuggestionSuccessfully');
+              suggestionFunction().then(response => {
+                if (response.status) {
+                  props.navigation.push('SuggestionSuccessfullyPage');
+                }
+              });
             }}
           />
         </View>

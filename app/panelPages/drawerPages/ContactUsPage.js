@@ -3,7 +3,7 @@ import {Image, Text, View} from 'react-native';
 import styles from './styles';
 import FaraKhuBackButtonOfContactUs from '../Component/FaraKhuBackButtonOfContactUs';
 
-export default function ContactUs({navigation}) {
+export default function ContactUsPage({navigation}) {
   return (
     <View style={styles.contactUsStyle}>
       <View style={styles.rectangleOfTop}>

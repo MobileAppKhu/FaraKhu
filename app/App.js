@@ -13,10 +13,11 @@ import SignUpSuccessfully from './loginPages/signUp/SignUpSuccessfully';
 import FirstLoadingPage from './loginPages/logIn/FirstLoadingPage';
 import SecondLoadingPage from './loginPages/logIn/SecondLoadingPage';
 import HomePage from './panelPages/HomePage';
-import {AsyncStorage, View} from 'react-native';
-import ContactUs from './panelPages/drawerPages/ContactUs';
+import ContactUsPage from './panelPages/drawerPages/ContactUsPage';
 import SuggestionPage from './panelPages/drawerPages/SuggestionPage';
-import SuggestionSuccessfully from './panelPages/drawerPages/SuggestionSuccessfully';
+import ChangePasswordPageWithOldPassword from './panelPages/drawerPages/ChangePasswordPageWithOldPassword';
+import SuggestionSuccessfullyPage from './panelPages/drawerPages/SuggestionSuccessfullyPage';
+import PasswordChangedSuccessfullyWithOldPassword from './panelPages/drawerPages/PasswordChangedSuccessfullyWithOldPassword';
 
 const Stack = createStackNavigator();
 
@@ -57,11 +58,19 @@ export default function App() {
           name={'SignUpSuccessfully'}
           component={SignUpSuccessfully}
         />
-        <Stack.Screen name={'contactUs'} component={ContactUs} />
+        <Stack.Screen name={'ContactUsPage'} component={ContactUsPage} />
         <Stack.Screen name={'SuggestionPage'} component={SuggestionPage} />
         <Stack.Screen
-          name={'SuggestionSuccessfully'}
-          component={SuggestionSuccessfully}
+          name={'SuggestionSuccessfullyPage'}
+          component={SuggestionSuccessfullyPage}
+        />
+        <Stack.Screen
+          name={'ChangePasswordPageWithOldPassword'}
+          component={ChangePasswordPageWithOldPassword}
+        />
+        <Stack.Screen
+          name={'PasswordChangedSuccessfullyWithOldPassword'}
+          component={PasswordChangedSuccessfullyWithOldPassword}
         />
       </Stack.Navigator>
     </NavigationContainer>

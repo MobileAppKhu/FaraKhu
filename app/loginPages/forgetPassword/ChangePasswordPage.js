@@ -110,9 +110,16 @@ export default function ChangePasswordPage(props) {
           pressAble={getRepeatPassword !== getPassword}
           function={() => {
             if (getRepeatPassword === getPassword) {
-              changePassword().then(response => {
+              changePassword().then(async response => {
                 if (response.status === 200) {
                   props.navigation.push('PasswordChangeSuccessfully');
+                } else {
+                  const data = await response.json();
+                  if (Platform.OS === 'android') {
+                    ToastAndroid.show(data.errors[0].message, ToastAndroid.TOP);
+                  } else {
+                    AlertIOS.alert(data.errors[0].message);
+                  }
                 }
               });
             }

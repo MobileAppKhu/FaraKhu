@@ -2,21 +2,14 @@ import React, {useState} from 'react';
 import {TextInput, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
-import FaraKhuText from './FaraKhuText';
-import Colors from '../../panelPages/colors';
 
 export default function FaraKhuTextInput({
-  marginTop,
   marginBottom,
+  marginTop,
   height,
-  isPasswordInput,
-  iconType,
-  icon,
-  sizeOfIcon,
-  marginRight,
   placeholderText,
   onChangeText,
-  keyboardType,
+  isPasswordInput,
 }) {
   const [hidePass, setHidePass] = useState(isPasswordInput);
   return (
@@ -29,22 +22,18 @@ export default function FaraKhuTextInput({
           height: height,
         },
       ]}>
-      <Icon
-        type={iconType}
-        name={icon}
-        size={sizeOfIcon}
-        style={{marginRight: marginRight}}
-        color={Colors.topColor()}
-      />
-      <View style={styles.faraKhuTextInputStyle} />
       <TextInput
         placeholderTextColor="grey"
-        placeholder={placeholderText}
-        style={[FaraKhuText.getFontFamily, {flex: 1, fontSize: 20}]}
+        placeholder={'     ' + placeholderText}
+        style={{
+          flex: 1,
+          fontSize: 18,
+          fontFamily: 'IranSans',
+          color: 'black',
+        }}
         textAlign={'right'}
         secureTextEntry={hidePass}
         onChangeText={onChangeText}
-        keyboardType={keyboardType}
       />
       {isPasswordInput && (
         <View
@@ -54,7 +43,7 @@ export default function FaraKhuTextInput({
           <Icon
             name={hidePass ? 'eye-off-outline' : 'eye-outline'}
             size={17}
-            color={'grey'}
+            color="grey"
             onPress={() => {
               setHidePass(!hidePass);
             }}

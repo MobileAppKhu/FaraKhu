@@ -1,14 +1,26 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import Colors from '../colors';
+import {Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import Colors from '../colors';
 
-export default function FaraKhuButton({message, onPressFunction, pressAble}) {
+export default function FaraKhuButton({
+  message,
+  onPressFunction,
+  pressAble,
+  changeColor,
+}) {
   return (
     <TouchableOpacity
       disabled={pressAble}
       activeOpacity={0.8}
-      style={styles.faraKhuButton}
+      style={[
+        styles.faraKhuButton,
+        {
+          backgroundColor: changeColor
+            ? Colors.topColor()
+            : Colors.borderTopColor(),
+        },
+      ]}
       onPress={onPressFunction}>
       <Text style={styles.textOfFaraKhuButton}>{message}</Text>
     </TouchableOpacity>

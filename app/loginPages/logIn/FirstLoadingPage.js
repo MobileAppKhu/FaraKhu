@@ -69,7 +69,7 @@ export default class FirstLoadingPage extends Component {
       outputRange: ['0deg', '-90deg'],
     });
     setTimeout(() => {
-      this.props.navigation.navigate('SecondLoadingPage');
+      this.props.navigation.replace('SecondLoadingPage');
     }, 3000);
     return (
       <View style={styles.loadingBackground}>

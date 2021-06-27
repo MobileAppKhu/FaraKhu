@@ -93,6 +93,9 @@ export default function (props) {
                 const data = await response.json();
                 if (response.status === 200) {
                   await AsyncStorage.setItem('isLogin', 'is');
+                  await AsyncStorage.setItem('theme', 'light');
+                  window.Theme = 'light';
+                  props.navigation.popToTop();
                   props.navigation.push('LoadingPage');
                 } else {
                   if (Platform.OS === 'android') {

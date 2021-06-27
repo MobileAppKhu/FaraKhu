@@ -61,7 +61,7 @@ export default StyleSheet.create({
     borderWidth: 4,
     borderColor: 'rgb(238,238,238)',
     position: 'absolute',
-    bottom: 34,
+    bottom: '4%',
   },
   profileImageStyle: {width: '70%', height: '70%', resizeMode: 'stretch'},
   faraKhuBackButton: {
@@ -82,7 +82,6 @@ export default StyleSheet.create({
     width: 238,
     backgroundColor: Colors.topColor(),
     borderWidth: 1,
-    borderColor: Colors.borderTopColor(),
     borderRadius: 20,
   },
   textOfFaraKhuButton: {
@@ -99,5 +98,16 @@ export default StyleSheet.create({
     width: '82%',
     height: '35%',
     backgroundColor: 'white',
+  },
+  customTextInput: {
+    flexDirection: 'row-reverse',
+    //justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.topColor(),
+    borderWidth: 1,
+    borderColor: 'grey',
+    height: '6.4%',
+    width: '80%',
+    borderRadius: 20,
   },
 });

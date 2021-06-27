@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Image, Text, TouchableWithoutFeedback, View} from 'react-native';
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -8,7 +8,7 @@ import SmallButtonOfMainMenu from './Component/SmallButtonOfMainMenu';
 import ProfileButton from './Component/ProfileButton';
 import Colors from './colors';
 import {Icon} from 'react-native-elements';
-import ContactUs from './drawerPages/ContactUs';
+import ContactUsPage from './drawerPages/ContactUsPage';
 
 const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
   return (
@@ -81,7 +81,7 @@ export function CustomDrawer(props) {
       <DrawerItem
         label={''}
         onPress={() => {
-          props.navigation.push('contactUs');
+          props.navigation.push('ContactUsPage');
         }}
         icon={() => (
           <IconForDrawerItem
@@ -103,7 +103,9 @@ export function CustomDrawer(props) {
             text={'تغییر رمز عبور'}
           />
         )}
-        onPress={() => {}}
+        onPress={() => {
+          props.navigation.push('ChangePasswordPageWithOldPassword');
+        }}
       />
       <View style={styles.separatorLine} />
       <DrawerItem
@@ -126,7 +128,11 @@ export function CustomDrawer(props) {
       <View style={styles.separatorLine} />
       <DrawerItem
         label={'تغییر رنگ'}
-        onPress={() => {}}
+        onPress={async () => {
+          const newTheme = window.Theme === 'dark' ? 'light' : 'dark';
+          await AsyncStorage.setItem('theme', newTheme);
+          window.Theme = newTheme;
+        }}
         labelStyle={styles.iconTextStyle}
       />
     </View>
@@ -145,17 +151,12 @@ export default function HomePage() {
         width: '49%',
       }}>
       <Drawer.Screen name={'home'} component={Home} />
-      <Drawer.Screen name={'contactUs'} component={ContactUs} />
+      <Drawer.Screen name={'contactUs'} component={ContactUsPage} />
     </Drawer.Navigator>
   );
 }
 
 function Home({navigation}) {
-  useEffect(() => {
-    window.Theme = 'light';
-    AsyncStorage.setItem('theme', 'light');
-  }, []);
-
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
       <View style={styles.topPart}>

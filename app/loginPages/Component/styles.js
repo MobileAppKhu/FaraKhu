@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {getFontFamily} from './FaraKhuText';
+import Colors from '../../panelPages/colors';
 
 export default StyleSheet.create({
   BackButton: {
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     flexDirection: 'row-reverse',
     //justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgb(34,40,49)',
+    backgroundColor: Colors.borderTopColor(),
     borderWidth: 1,
     borderColor: 'grey',
     height: '6.4%',

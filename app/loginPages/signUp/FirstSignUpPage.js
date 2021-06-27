@@ -7,24 +7,26 @@ import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
 import FaraKhuText from '../Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
 
-const IconReturn = props => {
+export function IconReturn({marginTop, message, onPressCheck, color}) {
   return (
-    <View style={[styles.toolTipIcon, {marginTop: props.marginTop}]}>
+    <View style={[styles.toolTipIcon, {marginTop: marginTop}]}>
       <Icon
         name="exclamation"
         type="evilicon"
-        color="black"
+        color={color}
         onPress={() => {
-          if (Platform.OS === 'android') {
-            ToastAndroid.show(props.message, ToastAndroid.TOP);
-          } else {
-            AlertIOS.alert(props.message);
+          if (onPressCheck) {
+            if (Platform.OS === 'android') {
+              ToastAndroid.show(message, ToastAndroid.TOP);
+            } else {
+              AlertIOS.alert(message);
+            }
           }
         }}
       />
     </View>
   );
-};
+}
 
 export default function FirstSignUpPage(props) {
   const [getEmail, setEmail] = useState('');
@@ -83,6 +85,8 @@ export default function FirstSignUpPage(props) {
           <IconReturn
             marginTop={'3%'}
             message={'پسوند ایمیل باید khu.ac.ir@ باشد'}
+            color={'black'}
+            onPressCheck={true}
           />
         </View>
         <View style={styles.toolTipIconView}>
@@ -100,20 +104,28 @@ export default function FirstSignUpPage(props) {
           <IconReturn
             marginTop={'-1%'}
             message={'رمز عبور باید متشکل از حروف و اعداد انگلیسی باشد'}
+            color={'black'}
+            onPressCheck={true}
           />
         </View>
-
-        <FaraKhuTextInput
-          sizeOfIcon={60}
-          iconType={'evilicon'}
-          placeholderText={' تایید رمز عبور'}
-          marginBottom={'1%'}
-          isPasswordInput={true}
-          icon={'lock'}
-          onChangeText={data => {
-            setRepeatPassword(data);
-          }}
-        />
+        <View style={styles.toolTipIconView}>
+          <FaraKhuTextInput
+            sizeOfIcon={60}
+            iconType={'evilicon'}
+            placeholderText={' تایید رمز عبور'}
+            marginBottom={'1%'}
+            isPasswordInput={true}
+            icon={'lock'}
+            onChangeText={data => {
+              setRepeatPassword(data);
+            }}
+          />
+          <IconReturn
+            marginTop={'-1%'}
+            color={styles.greenPartDownPage.backgroundColor}
+            onPressCheck={false}
+          />
+        </View>
         {/*{!getEmail.endsWith('@khu.ac.ir') && (*/}
         {/*  <View>*/}
         {/*    <FaraKhuText style={{color: 'rgb(225,74,74)'}}>*/}
