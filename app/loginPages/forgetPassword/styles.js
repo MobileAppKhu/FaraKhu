@@ -12,10 +12,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   lockLogoImage: {
-    resizeMode: 'stretch',
-    width: '25.4%',
-    height: '14.7%',
-    marginTop: '14%',
+    flex: 1,
+    aspectRatio: 1,
   },
   toolTipIconView: {
     flexDirection: 'row-reverse',
@@ -34,11 +32,14 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: 'rgba(0,0,0, 0.4)',
   },
+  forgetPasswordImageContainer: {
+    width: '25.5%',
+    flexDirection: 'row',
+    marginTop: '13%',
+  },
   forgetPasswordImage: {
-    resizeMode: 'stretch',
-    width: '21.5%',
-    height: '12.3%',
-    marginTop: '24%',
+    flex: 1,
+    aspectRatio: 1,
   },
   textOfForgetPassword: {
     fontSize: 16,

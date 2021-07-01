@@ -35,7 +35,7 @@ export default StyleSheet.create({
   leftPhotoStyle: {height: '100%', width: '43.5%'},
   bottomPart: {
     backgroundColor: Colors.topColor(),
-    height: '9%',
+    flex: 1,
     width: '100%',
     alignItems: 'center',
     marginTop: '2.1%',

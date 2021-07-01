@@ -44,13 +44,16 @@ export default function VerificationCodePage(props) {
           props.navigation.pop();
         }}
       />
-      <Image
-        source={require('../../resources/photos/LoginPages/emailSentLogo.png')}
-        style={styles.verificationCodeImage}
-      />
-      <FaraKhuText style={styles.codeSent}>
-        کد تایید به {props.route.params.email} ارسال گردید
-      </FaraKhuText>
+      <View style={styles.verificationCodeImageContainer}>
+        <Image
+          resizeMode={'stretch'}
+          source={require('../../resources/photos/LoginPages/emailSentLogo.png')}
+          style={styles.verificationCodeImage}
+        />
+        <FaraKhuText style={styles.codeSent}>
+          کد تایید به {props.route.params.email} ارسال گردید
+        </FaraKhuText>
+      </View>
       <View style={{flexDirection: 'row'}}>
         <WhiteTextInput
           ref={input1Ref}

@@ -30,22 +30,30 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  studentLogo: {
-    height: '100%',
-    width: 93,
+  studentLogoContainer: {
+    alignItems: 'center',
+    width: '19%',
     marginRight: '2.5%',
-    resizeMode: 'stretch',
+  },
+  studentLogo: {
+    width: '44%',
+    flex: 1,
+    aspectRatio: 1,
   },
   firstSignUpPageText: {
     marginTop: 1,
     fontSize: 15,
     color: 'rgb(238,238,238)',
   },
-  professorLogo: {
-    height: '100%',
-    width: 93,
+  professorLogoContainer: {
     marginLeft: '2.5%',
-    resizeMode: 'stretch',
+    alignItems: 'center',
+    width: '19%',
+  },
+  professorLogo: {
+    width: '44%',
+    flex: 1,
+    aspectRatio: 1,
   },
   greenPartDownPage: {
     backgroundColor: 'rgb(0,173,181)',
@@ -73,9 +81,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   verificationCodeImage: {
-    resizeMode: 'stretch',
-    width: '22%',
-    height: '12.6%',
+    flex: 1,
+    aspectRatio: 1,
+  },
+  verificationCodeImageContainer: {
+    alignItems: 'center',
+    height: '22%',
     marginTop: '22%',
   },
   whiteTextInput: {

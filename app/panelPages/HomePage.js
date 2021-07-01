@@ -113,6 +113,8 @@ export function CustomDrawer(props) {
         onPress={() => {
           singOutFunction().then(async () => {
             await AsyncStorage.setItem('isLogin', 'not');
+            await AsyncStorage.setItem('theme', 'light');
+            window.Theme = 'light';
             props.navigation.replace('MainPage');
           });
         }}
@@ -127,13 +129,21 @@ export function CustomDrawer(props) {
       />
       <View style={styles.separatorLine} />
       <DrawerItem
-        label={'تغییر رنگ'}
+        label={''}
         onPress={async () => {
           const newTheme = window.Theme === 'dark' ? 'light' : 'dark';
           await AsyncStorage.setItem('theme', newTheme);
           window.Theme = newTheme;
+          props.navigation.replace('HomePage');
         }}
-        labelStyle={styles.iconTextStyle}
+        icon={() => (
+          <IconForDrawerItem
+            iconSize={25}
+            iconType={'material-community'}
+            iconName={'theme-light-dark'}
+            text={'تغییر تم'}
+          />
+        )}
       />
     </View>
   );

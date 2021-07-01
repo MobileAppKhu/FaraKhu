@@ -14,13 +14,6 @@ export default function MainPage({navigation}) {
       duration: 2000,
       useNativeDriver: true,
     }).start();
-    AsyncStorage.getItem('theme').then(async theme => {
-      window.theme = theme ?? 'dark';
-      const isLogin = await AsyncStorage.getItem('isLogin');
-      if (isLogin === 'is') {
-        navigation.replace('HomePage');
-      }
-    });
   }, []);
 
   const logInButton = animated.current.interpolate({

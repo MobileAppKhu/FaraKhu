@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, View, Animated} from 'react-native';
+import {Image, View, Animated, ImageBackground} from 'react-native';
 import styles from './styles';
 
 export default class SuccessfullyPages extends Component {
@@ -25,12 +25,18 @@ export default class SuccessfullyPages extends Component {
     const transform = [{translateY}];
     return (
       <View style={styles.background}>
-        <Image source={this.props.imageAddress} style={this.props.style} />
-        <Animated.Text
-          style={[styles.passwordChangeSuccessfullyText, {opacity, transform}]}>
-          {this.props.message}
-        </Animated.Text>
-        <View style={styles.greenPartDownPage} />
+        <ImageBackground
+          source={this.props.imageAddress}
+          style={this.props.style}>
+          <Animated.Text
+            style={[
+              styles.passwordChangeSuccessfullyText,
+              {opacity, transform},
+            ]}>
+            {this.props.message}
+          </Animated.Text>
+          <View style={styles.greenPartDownPage} />
+        </ImageBackground>
       </View>
     );
   }

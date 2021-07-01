@@ -51,10 +51,13 @@ export default function ChangePasswordPageWithOldPassword(props) {
             }}
           />
         </View>
-        <Image
-          source={require('../../resources/photos/PanelPages/LockImageLight.png')}
-          style={styles.imageStyleOfChangePassword}
-        />
+        <View style={styles.containerStyleOfChangePassword}>
+          <Image
+            resizeMode={'stretch'}
+            source={require('../../resources/photos/PanelPages/LockImageLight.png')}
+            style={styles.imageStyleOfChangePassword}
+          />
+        </View>
         <View style={{flexDirection: 'row-reverse'}}>
           <FaraKhuTextInput
             placeholderText={'رمز عبور فعلی'}

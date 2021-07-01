@@ -13,7 +13,7 @@ const IconReturn = props => {
       <Icon
         name="exclamation"
         type="evilicon"
-        color="black"
+        color={'rgb(0,173,181)'}
         onPress={() => {
           if (Platform.OS === 'android') {
             ToastAndroid.show(props.message, ToastAndroid.TOP);
@@ -56,10 +56,12 @@ export default function ChangePasswordPage(props) {
           props.navigation.pop();
         }}
       />
-      <Image
-        source={require('../../resources/photos/LoginPages/lockLogo.png')}
-        style={styles.lockLogoImage}
-      />
+      <View style={styles.forgetPasswordImageContainer}>
+        <Image
+          source={require('../../resources/photos/LoginPages/lockLogo.png')}
+          style={styles.lockLogoImage}
+        />
+      </View>
       <View style={styles.toolTipIconView}>
         <FaraKhuTextInput
           sizeOfIcon={60}

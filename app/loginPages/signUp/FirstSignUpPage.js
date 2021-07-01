@@ -49,23 +49,21 @@ export default function FirstSignUpPage(props) {
       {/*/>*/}
       <FaraKhuText style={styles.whoAreYou}> کدام یک هستید ؟</FaraKhuText>
       <View style={[styles.logoSortView, {height: '13%'}]}>
-        <View style={styles.studentLogo}>
+        <View style={styles.studentLogoContainer}>
           <Image
+            resizeMode={'stretch'}
             source={require('../../resources/photos/LoginPages/studentLogo.png')}
             style={styles.studentLogo}
           />
-          <FaraKhuText style={styles.firstSignUpPageText}>
-            {'     '}دانشجو
-          </FaraKhuText>
+          <FaraKhuText style={styles.firstSignUpPageText}>دانشجو</FaraKhuText>
         </View>
-        <View style={styles.professorLogo}>
+        <View style={styles.professorLogoContainer}>
           <Image
+            resizeMode={'stretch'}
             source={require('../../resources/photos/LoginPages/professorLogo.png')}
             style={styles.professorLogo}
           />
-          <FaraKhuText style={styles.firstSignUpPageText}>
-            {'       '}استاد
-          </FaraKhuText>
+          <FaraKhuText style={styles.firstSignUpPageText}>استاد</FaraKhuText>
         </View>
       </View>
       <View style={styles.greenPartDownPage}>

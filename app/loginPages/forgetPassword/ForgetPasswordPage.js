@@ -42,25 +42,37 @@ export default function ForgetPasswordPage(props) {
           props.navigation.pop();
         }}
       />
-      <Image
-        source={require('../../resources/photos/LoginPages/sendEmailLogo.png')}
-        style={styles.forgetPasswordImage}
-      />
-      <FaraKhuText style={styles.textOfForgetPassword}>
-        تغییر با استفاده از ایمیل
-      </FaraKhuText>
-      <FaraKhuTextInput
-        sizeOfIcon={60}
-        iconType={'evilicon'}
-        placeholderText={'ایمیل'}
-        marginBottom={'1.5%'}
-        marginTop={'7%'}
-        isPasswordInput={false}
-        icon={'envelope'}
-        onChangeText={data => {
-          setEmail(data);
-        }}
-      />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View style={styles.forgetPasswordImageContainer}>
+          <Image
+            resizeMode="stretch"
+            source={require('../../resources/photos/LoginPages/sendEmailLogo.png')}
+            style={styles.forgetPasswordImage}
+          />
+        </View>
+        <View style={{alignItems: 'center', flex: 1}}>
+          <FaraKhuText style={styles.textOfForgetPassword}>
+            تغییر با استفاده از ایمیل
+          </FaraKhuText>
+          <FaraKhuTextInput
+            sizeOfIcon={60}
+            iconType={'evilicon'}
+            placeholderText={'ایمیل'}
+            marginBottom={'1.5%'}
+            marginTop={'7%'}
+            isPasswordInput={false}
+            icon={'envelope'}
+            onChangeText={data => {
+              setEmail(data);
+            }}
+          />
+        </View>
+      </View>
       <View style={styles.greenPartDownPage}>
         <FaraKhuButton
           marginTop={'5%'}

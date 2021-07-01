@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   background: {
@@ -6,47 +6,71 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(57,62,70)',
     borderBottomLeftRadius: 231,
     borderTopRightRadius: 100,
-    alignItems: 'center',
   },
   loadingBackground: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
-    width: '100%',
     backgroundColor: 'rgb(57,62,70)',
   },
   rectangleOfLoadingTop: {
     left: '-14%',
-    top: '-17%',
+    top:
+      -(
+        Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        3.308823529
+      ) * Dimensions.get('window').height,
     position: 'absolute',
-    // height: 95,
-    // width: 248,
     width: '80%',
-    height: '30%',
+    height:
+      (Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        1.875) *
+      Dimensions.get('window').height,
     backgroundColor: 'rgb(0,173,181)',
     transform: [{rotate: '-30deg'}],
     borderBottomLeftRadius: 100,
   },
-  firstLoadingImage: {
+  firstLoadingImageContainer: {
     width: '41%',
-    height: '25%',
-    resizeMode: 'stretch',
+    flexDirection: 'row',
+  },
+  firstLoadingImage: {
+    flex: 1,
+    aspectRatio: 1,
   },
   rectangleOfLoadingBottom: {
     width: '80%',
-    height: '30%',
+    height:
+      (Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        1.875) *
+      Dimensions.get('window').height,
     backgroundColor: 'rgb(0,173,181)',
     position: 'absolute',
     right: '-14%',
-    bottom: '-17%',
+    bottom:
+      -(
+        Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        3.308823529
+      ) * Dimensions.get('window').height,
     borderTopRightRadius: 100,
     transform: [{rotate: '-30deg'}],
   },
-  signUp: {
-    marginTop: '1%',
+  sign_up_image: {
+    flex: 1,
+    aspectRatio: 1,
+  },
+  sign_up_image_container: {
     width: '25.8%',
-    height: '15%',
-    resizeMode: 'stretch',
+    flexDirection: 'row',
+  },
+  text_input_content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   forgetPassword: {
     color: 'white',
@@ -55,17 +79,15 @@ export default StyleSheet.create({
     fontWeight: '700',
   },
   greenPartDownPage: {
-    backgroundColor: 'rgb(0,173,181)',
+    flex: 1,
     width: '100%',
-    height: '47%',
-    position: 'absolute',
-    bottom: 0,
-    borderTopRightRadius: 80,
-    borderTopLeftRadius: 80,
-    borderBottomLeftRadius: 220,
-    alignItems: 'center',
     borderWidth: 2,
+    alignItems: 'center',
+    borderTopLeftRadius: 80,
+    borderTopRightRadius: 80,
+    borderBottomLeftRadius: 220,
     borderColor: 'rgba(0,0,0, 0.4)',
+    backgroundColor: 'rgb(0,173,181)',
   },
   secondLoadingImage: {
     width: '50%',

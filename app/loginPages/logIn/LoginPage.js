@@ -41,42 +41,47 @@ export default function (props) {
   return (
     <View style={styles.background}>
       <FaraKhuBackButton function={backToMainPage} />
-      <Image
-        source={require('../../resources/photos/LoginPages/signUp-gradient.png')}
-        style={styles.signUp}
-      />
+      <View style={styles.text_input_content}>
+        <View style={styles.sign_up_image_container}>
+          <Image
+            resizeMode="stretch"
+            source={require('../../resources/photos/LoginPages/signUp-gradient.png')}
+            style={styles.sign_up_image}
+          />
+        </View>
 
-      <FaraKhuTextInput
-        sizeOfIcon={60}
-        iconType={'evilicon'}
-        placeholderText={'ایمیل'}
-        marginBottom={'2%'}
-        marginTop={'10%'}
-        icon={'envelope'}
-        onChangeText={data => {
-          setEmail(data);
-        }}
-      />
-      <FaraKhuTextInput
-        sizeOfIcon={60}
-        iconType={'evilicon'}
-        placeholderText={'رمز'}
-        marginBottom={'2%'}
-        isPasswordInput={true}
-        icon={'lock'}
-        onChangeText={data => {
-          setPassword(data);
-        }}
-      />
-      <TouchableOpacity>
-        <FaraKhuText
-          style={styles.forgetPassword}
-          function={() => {
-            props.navigation.push('ForgetPasswordPage');
-          }}>
-          آیا رمز عبور خود را فراموش کردید؟
-        </FaraKhuText>
-      </TouchableOpacity>
+        <FaraKhuTextInput
+          sizeOfIcon={60}
+          iconType={'evilicon'}
+          placeholderText={'ایمیل'}
+          marginBottom={'2%'}
+          marginTop={'10%'}
+          icon={'envelope'}
+          onChangeText={data => {
+            setEmail(data);
+          }}
+        />
+        <FaraKhuTextInput
+          sizeOfIcon={60}
+          iconType={'evilicon'}
+          placeholderText={'رمز'}
+          marginBottom={'2%'}
+          isPasswordInput={true}
+          icon={'lock'}
+          onChangeText={data => {
+            setPassword(data);
+          }}
+        />
+        <TouchableOpacity>
+          <FaraKhuText
+            style={styles.forgetPassword}
+            function={() => {
+              props.navigation.push('ForgetPasswordPage');
+            }}>
+            آیا رمز عبور خود را فراموش کردید؟
+          </FaraKhuText>
+        </TouchableOpacity>
+      </View>
       <View style={styles.greenPartDownPage}>
         <FaraKhuButton
           marginTop={'5%'}
@@ -96,7 +101,7 @@ export default function (props) {
                   await AsyncStorage.setItem('theme', 'light');
                   window.Theme = 'light';
                   props.navigation.popToTop();
-                  props.navigation.push('LoadingPage');
+                  props.navigation.push('FirstLoadingPage');
                 } else {
                   if (Platform.OS === 'android') {
                     ToastAndroid.show(data.errors[0].message, ToastAndroid.TOP);

@@ -74,26 +74,29 @@ export default class FirstLoadingPage extends Component {
     return (
       <View style={styles.loadingBackground}>
         <View style={styles.rectangleOfLoadingTop} />
-        <Animated.Image
-          source={require('../../resources/photos/LoginPages/loadingImage.png')}
-          style={[
-            styles.firstLoadingImage,
-            {
-              transform: [
-                {rotate: spinFirst, scale: scaleSmallerFirst},
-                {
-                  rotate: spinSecond,
-                  scale: scaleBiggerFirst,
-                },
-                {rotate: spinThird, scale: scaleSmallerSecond},
-                {
-                  rotate: spinFourth,
-                  scale: scaleBiggerSecond,
-                },
-              ],
-            },
-          ]}
-        />
+        <View style={styles.firstLoadingImageContainer}>
+          <Animated.Image
+            resizeMode={'stretch'}
+            source={require('../../resources/photos/LoginPages/loadingImage.png')}
+            style={[
+              styles.firstLoadingImage,
+              {
+                transform: [
+                  {rotate: spinFirst, scale: scaleSmallerFirst},
+                  {
+                    rotate: spinSecond,
+                    scale: scaleBiggerFirst,
+                  },
+                  {rotate: spinThird, scale: scaleSmallerSecond},
+                  {
+                    rotate: spinFourth,
+                    scale: scaleBiggerSecond,
+                  },
+                ],
+              },
+            ]}
+          />
+        </View>
         <View style={styles.rectangleOfLoadingBottom} />
       </View>
     );

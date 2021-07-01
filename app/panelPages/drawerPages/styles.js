@@ -1,28 +1,46 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import Colors from '../colors';
 
 export default StyleSheet.create({
   rectangleOfTop: {
     backgroundColor: Colors.topColor(),
     width: '120%',
-    height: '28%',
+    height:
+      (Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        2.00971361580974) *
+      Dimensions.get('window').height,
     transform: [{rotate: '-22deg'}],
     borderBottomLeftRadius: 75,
     position: 'absolute',
     left: '-7%',
-    top: '-18%',
+    top:
+      -(
+        Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        3.052631578
+      ) * Dimensions.get('window').height,
     borderWidth: 1,
     borderColor: 'black',
   },
   rectangleOfBottom: {
     backgroundColor: Colors.topColor(),
     width: '120%',
-    height: '28%',
+    height:
+      (Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        2.00971361580974) *
+      Dimensions.get('window').height,
     transform: [{rotate: '-22deg'}],
     borderTopRightRadius: 75,
     position: 'absolute',
     right: '-7%',
-    bottom: '-18%',
+    bottom:
+      -(
+        Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        3.052631578
+      ) * Dimensions.get('window').height,
     borderWidth: 1,
     borderColor: 'black',
   },
@@ -37,10 +55,13 @@ export default StyleSheet.create({
     borderRadius: 25,
     marginBottom: '6%',
   },
-  styleOfImage: {
-    width: '28%',
+  containerStyleOfImage: {
+    alignItems: 'center',
     height: '17%',
-    resizeMode: 'stretch',
+  },
+  styleOfImage: {
+    flex: 1,
+    aspectRatio: 1,
   },
   contactTextStyle: {
     fontFamily: 'IranSans',
@@ -112,11 +133,14 @@ export default StyleSheet.create({
     height: '100%',
     alignItems: 'center',
   },
-  imageStyleOfChangePassword: {
-    width: '26%',
+  containerStyleOfChangePassword: {
     height: '15%',
-    resizeMode: 'stretch',
+    alignItems: 'center',
     marginTop: '10%',
+  },
+  imageStyleOfChangePassword: {
+    flex: 1,
+    aspectRatio: 1,
   },
   topPartOfChangePassword: {
     height: '10%',

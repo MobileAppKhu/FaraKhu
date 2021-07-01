@@ -18,6 +18,7 @@ import SuggestionPage from './panelPages/drawerPages/SuggestionPage';
 import ChangePasswordPageWithOldPassword from './panelPages/drawerPages/ChangePasswordPageWithOldPassword';
 import SuggestionSuccessfullyPage from './panelPages/drawerPages/SuggestionSuccessfullyPage';
 import PasswordChangedSuccessfullyWithOldPassword from './panelPages/drawerPages/PasswordChangedSuccessfullyWithOldPassword';
+import LoadingPage from './loginPages/LoadingPage';
 
 const Stack = createStackNavigator();
 
@@ -28,9 +29,10 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name={'LoadingPage'} component={LoadingPage} />
         <Stack.Screen name="MainPage" component={MainPage} />
         <Stack.Screen name="LogInPage" component={LogInPage} />
-        <Stack.Screen name="LoadingPage" component={FirstLoadingPage} />
+        <Stack.Screen name="FirstLoadingPage" component={FirstLoadingPage} />
         <Stack.Screen
           name={'SecondLoadingPage'}
           component={SecondLoadingPage}

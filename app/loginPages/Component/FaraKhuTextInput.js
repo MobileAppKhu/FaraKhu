@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {TextInput, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
-import FaraKhuText from './FaraKhuText';
 import Colors from '../../panelPages/colors';
 
 export default function FaraKhuTextInput({
@@ -40,7 +39,13 @@ export default function FaraKhuTextInput({
       <TextInput
         placeholderTextColor="grey"
         placeholder={placeholderText}
-        style={[FaraKhuText.getFontFamily, {flex: 1, fontSize: 20}]}
+        style={{
+          flex: 1,
+          fontSize: 20,
+          color: 'rgb(238,238,238)',
+          fontFamily: 'Samim',
+          justifyContent: 'center',
+        }}
         textAlign={'right'}
         secureTextEntry={hidePass}
         onChangeText={onChangeText}

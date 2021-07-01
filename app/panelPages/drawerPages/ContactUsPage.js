@@ -17,10 +17,13 @@ export default function ContactUsPage({navigation}) {
         <Text style={styles.contactTextStyle}>ایمیل جهت ارتباط با ادمین</Text>
         <Text style={styles.contactEmailStyle}>contact@Farakhu.app</Text>
       </View>
-      <Image
-        source={require('../../resources/photos/PanelPages/emailLogo.png')}
-        style={styles.styleOfImage}
-      />
+      <View style={styles.containerStyleOfImage}>
+        <Image
+          resizeMode={'stretch'}
+          source={require('../../resources/photos/PanelPages/emailLogo.png')}
+          style={styles.styleOfImage}
+        />
+      </View>
       <View style={styles.rectangleOfBottom} />
     </View>
   );
