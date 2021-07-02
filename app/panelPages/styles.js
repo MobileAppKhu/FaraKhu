@@ -3,7 +3,7 @@ import Colors from './colors';
 
 export default StyleSheet.create({
   topPart: {
-    backgroundColor: Colors.topColor(),
+    // backgroundColor: Colors.topColor(),
     height: '9%',
     width: '100%',
     alignItems: 'center',
@@ -39,7 +39,6 @@ export default StyleSheet.create({
   },
   leftPhotoContainerStyle: {width: '43.5%'},
   bottomPart: {
-    backgroundColor: Colors.topColor(),
     flex: 1,
     width: '100%',
     alignItems: 'center',
@@ -59,7 +58,6 @@ export default StyleSheet.create({
     marginLeft: '5%',
   },
   iconTextStyle: {
-    color: 'rgb(238,238,238)',
     fontSize: 11,
     fontFamily: 'IranSans',
     fontWeight: '200',
@@ -73,7 +71,11 @@ export default StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
-  customDrawerStyle: {alignItems: 'center', height: '20%', marginBottom: '7%'},
+  customDrawerStyle: {
+    alignItems: 'center',
+    height: '20%',
+    marginBottom: '7%',
+  },
   faraKhuTextLogoStyle: {
     fontFamily: 'Wasm-font-Bold',
     fontSize: 20,
@@ -82,7 +84,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   profileTextStyle: {
-    color: 'white',
     marginTop: '11%',
     fontFamily: 'IranSans',
     fontWeight: 'bold',

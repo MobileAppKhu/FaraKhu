@@ -6,16 +6,25 @@ import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import BigButtonOfMainMenu from './Component/BigButtonOfMainMenu';
 import SmallButtonOfMainMenu from './Component/SmallButtonOfMainMenu';
 import ProfileButton from './Component/ProfileButton';
-import Colors from './colors';
+import colors from './colors';
 import {Icon} from 'react-native-elements';
 import ContactUsPage from './drawerPages/ContactUsPage';
+import Colors from './colors';
 
 const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
   return (
     <View style={styles.iconViewStyle}>
-      <Icon size={iconSize} name={iconName} type={iconType} color={'white'} />
+      <Icon
+        size={iconSize}
+        name={iconName}
+        type={iconType}
+        color={Colors.bigButtonTextColor()}
+      />
       <View style={styles.viewTextStyle}>
-        <Text style={styles.iconTextStyle}>{text}</Text>
+        <Text
+          style={[styles.iconTextStyle, {color: colors.bigButtonTextColor()}]}>
+          {text}
+        </Text>
       </View>
     </View>
   );
@@ -43,7 +52,9 @@ export function CustomDrawer(props) {
           source={require('../resources/photos/PanelPages/faraKhuLogo.png')}
           style={styles.faraKhuLogo}
         />
-        <Text style={[styles.iconTextStyle]}>فراخو</Text>
+        <Text style={[styles.iconTextStyle, {color: 'rgb(238,238,238)'}]}>
+          فراخو
+        </Text>
       </View>
       <View style={[styles.separatorLine, {marginBottom: '-5%'}]} />
       <DrawerItem
@@ -157,7 +168,7 @@ export default function HomePage() {
       initialRouteName="Home"
       drawerPosition="right"
       drawerStyle={{
-        backgroundColor: Colors.topColor(),
+        backgroundColor: colors.topColor(),
         width: '49%',
       }}>
       <Drawer.Screen name={'home'} component={Home} />
@@ -168,8 +179,13 @@ export default function HomePage() {
 
 function Home({navigation}) {
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
-      <View style={styles.topPart}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: colors.backgroundColor(),
+      }}>
+      <View style={[styles.topPart, {backgroundColor: colors.topColor()}]}>
         <TouchableWithoutFeedback
           onPress={() => {
             navigation.toggleDrawer();
@@ -180,7 +196,13 @@ function Home({navigation}) {
             style={styles.menuLogoImage}
           />
         </TouchableWithoutFeedback>
-        <Text style={styles.faraKhuTextLogoStyle}>فراخو</Text>
+        <Text
+          style={[
+            styles.faraKhuTextLogoStyle,
+            {color: colors.bigButtonTextColor()},
+          ]}>
+          فراخو
+        </Text>
       </View>
       <BigButtonOfMainMenu
         message={'درس های من'}
@@ -236,10 +258,28 @@ function Home({navigation}) {
         </View>
       </View>
 
-      <View style={styles.bottomPart}>
-        <Text style={styles.profileTextStyle}>پروفایل</Text>
+      <View
+        style={[
+          styles.bottomPart,
+          {
+            backgroundColor: Colors.topColor(),
+          },
+        ]}>
+        <Text
+          style={[
+            styles.profileTextStyle,
+            {color: Colors.bigButtonTextColor()},
+          ]}>
+          پروفایل
+        </Text>
       </View>
-      <ProfileButton />
+      <ProfileButton
+        navigation={navigation}
+        address={require('../resources/photos/PanelPages/profileLogo.png')}
+        onPressFunction={() => {
+          navigation.push('ProfilePage');
+        }}
+      />
     </View>
   );
 }

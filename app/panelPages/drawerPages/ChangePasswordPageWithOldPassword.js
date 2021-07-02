@@ -13,6 +13,7 @@ import FaraKhuTextInput from '../Component/FaraKhuTextInput';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import styles from './styles';
 import {IconReturn} from '../../loginPages/signUp/FirstSignUpPage';
+import Colors from '../colors';
 
 export default function ChangePasswordPageWithOldPassword(props) {
   const changePasswordFunction = async () => {
@@ -38,11 +39,22 @@ export default function ChangePasswordPageWithOldPassword(props) {
   const [getNewPassword, setNewPassword] = useState('');
   const [getNewPasswordRepeat, setNewPasswordRepeat] = useState('');
   return (
-    <View style={styles.changePasswordStyle}>
+    <View
+      style={[
+        styles.changePasswordStyle,
+        {backgroundColor: Colors.backgroundColor()},
+      ]}>
       <BackgroundImage
         source={require('../../resources/photos/PanelPages/ChangePasswordPageWithOldPasswordImageLight.png')}
         style={styles.backgroundStyleOfChangePassword}>
-        <View style={styles.topPartOfChangePassword}>
+        <View
+          style={[
+            styles.topPartOfChangePassword,
+            {
+              backgroundColor: Colors.topColor(),
+              borderBottomColor: Colors.borderTopColor(),
+            },
+          ]}>
           <FaraKhuBackButton
             navigationFunction={() => {
               props.navigation.popToTop();
@@ -57,7 +69,7 @@ export default function ChangePasswordPageWithOldPassword(props) {
             style={styles.imageStyleOfChangePassword}
           />
         </View>
-        <View style={{flexDirection: 'row-reverse'}}>
+        <View style={styles.changeFlexDirectionToRowReverse}>
           <FaraKhuTextInput
             placeholderText={'رمز عبور فعلی'}
             marginTop={'10%'}
@@ -67,9 +79,8 @@ export default function ChangePasswordPageWithOldPassword(props) {
               setOldPassword(data);
             }}
           />
-          <IconReturn color={'white'} onPressCheck={false} />
         </View>
-        <View style={{flexDirection: 'row-reverse'}}>
+        <View style={styles.changeFlexDirectionToRowReverse}>
           <FaraKhuTextInput
             placeholderText={'رمز عبور جدید'}
             isPasswordInput={true}
@@ -85,7 +96,7 @@ export default function ChangePasswordPageWithOldPassword(props) {
             color={'rgb(0,173,181)'}
           />
         </View>
-        <View style={{flexDirection: 'row-reverse'}}>
+        <View style={styles.changeFlexDirectionToRowReverse}>
           <FaraKhuTextInput
             placeholderText={'تایید رمز عبور'}
             isPasswordInput={true}
@@ -94,7 +105,6 @@ export default function ChangePasswordPageWithOldPassword(props) {
               setNewPasswordRepeat(data);
             }}
           />
-          <IconReturn color={'white'} onPressCheck={false} />
         </View>
         {getNewPassword !== getNewPasswordRepeat && (
           <View>
@@ -129,7 +139,15 @@ export default function ChangePasswordPageWithOldPassword(props) {
           }}
         />
 
-        <View style={styles.bottomPartOfChangePassword} />
+        <View
+          style={[
+            styles.bottomPartOfChangePassword,
+            {
+              backgroundColor: Colors.topColor(),
+              borderBottomColor: Colors.borderTopColor(),
+            },
+          ]}
+        />
       </BackgroundImage>
     </View>
   );

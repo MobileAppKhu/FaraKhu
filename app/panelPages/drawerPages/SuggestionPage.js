@@ -4,6 +4,7 @@ import styles from './styles';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SuggestionTextInput from '../Component/SuggestionTextInput';
 import FaraKhuButton from '../Component/FaraKhuButton';
+import Colors from '../colors';
 
 export default function SuggestionPage(props) {
   const [getData, setData] = useState('');
@@ -29,7 +30,14 @@ export default function SuggestionPage(props) {
 
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
-      <View style={styles.topPartOfSuggestionPage}>
+      <View
+        style={[
+          styles.topPartOfSuggestionPage,
+          {
+            backgroundColor: Colors.topColor(),
+            borderColor: Colors.borderTopColor(),
+          },
+        ]}>
         <FaraKhuBackButton
           navigationFunction={() => {
             props.navigation.pop();

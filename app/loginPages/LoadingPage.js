@@ -28,7 +28,8 @@ export default function LoadingPage({navigation}) {
     ).start();
     let isLogin;
     AsyncStorage.getItem('theme').then(async theme => {
-      window.theme = theme ?? 'dark';
+      window.Theme = theme ?? 'dark';
+      console.log(window.Theme);
       isLogin = await AsyncStorage.getItem('isLogin');
     });
     setTimeout(() => {

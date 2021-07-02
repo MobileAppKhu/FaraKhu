@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {TextInput, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
+import Colors from '../colors';
 
 export default function FaraKhuTextInput({
   marginBottom,
@@ -17,6 +18,7 @@ export default function FaraKhuTextInput({
       style={[
         styles.customTextInput,
         {
+          backgroundColor: Colors.topColor(),
           marginBottom: marginBottom,
           marginTop: marginTop,
           height: height,
@@ -24,13 +26,13 @@ export default function FaraKhuTextInput({
       ]}>
       <View style={{width: '10%'}} />
       <TextInput
-        placeholderTextColor="grey"
+        placeholderTextColor={Colors.borderTopColor()}
         placeholder={placeholderText}
         style={{
           flex: 1,
           fontSize: 18,
           fontFamily: 'IranSans',
-          color: 'black',
+          color: Colors.borderTopColor(),
         }}
         textAlign={'right'}
         secureTextEntry={hidePass}

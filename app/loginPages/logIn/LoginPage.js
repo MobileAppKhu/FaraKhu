@@ -99,6 +99,10 @@ export default function (props) {
                 if (response.status === 200) {
                   await AsyncStorage.setItem('isLogin', 'is');
                   await AsyncStorage.setItem('theme', 'light');
+                  await AsyncStorage.setItem(
+                    'userData',
+                    JSON.stringify(data.profileDto),
+                  );
                   window.Theme = 'light';
                   props.navigation.popToTop();
                   props.navigation.replace('FirstLoadingPage');

@@ -6,10 +6,10 @@ const Colors = {
   borderTopColor: () =>
     window.Theme !== 'dark' ? 'rgb(34,40,49)' : 'rgb(0,173,181)',
   bigButtonTextColor: () =>
-    window.Theme === 'light' ? 'rgb(0,173,181)' : 'rgb(238,238,238)',
+    window.Theme !== 'light' ? 'rgb(0,173,181)' : 'rgb(238,238,238)',
   accent: () => (window.Theme === 'dark' ? '#ffffff' : '#000000'),
   backgroundColor: () =>
-    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(238,238,238)',
+    window.Theme === 'dark' ? 'rgb(57,62,70)' : 'rgb(238,238,238)',
   textHolderColor: () => (window.Theme === 'dark' ? 'grey' : 'black'),
 };
 export default Colors;

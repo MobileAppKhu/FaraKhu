@@ -16,13 +16,17 @@ export default function FaraKhuButton({
       style={[
         styles.faraKhuButton,
         {
-          backgroundColor: changeColor
-            ? Colors.topColor()
-            : Colors.borderTopColor(),
+          backgroundColor: Colors.topColor(),
         },
       ]}
       onPress={onPressFunction}>
-      <Text style={styles.textOfFaraKhuButton}>{message}</Text>
+      <Text
+        style={[
+          styles.textOfFaraKhuButton,
+          {color: Colors.bigButtonTextColor()},
+        ]}>
+        {message}
+      </Text>
     </TouchableOpacity>
   );
 }

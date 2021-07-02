@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Animated, View} from 'react-native';
 import styles from './styles';
 import {BackgroundImage} from 'react-native-elements/dist/config';
+import Colors from '../colors';
 
 export default function SuccessfullyPage({navigation, imageAddress, message}) {
   let animated = new Animated.Value(0);
@@ -26,7 +27,10 @@ export default function SuccessfullyPage({navigation, imageAddress, message}) {
         <Animated.Text
           style={[
             styles.animatedTextStyle,
-            {transform: [{translateY: translateY}]},
+            {
+              transform: [{translateY: translateY}],
+              color: Colors.accent(),
+            },
           ]}>
           {message}
         </Animated.Text>

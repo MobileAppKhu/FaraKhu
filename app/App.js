@@ -19,6 +19,7 @@ import ChangePasswordPageWithOldPassword from './panelPages/drawerPages/ChangePa
 import SuggestionSuccessfullyPage from './panelPages/drawerPages/SuggestionSuccessfullyPage';
 import PasswordChangedSuccessfullyWithOldPassword from './panelPages/drawerPages/PasswordChangedSuccessfullyWithOldPassword';
 import LoadingPage from './loginPages/LoadingPage';
+import ProfilePage from './panelPages/profilePages/ProfilePage';
 
 const Stack = createStackNavigator();
 
@@ -74,6 +75,7 @@ export default function App() {
           name={'PasswordChangedSuccessfullyWithOldPassword'}
           component={PasswordChangedSuccessfullyWithOldPassword}
         />
+        <Stack.Screen name={'ProfilePage'} component={ProfilePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

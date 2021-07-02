@@ -3,7 +3,6 @@ import Colors from '../colors';
 
 export default StyleSheet.create({
   rectangleOfTop: {
-    backgroundColor: Colors.topColor(),
     width: '120%',
     height:
       (Dimensions.get('window').width /
@@ -24,7 +23,6 @@ export default StyleSheet.create({
     borderColor: 'black',
   },
   rectangleOfBottom: {
-    backgroundColor: Colors.topColor(),
     width: '120%',
     height:
       (Dimensions.get('window').width /
@@ -42,7 +40,6 @@ export default StyleSheet.create({
         3.052631578
       ) * Dimensions.get('window').height,
     borderWidth: 1,
-    borderColor: 'black',
   },
   square: {
     alignItems: 'center',
@@ -66,23 +63,22 @@ export default StyleSheet.create({
   contactTextStyle: {
     fontFamily: 'IranSans',
     fontSize: 17,
-    color: 'rgb(57,62,70)',
   },
   contactEmailStyle: {
     fontFamily: 'Samim',
     fontWeight: 'bold',
     fontSize: 20,
-    color: 'rgb(34,40,49)',
+  },
+  changeFlexDirectionToRowReverse: {
+    flexDirection: 'row-reverse',
   },
   contactUsStyle: {flex: 1, alignItems: 'center'},
   topPartOfSuggestionPage: {
     height: '10%',
     width: '100%',
-    backgroundColor: Colors.topColor(),
     borderBottomRightRadius: 100,
     borderBottomWidth: 1,
     borderRightWidth: 1,
-    borderColor: Colors.borderTopColor(),
   },
   bottomPartOfSuggestionPage: {
     borderWidth: 1,
@@ -107,7 +103,6 @@ export default StyleSheet.create({
     marginTop: '26%',
   },
   animatedTextStyle: {
-    color: Colors.accent(),
     fontFamily: 'Samim',
     fontWeight: 'bold',
     fontSize: 26,
@@ -145,9 +140,7 @@ export default StyleSheet.create({
   topPartOfChangePassword: {
     height: '10%',
     width: '100%',
-    backgroundColor: Colors.topColor(),
     borderBottomWidth: 0.5,
-    borderBottomColor: Colors.borderTopColor(),
   },
   textStyleOfChangePassword: {
     fontFamily: 'Samim',
@@ -162,11 +155,9 @@ export default StyleSheet.create({
     bottom: 0,
     height: '10%',
     width: '100%',
-    backgroundColor: Colors.topColor(),
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     borderWidth: 1,
-    borderColor: Colors.borderTopColor(),
   },
   warningTextStyle: {
     color: 'red',

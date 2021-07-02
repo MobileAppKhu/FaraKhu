@@ -1,21 +1,24 @@
 import React from 'react';
 import {Dimensions, Image, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
+import Colors from '../colors';
 
-export default function ProfileButton() {
+export default function ProfileButton({address, onPressFunction}) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      style={styles.profileStyle}
-      onPress={() => {
-        console.log(
-          Dimensions.get('window').width / Dimensions.get('window').height,
-        );
-      }}>
+      style={[
+        styles.profileStyle,
+        {
+          backgroundColor: Colors.topColor(),
+          borderColor: Colors.bigButtonTextColor(),
+        },
+      ]}
+      onPress={onPressFunction}>
       <View style={styles.profileContainerStyle}>
         <Image
           resizeMode={'stretch'}
-          source={require('../../resources/photos/PanelPages/profileLogo.png')}
+          source={address}
           style={styles.profileImageStyle}
         />
       </View>

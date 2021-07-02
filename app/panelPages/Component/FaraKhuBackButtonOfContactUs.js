@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
+import Colors from '../colors';
 
 export default function FaraKhuBackButtonOfContactUs({
   navigationFunction,
@@ -13,7 +14,7 @@ export default function FaraKhuBackButtonOfContactUs({
         <Icon
           name={'chevron-thin-left'}
           size={40}
-          color={'rgb(57,62,70)'}
+          color={Colors.borderTopColor()}
           type={'entypo'}
         />
       </TouchableOpacity>
