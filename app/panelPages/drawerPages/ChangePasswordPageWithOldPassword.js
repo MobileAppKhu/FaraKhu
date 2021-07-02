@@ -5,7 +5,6 @@ import {
   Platform,
   Text,
   ToastAndroid,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
@@ -83,7 +82,7 @@ export default function ChangePasswordPageWithOldPassword(props) {
             message={'طول رمز عبور باید بیشتر از 6 باشد'}
             marginTop={'3.5%'}
             onPressCheck={true}
-            color={'black'}
+            color={'rgb(0,173,181)'}
           />
         </View>
         <View style={{flexDirection: 'row-reverse'}}>

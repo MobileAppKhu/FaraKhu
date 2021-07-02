@@ -42,16 +42,19 @@ export default function SecondSignUpPage(props) {
           props.navigation.pop();
         }}
       />
-      <Image
-        source={require('../../resources/photos/LoginPages/progressBarSecond.png')}
-        style={styles.progressBar}
-      />
+      <View style={styles.progressBarContainer}>
+        <Image
+          resizeMode={'contain'}
+          source={require('../../resources/photos/LoginPages/progressBarSecond.png')}
+          style={styles.progressBar}
+        />
+      </View>
       <FaraKhuTextInput
         sizeOfIcon={40}
         iconType={'ionicon'}
         placeholderText={'نام'}
         marginBottom={'1.5%'}
-        marginTop={'15%'}
+        marginTop={'-5%'}
         height={'7%'}
         marginRight={'2%'}
         isPasswordInput={false}
@@ -89,7 +92,6 @@ export default function SecondSignUpPage(props) {
           setID(id);
         }}
       />
-
       <View style={styles.greenPartDownPage}>
         <FaraKhuButton
           marginTop={'5%'}

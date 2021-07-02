@@ -12,16 +12,19 @@ export default StyleSheet.create({
     borderTopRightRadius: 100,
     alignItems: 'center',
   },
+  progressBarContainer: {
+    marginTop: '-20%',
+    width: '60%',
+    flexDirection: 'row',
+  },
   progressBar: {
-    marginTop: '3%',
-    width: '56%',
-    height: '5%',
-    resizeMode: 'stretch',
+    flex: 1,
+    aspectRatio: 1,
   },
   whoAreYou: {
     fontSize: 22,
     color: 'rgb(238,238,238)',
-    marginTop: '23%',
+    marginTop: '-5%',
     fontWeight: '400',
   },
   logoSortView: {

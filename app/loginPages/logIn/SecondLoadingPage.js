@@ -25,7 +25,9 @@ export default class SecondLoadingPage extends Component {
     return (
       <View style={styles.loadingBackground}>
         <View style={styles.rectangleOfLoadingTop} />
+
         <Animated.Image
+          resizeMode={'stretch'}
           style={[styles.secondLoadingImage, {transform: [{translateY: logo}]}]}
           source={require('../../resources/photos/LoginPages/faraKhuLogoOfLoadingPage.png')}
         />

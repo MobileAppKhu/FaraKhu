@@ -28,11 +28,16 @@ export default StyleSheet.create({
     width: '100%',
   },
   rightPhotoStyle: {
-    height: '100%',
-    width: '43.5%',
-    marginLeft: '13%',
+    flex: 1,
+    aspectRatio: 1,
   },
-  leftPhotoStyle: {height: '100%', width: '43.5%'},
+  rightPhotoContainerStyle: {
+    // height: '100%',
+    // marginRight: '-3.8%',
+    width: '43.5%',
+    marginLeft: '17%',
+  },
+  leftPhotoContainerStyle: {width: '43.5%'},
   bottomPart: {
     backgroundColor: Colors.topColor(),
     flex: 1,
@@ -78,7 +83,7 @@ export default StyleSheet.create({
   },
   profileTextStyle: {
     color: 'white',
-    marginTop: 40,
+    marginTop: '11%',
     fontFamily: 'IranSans',
     fontWeight: 'bold',
   },

@@ -1,6 +1,8 @@
 import React, {useEffect, useRef} from 'react';
-import {View, Animated, Image} from 'react-native';
+import {View, Animated} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Icon} from 'react-native-elements';
+import styles from './styles';
 
 export default function LoadingPage({navigation}) {
   const animated = useRef(new Animated.Value(0));
@@ -16,7 +18,7 @@ export default function LoadingPage({navigation}) {
         }),
         Animated.timing(animated.current, {
           toValue: 0,
-          duration: 500,
+          duration: 1000,
           useNativeDriver: true,
         }),
       ]),
@@ -35,40 +37,23 @@ export default function LoadingPage({navigation}) {
       } else {
         navigation.replace('MainPage');
       }
-    }, 1000);
+    }, 2000);
   }, []);
   const rotate = animated.current.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '-360deg'],
   });
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#424242',
-        borderRadius: 100,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <View
-        style={{
-          width: '50%',
-          flexDirection: 'row',
-          marginTop: '-40%',
-          marginBottom: '30%',
-        }}>
-        <Image
-          resizeMode={'stretch'}
-          style={{flex: 1, aspectRatio: 1}}
-          source={require('../resources/photos/LoginPages/faraKhuLogoOfLoadingPage.png')}
-        />
-      </View>
-      <View style={{width: '20%', flexDirection: 'row'}}>
-        <Animated.Image
-          source={require('../resources/photos/LoginPages/loading.png')}
-          resizeMode={'stretch'}
-          style={{flex: 1, aspectRatio: 1, transform: [{rotate: rotate}]}}
-        />
+    <View style={styles.loadingViewStyle}>
+      <View style={styles.loadingIcon}>
+        <Animated.View style={{transform: [{rotate: rotate}]}}>
+          <Icon
+            type={'evilicon'}
+            name={'spinner-3'}
+            size={150}
+            color={'rgb(0,173,181)'}
+          />
+        </Animated.View>
       </View>
     </View>
   );

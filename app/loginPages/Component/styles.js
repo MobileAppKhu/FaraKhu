@@ -5,6 +5,7 @@ import Colors from '../../panelPages/colors';
 export default StyleSheet.create({
   BackButton: {
     marginRight: '75%',
+    marginTop: '3%',
   },
   buttonLogIn: {
     width: 268,

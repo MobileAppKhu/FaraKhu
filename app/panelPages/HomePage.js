@@ -220,14 +220,20 @@ function Home({navigation}) {
         />
       </View>
       <View style={styles.viewOfTwoImage}>
-        <Image
-          style={styles.rightPhotoStyle}
-          source={require('../resources/photos/PanelPages/rightAbstractShapes.png')}
-        />
-        <Image
-          style={styles.leftPhotoStyle}
-          source={require('../resources/photos/PanelPages/leftAbstractShape.png')}
-        />
+        <View style={styles.rightPhotoContainerStyle}>
+          <Image
+            resizeMode={'stretch'}
+            style={styles.rightPhotoStyle}
+            source={require('../resources/photos/PanelPages/rightAbstractShapes.png')}
+          />
+        </View>
+        <View style={styles.leftPhotoContainerStyle}>
+          <Image
+            resizeMode={'stretch'}
+            style={styles.rightPhotoStyle}
+            source={require('../resources/photos/PanelPages/leftAbstractShape.png')}
+          />
+        </View>
       </View>
 
       <View style={styles.bottomPart}>

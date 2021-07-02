@@ -12,7 +12,7 @@ export default function FaraKhuBackButtonOfContactUs({
       <TouchableOpacity onPress={navigationFunction} activeOpacity={0.8}>
         <Icon
           name={'chevron-thin-left'}
-          size={45}
+          size={40}
           color={'rgb(57,62,70)'}
           type={'entypo'}
         />

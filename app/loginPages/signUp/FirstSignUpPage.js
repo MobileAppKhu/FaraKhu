@@ -39,14 +39,13 @@ export default function FirstSignUpPage(props) {
           props.navigation.popToTop();
         }}
       />
-      <Image
-        source={require('../../resources/photos/LoginPages/progressBarFirst.png')}
-        style={styles.progressBar}
-      />
-      {/*<Image*/}
-      {/*  source={require('../resources/photos/addUserLogo.png')}*/}
-      {/*  style={styles.addUserLogo}*/}
-      {/*/>*/}
+      <View style={styles.progressBarContainer}>
+        <Image
+          resizeMode={'contain'}
+          source={require('../../resources/photos/LoginPages/progressBarFirst.png')}
+          style={styles.progressBar}
+        />
+      </View>
       <FaraKhuText style={styles.whoAreYou}> کدام یک هستید ؟</FaraKhuText>
       <View style={[styles.logoSortView, {height: '13%'}]}>
         <View style={styles.studentLogoContainer}>
@@ -101,7 +100,7 @@ export default function FirstSignUpPage(props) {
           />
           <IconReturn
             marginTop={'-1%'}
-            message={'رمز عبور باید متشکل از حروف و اعداد انگلیسی باشد'}
+            message={'طول رمز عبور باید بیشتر از 6 باشد'}
             color={'black'}
             onPressCheck={true}
           />

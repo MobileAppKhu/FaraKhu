@@ -1,9 +1,8 @@
-import React, {Component, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Animated, View} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MainPage({navigation}) {
   const animated = useRef(new Animated.Value(0));

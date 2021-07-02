@@ -22,9 +22,10 @@ export default function FaraKhuTextInput({
           height: height,
         },
       ]}>
+      <View style={{width: '10%'}} />
       <TextInput
         placeholderTextColor="grey"
-        placeholder={'     ' + placeholderText}
+        placeholder={placeholderText}
         style={{
           flex: 1,
           fontSize: 18,

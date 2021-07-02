@@ -9,7 +9,7 @@ export default function FaraKhuBackButton({navigationFunction}) {
       <TouchableOpacity onPress={navigationFunction} activeOpacity={0.7}>
         <Icon
           name={'chevron-thin-left'}
-          size={50}
+          size={40}
           color={'rgb(57,62,70)'}
           type={'entypo'}
         />

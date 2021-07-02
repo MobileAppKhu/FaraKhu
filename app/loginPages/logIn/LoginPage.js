@@ -101,7 +101,7 @@ export default function (props) {
                   await AsyncStorage.setItem('theme', 'light');
                   window.Theme = 'light';
                   props.navigation.popToTop();
-                  props.navigation.push('FirstLoadingPage');
+                  props.navigation.replace('FirstLoadingPage');
                 } else {
                   if (Platform.OS === 'android') {
                     ToastAndroid.show(data.errors[0].message, ToastAndroid.TOP);

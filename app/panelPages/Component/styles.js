@@ -80,6 +80,7 @@ export default StyleSheet.create({
   BackButton: {
     opacity: 0.5,
     marginRight: '75%',
+    marginTop: '3%',
   },
   faraKhuButton: {
     alignItems: 'center',

@@ -48,4 +48,16 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     color: '#424242',
   },
+  loadingViewStyle: {
+    flex: 1,
+    backgroundColor: 'rgb(57,62,70)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingIcon: {
+    width: '40%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

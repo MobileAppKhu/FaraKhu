@@ -44,7 +44,6 @@ export default function FaraKhuTextInput({
           fontSize: 20,
           color: 'rgb(238,238,238)',
           fontFamily: 'Samim',
-          justifyContent: 'center',
         }}
         textAlign={'right'}
         secureTextEntry={hidePass}

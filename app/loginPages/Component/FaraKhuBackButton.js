@@ -9,7 +9,7 @@ export default function FaraKhuBackButton(props) {
       <TouchableOpacity onPress={props.function} activeOpacity={0.7}>
         <Icon
           name={'chevron-thin-left'}
-          size={50}
+          size={40}
           color={props.color ? 'rgb(0,173,181)' : props.color}
           type={'entypo'}
         />
