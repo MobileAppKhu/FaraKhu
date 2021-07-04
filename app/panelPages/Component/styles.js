@@ -31,7 +31,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: 'grey',
   },
   smallButtonImage: {
     marginTop: '5%',
@@ -91,7 +90,6 @@ export default StyleSheet.create({
     marginTop: '3%',
     borderRadius: 25,
     borderWidth: 1,
-
     width: '82%',
     height: '35%',
     backgroundColor: 'white',

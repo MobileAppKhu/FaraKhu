@@ -26,59 +26,59 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-      <NavigationContainer>
-        <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}>
-          <Stack.Screen name={'LoadingPage'} component={LoadingPage} />
-          <Stack.Screen name="MainPage" component={MainPage} />
-          <Stack.Screen name="LogInPage" component={LogInPage} />
-          <Stack.Screen name="FirstLoadingPage" component={FirstLoadingPage} />
-          <Stack.Screen
-              name={'SecondLoadingPage'}
-              component={SecondLoadingPage}
-          />
-          <Stack.Screen name="HomePage" component={HomePage} />
-          <Stack.Screen name="FirstSignUpPage" component={FirstSignUpPage} />
-          <Stack.Screen name="SecondSignUpPage" component={SecondSignUpPage} />
-          <Stack.Screen
-              name="ForgetPasswordPage"
-              component={ForgetPasswordPage}
-          />
-          <Stack.Screen
-              name="VerificationCodePage"
-              component={VerificationCodePage}
-          />
-          <Stack.Screen
-              name={'ChangePasswordPage'}
-              component={ChangePasswordPage}
-          />
-          <Stack.Screen
-              name={'PasswordChangeSuccessfully'}
-              component={PasswordChangeSuccessfully}
-          />
-          <Stack.Screen
-              name={'SignUpSuccessfully'}
-              component={SignUpSuccessfully}
-          />
-          <Stack.Screen name={'ContactUsPage'} component={ContactUsPage} />
-          <Stack.Screen name={'SuggestionPage'} component={SuggestionPage} />
-          <Stack.Screen
-              name={'SuggestionSuccessfullyPage'}
-              component={SuggestionSuccessfullyPage}
-          />
-          <Stack.Screen
-              name={'ChangePasswordPageWithOldPassword'}
-              component={ChangePasswordPageWithOldPassword}
-          />
-          <Stack.Screen
-              name={'PasswordChangedSuccessfullyWithOldPassword'}
-              component={PasswordChangedSuccessfullyWithOldPassword}
-          />
-          <Stack.Screen name={'ProfilePage'} component={ProfilePage} />
-          <Stack.Screen name={'EditProfilePage'} component={EditProfilePage} />
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name={'LoadingPage'} component={LoadingPage} />
+        <Stack.Screen name="MainPage" component={MainPage} />
+        <Stack.Screen name="LogInPage" component={LogInPage} />
+        <Stack.Screen name="FirstLoadingPage" component={FirstLoadingPage} />
+        <Stack.Screen
+          name={'SecondLoadingPage'}
+          component={SecondLoadingPage}
+        />
+        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="FirstSignUpPage" component={FirstSignUpPage} />
+        <Stack.Screen name="SecondSignUpPage" component={SecondSignUpPage} />
+        <Stack.Screen
+          name="ForgetPasswordPage"
+          component={ForgetPasswordPage}
+        />
+        <Stack.Screen
+          name="VerificationCodePage"
+          component={VerificationCodePage}
+        />
+        <Stack.Screen
+          name={'ChangePasswordPage'}
+          component={ChangePasswordPage}
+        />
+        <Stack.Screen
+          name={'PasswordChangeSuccessfully'}
+          component={PasswordChangeSuccessfully}
+        />
+        <Stack.Screen
+          name={'SignUpSuccessfully'}
+          component={SignUpSuccessfully}
+        />
+        <Stack.Screen name={'ContactUsPage'} component={ContactUsPage} />
+        <Stack.Screen name={'SuggestionPage'} component={SuggestionPage} />
+        <Stack.Screen
+          name={'SuggestionSuccessfullyPage'}
+          component={SuggestionSuccessfullyPage}
+        />
+        <Stack.Screen
+          name={'ChangePasswordPageWithOldPassword'}
+          component={ChangePasswordPageWithOldPassword}
+        />
+        <Stack.Screen
+          name={'PasswordChangedSuccessfullyWithOldPassword'}
+          component={PasswordChangedSuccessfullyWithOldPassword}
+        />
+        <Stack.Screen name={'ProfilePage'} component={ProfilePage} />
+        <Stack.Screen name={'EditProfilePage'} component={EditProfilePage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

@@ -29,6 +29,7 @@ export default function FaraKhuTextInput({
         placeholderTextColor={Colors.borderTopColor()}
         placeholder={placeholderText}
         style={{
+          opacity: 8.5,
           flex: 1,
           fontSize: 18,
           fontFamily: 'IranSans',

@@ -20,9 +20,12 @@ export function CustomTextInput({
         onChangeText={onChangeText}
         style={[
           styles.customTextInputTextInputStyle,
-          {color: editable ? Colors.accent() : 'grey'},
+          {
+            color: editable ? Colors.accent() : 'grey',
+            textAlignVertical: 'bottom',
+          },
         ]}
-        defaultValue={textInputMessage}
+        value={textInputMessage}
         editable={editable}
       />
       <View style={styles.customTextInputLine} />

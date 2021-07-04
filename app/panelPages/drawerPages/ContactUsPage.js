@@ -5,52 +5,52 @@ import FaraKhuBackButtonOfContactUs from '../Component/FaraKhuBackButtonOfContac
 import Colors from '../colors';
 
 export default function ContactUsPage({navigation}) {
-    return (
-        <View
-            style={[
-                styles.contactUsStyle,
-                {backgroundColor: Colors.backgroundColor()},
-            ]}>
-            <View
-                style={[
-                    styles.rectangleOfTop,
-                    {
-                        backgroundColor: Colors.topColor(),
-                        borderColor: Colors.borderTopColor(),
-                    },
-                ]}>
-                <FaraKhuBackButtonOfContactUs
-                    navigationFunction={() => {
-                        navigation.pop();
-                    }}
-                />
-            </View>
-            <View style={styles.square}>
-                <Text
-                    style={[styles.contactTextStyle, {color: Colors.borderTopColor()}]}>
-                    ایمیل جهت ارتباط با ادمین
-                </Text>
-                <Text
-                    style={[styles.contactEmailStyle, {color: Colors.borderTopColor()}]}>
-                    contact@Farakhu.app
-                </Text>
-            </View>
-            <View style={styles.containerStyleOfImage}>
-                <Image
-                    resizeMode={'stretch'}
-                    source={require('../../resources/photos/PanelPages/emailLogo.png')}
-                    style={styles.styleOfImage}
-                />
-            </View>
-            <View
-                style={[
-                    styles.rectangleOfBottom,
-                    {
-                        backgroundColor: Colors.topColor(),
-                        borderColor: Colors.borderTopColor(),
-                    },
-                ]}
-            />
-        </View>
-    );
+  return (
+    <View
+      style={[
+        styles.contactUsStyle,
+        {backgroundColor: Colors.backgroundColor()},
+      ]}>
+      <View
+        style={[
+          styles.rectangleOfTop,
+          {
+            backgroundColor: Colors.topColor(),
+            borderColor: Colors.borderTopColor(),
+          },
+        ]}>
+        <FaraKhuBackButtonOfContactUs
+          navigationFunction={() => {
+            navigation.pop();
+          }}
+        />
+      </View>
+      <View style={styles.square}>
+        <Text
+          style={[styles.contactTextStyle, {color: Colors.borderTopColor()}]}>
+          ایمیل جهت ارتباط با ادمین
+        </Text>
+        <Text
+          style={[styles.contactEmailStyle, {color: Colors.borderTopColor()}]}>
+          contact@Farakhu.app
+        </Text>
+      </View>
+      <View style={styles.containerStyleOfImage}>
+        <Image
+          resizeMode={'stretch'}
+          source={require('../../resources/photos/PanelPages/emailLogo.png')}
+          style={styles.styleOfImage}
+        />
+      </View>
+      <View
+        style={[
+          styles.rectangleOfBottom,
+          {
+            backgroundColor: Colors.topColor(),
+            borderColor: Colors.borderTopColor(),
+          },
+        ]}
+      />
+    </View>
+  );
 }

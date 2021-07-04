@@ -5,15 +5,16 @@ export default StyleSheet.create({
     marginTop: '-30%',
     width: '120%',
     height:
-        (Dimensions.get('window').width /
-            Dimensions.get('window').height /
-            1.607142857) *
-        Dimensions.get('window').height,
+      (Dimensions.get('window').width /
+        Dimensions.get('window').height /
+        1.607142857) *
+      Dimensions.get('window').height,
     borderBottomLeftRadius: 100,
     transform: [{rotate: '-28deg'}],
   },
   textViewStyle: {
     transform: [{rotate: '28deg'}],
+    marginLeft: '3%',
     flex: 1,
     width: '50%',
     alignItems: 'center',
@@ -80,18 +81,20 @@ export default StyleSheet.create({
   customTextInputViewStyle: {
     alignItems: 'flex-end',
     width: '80.5%',
-    height: '7%',
+    height: '7.5%',
     marginBottom: '4%',
   },
   customTextInputTextInputStyle: {
+    justifyContent: 'flex-end',
     width: '100%',
     textAlign: 'right',
     fontSize: 18,
-    height: '80%',
+    flex: 1,
     fontFamily: 'Samim',
   },
   customTextInputTopic: {
     fontSize: 12,
+    height: '33%',
     fontFamily: 'Samim-Bold',
     color: 'rgb(0,173,181)',
   },

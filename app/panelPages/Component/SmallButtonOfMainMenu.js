@@ -11,6 +11,7 @@ export default function ({message, imageAddress, marginRight}) {
         {
           marginRight: marginRight,
           backgroundColor: Colors.topColor(),
+          borderColor: Colors.borderTopColor(),
         },
       ]}
       activeOpacity={0.8}>
