@@ -97,6 +97,7 @@ export default function (props) {
               loginFunction().then(async response => {
                 const data = await response.json();
                 if (response.status === 200) {
+                  console.log(data.profileDto);
                   await AsyncStorage.setItem('isLogin', 'is');
                   await AsyncStorage.setItem('theme', 'light');
                   await AsyncStorage.setItem(

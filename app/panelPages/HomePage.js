@@ -205,6 +205,9 @@ function Home({navigation}) {
         </Text>
       </View>
       <BigButtonOfMainMenu
+        onPressFunction={() => {
+          navigation.push('ViewAllLessonPages');
+        }}
         message={'درس های من'}
         imageAddress={require('../resources/photos/PanelPages/myLessonLogoLight.png')}
       />

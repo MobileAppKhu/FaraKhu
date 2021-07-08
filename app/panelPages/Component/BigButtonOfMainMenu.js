@@ -3,9 +3,14 @@ import {Image, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
 
-export default function BigButtonOfMainMenu({message, imageAddress}) {
+export default function BigButtonOfMainMenu({
+  message,
+  imageAddress,
+  onPressFunction,
+}) {
   return (
     <TouchableOpacity
+      onPress={onPressFunction}
       style={[styles.bigButton, {backgroundColor: Colors.topColor()}]}
       activeOpacity={0.8}>
       <Text

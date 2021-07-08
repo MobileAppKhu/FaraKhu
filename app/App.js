@@ -21,6 +21,7 @@ import PasswordChangedSuccessfullyWithOldPassword from './panelPages/drawerPages
 import LoadingPage from './loginPages/LoadingPage';
 import ProfilePage from './panelPages/profilePages/ProfilePage';
 import EditProfilePage from './panelPages/profilePages/EditProfilePage';
+import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
 
 const Stack = createStackNavigator();
 
@@ -78,6 +79,10 @@ export default function App() {
         />
         <Stack.Screen name={'ProfilePage'} component={ProfilePage} />
         <Stack.Screen name={'EditProfilePage'} component={EditProfilePage} />
+        <Stack.Screen
+          name={'ViewAllLessonPages'}
+          component={ViewAllLessonPages}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
