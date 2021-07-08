@@ -6,8 +6,9 @@ export default StyleSheet.create({
     width: '100%',
   },
   mainBackgroundOfMyLessonPage: {
+    width: '100%',
+    height: '100%',
     borderTopLeftRadius: 160,
-    flex: 1,
     alignItems: 'center',
     borderBottomRightRadius: 400,
   },

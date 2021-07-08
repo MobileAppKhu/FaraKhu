@@ -1,11 +1,53 @@
-import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import FaraKhuButton from '../Component/FaraKhuButton';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity, FlatList, ScrollView} from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import Colors from '../colors';
 import styles from './styles';
 import {BackgroundImage} from 'react-native-elements/dist/config';
 import {Icon} from 'react-native-elements';
+
+// getAllLesson()
+//     .then(async data => {
+//         await data.json().then(allLesson => {
+//             allLesson.courses.courses.map(courseId => {
+//                 console.log(courseId);
+//             });
+//         });
+//     })
+export async function getAllLesson() {
+  let ans;
+  try {
+    await fetch('https://api.farakhu.markop.ir/api/Course/ViewMyCourses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    }).then(async data => {
+      await data.json().then(allLesson => {
+        ans = allLesson.courses.courses;
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  }
+  return ans;
+}
+
+export function ViewAllLesson() {
+  getAllLesson().then(async data => {
+    await data.json().then(allLesson => {
+      allLesson.courses.courses.map(courseId => {
+        console.log(courseId);
+        return (
+          <View>
+            <Text> salam</Text>
+          </View>
+        );
+      });
+    });
+  });
+}
 
 export function MyLessonButton({nameOfLesson}) {
   return (
@@ -13,8 +55,10 @@ export function MyLessonButton({nameOfLesson}) {
       activeOpacity={0.8}
       style={[
         {
-          width: '80%',
-          height: '9%',
+          marginBottom: 10,
+          marginTop: 10,
+          width: 370,
+          height: 70,
           borderRadius: 25,
           alignItems: 'center',
           justifyContent: 'center',
@@ -60,7 +104,19 @@ export function MyLessonButton({nameOfLesson}) {
   );
 }
 
+export function ViewLesson({lessonName}) {
+  console.log('salam');
+  return <MyLessonButton nameOfLesson={lessonName} />;
+}
+
 export default function ViewAllLessonPages({navigation}) {
+  const [getArray, setArray] = useState([]);
+  useEffect(() => {
+    getAllLesson().then(d => {
+      setArray(d);
+    });
+  }, []);
+
   return (
     <View
       style={[
@@ -84,6 +140,16 @@ export default function ViewAllLessonPages({navigation}) {
           ]}>
           درس های من
         </Text>
+        <ScrollView>
+          {getArray.map(data => {
+            return (
+              <MyLessonButton
+                key={data.courseId}
+                nameOfLesson={data.courseTitle}
+              />
+            );
+          })}
+        </ScrollView>
       </View>
     </View>
   );
