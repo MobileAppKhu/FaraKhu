@@ -87,6 +87,7 @@ export default StyleSheet.create({
     opacity: 0.85,
   },
   textInputStyle: {
+    borderColor: 'rgb(0,173,181)',
     marginTop: '3%',
     borderRadius: 25,
     borderWidth: 1,

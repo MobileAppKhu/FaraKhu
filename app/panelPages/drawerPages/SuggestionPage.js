@@ -29,7 +29,12 @@ export default function SuggestionPage(props) {
   }
 
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: Colors.backgroundColor(),
+      }}>
       <View
         style={[
           styles.topPartOfSuggestionPage,
@@ -67,7 +72,15 @@ export default function SuggestionPage(props) {
           />
         </View>
       </ImageBackground>
-      <View style={styles.bottomPartOfSuggestionPage} />
+      <View
+        style={[
+          styles.bottomPartOfSuggestionPage,
+          {
+            backgroundColor: Colors.topColor(),
+            borderColor: Colors.borderTopColor(),
+          },
+        ]}
+      />
     </View>
   );
 }

@@ -48,7 +48,6 @@ export default StyleSheet.create({
     width: '80.8%',
     height: '37.3%',
     borderWidth: 2,
-    borderColor: Colors.topColor(),
     borderRadius: 25,
     marginBottom: '6%',
   },
@@ -82,12 +81,10 @@ export default StyleSheet.create({
   },
   bottomPartOfSuggestionPage: {
     borderWidth: 1,
-    borderColor: Colors.borderTopColor(),
     position: 'absolute',
     bottom: 0,
     height: '10%',
     width: '100%',
-    backgroundColor: Colors.topColor(),
     borderTopLeftRadius: 100,
   },
   suggestionBackgroundImage: {

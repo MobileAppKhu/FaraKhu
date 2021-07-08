@@ -25,13 +25,25 @@ export default function ContactUsPage({navigation}) {
           }}
         />
       </View>
-      <View style={styles.square}>
+      <View
+        style={[
+          styles.square,
+          {
+            borderColor: Colors.topColor(),
+          },
+        ]}>
         <Text
-          style={[styles.contactTextStyle, {color: Colors.borderTopColor()}]}>
+          style={[
+            styles.contactTextStyle,
+            {color: Colors.contactUsPageTextColor()},
+          ]}>
           ایمیل جهت ارتباط با ادمین
         </Text>
         <Text
-          style={[styles.contactEmailStyle, {color: Colors.borderTopColor()}]}>
+          style={[
+            styles.contactEmailStyle,
+            {color: Colors.contactUsPageTextColor()},
+          ]}>
           contact@Farakhu.app
         </Text>
       </View>

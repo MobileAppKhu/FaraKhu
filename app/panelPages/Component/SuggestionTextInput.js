@@ -9,8 +9,7 @@ export default function SuggestionTextInput({onChangeText}) {
       style={[
         styles.textInputStyle,
         {
-          backgroundColor: Colors.backgroundColor(),
-          borderColor: 'rgb(0,173,181)',
+          backgroundColor: Colors.topColor(),
         },
       ]}>
       <TextInput

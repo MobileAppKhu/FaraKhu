@@ -1,19 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, FlatList, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import Colors from '../colors';
 import styles from './styles';
 import {BackgroundImage} from 'react-native-elements/dist/config';
 import {Icon} from 'react-native-elements';
 
-// getAllLesson()
-//     .then(async data => {
-//         await data.json().then(allLesson => {
-//             allLesson.courses.courses.map(courseId => {
-//                 console.log(courseId);
-//             });
-//         });
-//     })
 export async function getAllLesson() {
   let ans;
   try {
@@ -34,55 +26,22 @@ export async function getAllLesson() {
   return ans;
 }
 
-export function ViewAllLesson() {
-  getAllLesson().then(async data => {
-    await data.json().then(allLesson => {
-      allLesson.courses.courses.map(courseId => {
-        console.log(courseId);
-        return (
-          <View>
-            <Text> salam</Text>
-          </View>
-        );
-      });
-    });
-  });
-}
-
 export function MyLessonButton({nameOfLesson}) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       style={[
-        {
-          marginBottom: 10,
-          marginTop: 10,
-          width: 370,
-          height: 70,
-          borderRadius: 25,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderWidth: 2,
-        },
+        styles.myButtonStyle,
         {
           backgroundColor: Colors.topColor(),
           borderColor: Colors.borderTopColor(),
         },
       ]}>
       <BackgroundImage
-        style={{
-          flex: 1,
-          width: '90%',
-        }}
+        style={styles.myButtonImageStyle}
         resizeMode={'contain'}
         source={require('../../resources/photos/PanelPages/myLessonButtonImage.png')}>
-        <View
-          style={{
-            flex: 1,
-            paddingHorizontal: '1%',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
+        <View style={styles.myButtonViewStyle}>
           <Icon
             name={'leftcircleo'}
             type={'antdesign'}
@@ -90,23 +49,13 @@ export function MyLessonButton({nameOfLesson}) {
             size={30}
           />
           <Text
-            style={{
-              fontSize: 20,
-              fontFamily: 'IranSans',
-              fontWeight: 'bold',
-              marginLeft: 'auto',
-            }}>
+            style={[styles.viewAllLessonPageStyle, {color: Colors.accent()}]}>
             {nameOfLesson}
           </Text>
         </View>
       </BackgroundImage>
     </TouchableOpacity>
   );
-}
-
-export function ViewLesson({lessonName}) {
-  console.log('salam');
-  return <MyLessonButton nameOfLesson={lessonName} />;
 }
 
 export default function ViewAllLessonPages({navigation}) {

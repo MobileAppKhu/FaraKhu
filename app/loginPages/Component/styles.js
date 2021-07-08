@@ -21,7 +21,6 @@ export default StyleSheet.create({
     flexDirection: 'row-reverse',
     //justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.borderTopColor(),
     borderWidth: 1,
     borderColor: 'grey',
     height: '6.4%',

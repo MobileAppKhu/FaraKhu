@@ -26,6 +26,7 @@ export default function FaraKhuTextInput({
           marginBottom: marginBottom,
           marginTop: marginTop,
           height: height,
+          backgroundColor: Colors.topColor(),
         },
       ]}>
       <Icon
@@ -33,7 +34,7 @@ export default function FaraKhuTextInput({
         name={icon}
         size={sizeOfIcon}
         style={{marginRight: marginRight}}
-        color={Colors.topColor()}
+        color={Colors.contactUsPageTextColor()}
       />
       <View style={styles.faraKhuTextInputStyle} />
       <TextInput

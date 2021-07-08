@@ -124,8 +124,8 @@ export function CustomDrawer(props) {
         onPress={() => {
           singOutFunction().then(async () => {
             await AsyncStorage.setItem('isLogin', 'not');
-            await AsyncStorage.setItem('theme', 'light');
-            window.Theme = 'light';
+            await AsyncStorage.setItem('theme', 'dark');
+            window.Theme = 'dark';
             props.navigation.replace('MainPage');
           });
         }}
