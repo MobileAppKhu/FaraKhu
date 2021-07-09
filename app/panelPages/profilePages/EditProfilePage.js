@@ -5,7 +5,7 @@ import Colors from '../colors';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import {getData} from './ProfilePage';
 import FaraKhuButton from '../Component/FaraKhuButton';
-import {RadioButton} from 'react-native-paper';
+import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function CustomTextInput({
@@ -34,7 +34,7 @@ export function CustomTextInput({
   );
 }
 
-export async function editProfileFunction(firstName, lastName) {
+export async function editProfileFunction(firstName, lastName, favourites) {
   try {
     await fetch('https://api.farakhu.markop.ir/api/User/UpdateProfile', {
       method: 'POST',
@@ -49,6 +49,7 @@ export async function editProfileFunction(firstName, lastName) {
     getData().then(async data => {
       data.firstName = firstName;
       data.lastName = lastName;
+      data.favourites = favourites;
       JSON.parse(await AsyncStorage.setItem('userData', JSON.stringify(data)));
     });
   } catch (err) {
@@ -61,15 +62,15 @@ export default function EditProfilePage({navigation}) {
   const [getFirstName, setFirstName] = useState('');
   const [getLastName, setLastName] = useState('');
   const [getId, setId] = useState('');
-  const [getFavourite, setFavourite] = useState('');
-  const [checked, setChecked] = useState('first');
+  const [getFavourite, setFavourite] = useState([]);
+  const [checked, setChecked] = useState(false);
   useEffect(() => {
     getData().then(data => {
       setEmail(data.email);
       setFirstName(data.firstName);
       setLastName(data.lastName);
       setId(data.id);
-      setFavourite(data.favourites.length === 0 ? ' ' : data.favourites[0]);
+      setFavourite(data.favourites);
     });
   }, []);
 
@@ -139,28 +140,31 @@ export default function EditProfilePage({navigation}) {
         textInputMessage={getId}
       />
       <CustomTextInput
+        onChangeText={data => {
+          setFavourite(data.split(' '));
+        }}
         topic={'علاقه مندی ها'}
         editable={true}
-        textInputMessage={getFavourite}
+        textInputMessage={getFavourite.join(' ')}
       />
       <View style={styles.checkEmailShowView}>
         <Text style={{fontSize: 18, fontFamily: 'Samim'}}>
           نشان دادن ایمیل:
         </Text>
-        <RadioButton
-          color={'rgb(0,173,181)'}
-          value="1"
-          status={checked === '1' ? 'checked' : 'unchecked'}
-          onPress={() => setChecked(checked === '1' ? '0' : '1')}
+        <CheckBox
+          tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
+          value={checked}
+          onValueChange={() => setChecked(checked === false ? true : false)}
         />
       </View>
       <FaraKhuButton
         message={'ذخیره تغییرات'}
         onPressFunction={() => {
-          editProfileFunction(getFirstName, getLastName).then(() => {
-            navigation.pop();
-            navigation.replace('ProfilePage');
-          });
+          editProfileFunction(getFirstName, getLastName, getFavourite).then(
+            () => {
+              navigation.pop();
+            },
+          );
         }}
       />
       <View
