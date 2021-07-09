@@ -4,19 +4,24 @@ import styles from './styles';
 import Colors from '../colors';
 
 export default function SuggestionTextInput({onChangeText}) {
+  let bgColor = window.Theme === 'dark' ? Colors.topColor() : 'white';
   return (
     <View
       style={[
         styles.textInputStyle,
         {
-          backgroundColor: Colors.topColor(),
+          backgroundColor: bgColor,
         },
       ]}>
       <TextInput
         textAlign={'right'}
         multiline={true}
         onChangeText={onChangeText}
-        style={{color: Colors.borderTopColor()}}
+        style={{
+          color: Colors.borderTopColor(),
+          fontSize: 20,
+          fontFamily: 'Samim',
+        }}
       />
     </View>
   );

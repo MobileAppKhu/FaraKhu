@@ -93,7 +93,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     width: '82%',
     height: '35%',
-    backgroundColor: 'white',
+    paddingHorizontal: 15,
   },
   customTextInput: {
     flexDirection: 'row-reverse',
