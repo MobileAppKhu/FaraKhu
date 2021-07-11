@@ -8,9 +8,54 @@ import {
   FlatList,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import FaraKhuTextInput from '../../loginPages/Component/FaraKhuTextInput';
+
+export function BookPlacard({title, price, imageAddress, onPress}) {
+  return (
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+      <View
+        style={[
+          styles.bookPlacard,
+          {
+            backgroundColor:
+              window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(255,255,255)',
+            borderColor:
+              window.Theme === 'dark'
+                ? 'rgba(0,173,181,0.5)'
+                : 'rgba(112,112,112,0.2)',
+          },
+        ]}>
+        <View style={styles.placardDescription}>
+          <Text
+            style={{
+              fontFamily: 'Samim',
+              fontSize: 16,
+              color: window.Theme === 'dark' ? 'white' : 'black',
+            }}>
+            {title}
+          </Text>
+          <View style={styles.bookPriceConatiner}>
+            <Text
+              style={{
+                fontFamily: 'Samim',
+                fontSize: 12,
+                color: window.Theme === 'dark' ? 'white' : 'black',
+              }}>
+              قیمت:
+            </Text>
+            <Text style={styles.bookPrice}>{price} تومان</Text>
+          </View>
+        </View>
+        <View style={styles.placardImageConatiner}>
+          <Image style={styles.placardImage} source={imageAddress} />
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 export default function SellAndBuyPage({navigation}) {
   return (
@@ -61,11 +106,21 @@ export default function SellAndBuyPage({navigation}) {
               />
             </TouchableOpacity>
           )}
-          <View style={styles.verticalSeparatorLine} />
+          <View
+            style={[
+              styles.verticalSeparatorLine,
+              {
+                backgroundColor:
+                  window.Theme === 'dark'
+                    ? 'rgba(0,173,181,0.5)'
+                    : 'rgba(112,112,112, 0.5)',
+              },
+            ]}
+          />
           <TextInput
             placeholderTextColor={
               window.Theme === 'dark'
-                ? 'rgba(0,173,181,0.5)'
+                ? 'rgba(0,173,181,0.2)'
                 : 'rgba(112,112,112, 0.2)'
             }
             placeholder={'جست‌وجو در آگهی‌ها'}
@@ -93,6 +148,7 @@ export default function SellAndBuyPage({navigation}) {
           ]}>
           <Text
             style={{
+              fontFamily: 'Samim',
               color:
                 window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(112,112,112)',
             }}>
@@ -123,12 +179,47 @@ export default function SellAndBuyPage({navigation}) {
       </View>
       {/* end of search section */}
 
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {
+            backgroundColor:
+              window.Theme === 'dark'
+                ? 'rgba(0,173,181,0.5)'
+                : 'rgba(112,112,112, 0.5)',
+          },
+        ]}
+      />
 
       {/* Book Placard Section */}
-      <View styles={styles.BookPlacardsSection}>
-        <FlatList />
-      </View>
+      <ScrollView
+        styles={[styles.bookPlacardsSection, {backgroundColor: 'red'}]}>
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
+        {/* <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        /> */}
+      </ScrollView>
       {/* End of Book Placard Section  */}
       {/* footer section */}
       <View

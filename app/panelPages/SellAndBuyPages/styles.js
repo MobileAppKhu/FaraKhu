@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../colors';
 
 export default StyleSheet.create({
   mainProfileView: {
@@ -11,10 +12,10 @@ export default StyleSheet.create({
   },
   separatorLine: {
     opacity: 0.2,
-    width: '90%',
+    width: '80%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
     height: 1,
-    backgroundColor: 'rgb(238,238,238)',
-    marginLeft: '5%',
   },
   searchTextInput: {
     flexDirection: 'row-reverse',
@@ -39,12 +40,61 @@ export default StyleSheet.create({
   verticalSeparatorLine: {
     width: StyleSheet.hairlineWidth,
     height: 30,
-    backgroundColor:
-      window.Theme === 'dark'
-        ? 'rgba(0,173,181,0.5)'
-        : 'rgba(112,112,112, 0.5)',
     borderRadius: 5,
     opacity: 0.8,
     margin: 2,
+  },
+  bookPlacardsSection: {
+    flex: 1,
+    marginTop: 30,
+    marginHorizontal: '10%',
+  },
+  bookPlacard: {
+    flexDirection: 'row-reverse',
+    borderRadius: 15,
+    marginHorizontal: '10%',
+    marginVertical: 10,
+    borderWidth: 1,
+    height: 140,
+    padding: 10,
+  },
+  placardDescription: {
+    flex: 1.5,
+    // backgroundColor: 'red',
+    marginTop: 10,
+  },
+  placardTitle: {
+    fontFamily: 'Samim',
+    fontSize: 16,
+  },
+  bookPriceConatiner: {
+    flexDirection: 'row-reverse',
+    marginTop: 20,
+  },
+  bookPrice: {
+    fontFamily: 'Samim',
+    fontSize: 12,
+    color: 'rgb(0,173,181)',
+    marginRight: 10,
+  },
+  placardImageConatiner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: 'gold',
+    borderRadius: 20,
+    borderWidth: 1.5,
+    borderColor: 'rgba(112,112,112, 0.2)',
+  },
+  placardImage: {
+    flex: 1,
+    // height: ' 90%',
+    resizeMode: 'contain',
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: '13%',
   },
 });
