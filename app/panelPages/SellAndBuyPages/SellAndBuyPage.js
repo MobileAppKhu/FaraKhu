@@ -11,51 +11,8 @@ import {
   ScrollView,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
-import FaraKhuTextInput from '../../loginPages/Component/FaraKhuTextInput';
-
-export function BookPlacard({title, price, imageAddress, onPress}) {
-  return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View
-        style={[
-          styles.bookPlacard,
-          {
-            backgroundColor:
-              window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(255,255,255)',
-            borderColor:
-              window.Theme === 'dark'
-                ? 'rgba(0,173,181,0.5)'
-                : 'rgba(112,112,112,0.2)',
-          },
-        ]}>
-        <View style={styles.placardDescription}>
-          <Text
-            style={{
-              fontFamily: 'Samim',
-              fontSize: 16,
-              color: window.Theme === 'dark' ? 'white' : 'black',
-            }}>
-            {title}
-          </Text>
-          <View style={styles.bookPriceConatiner}>
-            <Text
-              style={{
-                fontFamily: 'Samim',
-                fontSize: 12,
-                color: window.Theme === 'dark' ? 'white' : 'black',
-              }}>
-              قیمت:
-            </Text>
-            <Text style={styles.bookPrice}>{price} تومان</Text>
-          </View>
-        </View>
-        <View style={styles.placardImageConatiner}>
-          <Image style={styles.placardImage} source={imageAddress} />
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-}
+import SellAndBuyButton from './Components/SellAndBuyButton';
+import BookPlacard from './Components/BookPlacard';
 
 export default function SellAndBuyPage({navigation}) {
   return (
@@ -192,19 +149,8 @@ export default function SellAndBuyPage({navigation}) {
       />
 
       {/* Book Placard Section */}
-      <ScrollView
-        styles={[styles.bookPlacardsSection, {backgroundColor: 'red'}]}>
+      <ScrollView style={styles.bookPlacardsContainer}>
         <BookPlacard
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacard
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        {/* <BookPlacard
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
@@ -218,43 +164,82 @@ export default function SellAndBuyPage({navigation}) {
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        /> */}
+        />
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
+        <BookPlacard
+          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
+          price="20000"
+          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
+        />
       </ScrollView>
       {/* End of Book Placard Section  */}
+
       {/* footer section */}
       <View
         style={[
           styles.footer,
           {
             backgroundColor: Colors.topColor(),
+            borderTopColor:
+              window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)',
           },
         ]}>
-        <View>
-          <TouchableOpacity activeOpacity={0.8}>
-            <View style={styles.profileContainerStyle}>
-              <Image />
-            </View>
-          </TouchableOpacity>
-          <Text>آگهی‌ها</Text>
-        </View>
-
-        <View>
-          <TouchableOpacity activeOpacity={0.8}>
-            <View style={styles.profileContainerStyle}>
-              <Image />
-            </View>
-          </TouchableOpacity>
-          <Text>ثبت آگهی</Text>
-        </View>
-
-        <View>
-          <TouchableOpacity activeOpacity={0.8}>
-            <View style={styles.profileContainerStyle}>
-              <Image />
-            </View>
-          </TouchableOpacity>
-          <Text>آگهی‌های من</Text>
-        </View>
+        <SellAndBuyButton
+          title="آگهی‌ها"
+          imageAddress={require('../../resources/photos/PanelPages/megaphon-red.png')}
+          bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
+          textColor="red"
+          borderColor="red"
+          width="82%"
+          height="70%"
+          bottom="8%"
+        />
+        {window.Theme === 'light' && (
+          <SellAndBuyButton
+            title="ثبت آگهی"
+            imageAddress={require('../../resources/photos/PanelPages/plus-light.png')}
+            bgColor={
+              window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(0,173,181)'
+            }
+            textColor="white"
+            borderColor={
+              window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
+            }
+            width="97%"
+            height="85%"
+            bottom="10%"
+          />
+        )}
+        {window.Theme === 'dark' && (
+          <SellAndBuyButton
+            title="ثبت آگهی"
+            imageAddress={require('../../resources/photos/PanelPages/plus-dark.png')}
+            bgColor="rgb(0,173,181)"
+            textColor="rgb(0,173,181)"
+            borderColor={
+              window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
+            }
+            width="97%"
+            height="85%"
+            bottom="10%"
+          />
+        )}
+        <SellAndBuyButton
+          title="آگهی‌های من"
+          imageAddress={require('../../resources/photos/PanelPages/user-green.png')}
+          bgColor={Colors.backgroundColor()}
+          textColor={window.Theme === 'dark' ? 'rgb(0,173,181)' : 'white'}
+          borderColor={
+            window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
+          }
+          width="82%"
+          height="70%"
+          bottom="8%"
+        />
       </View>
     </View>
   );
