@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
-import BookPlacard from './Components/BookPlacard';
+import BookPlacardWithButton from './Components/BookPlacardWithButton';
 
 export default function SellAndBuyPage({navigation}) {
   return (
@@ -150,27 +150,22 @@ export default function SellAndBuyPage({navigation}) {
 
       {/* Book Placard Section */}
       <ScrollView style={styles.bookPlacardsContainer}>
-        <BookPlacard
+        <BookPlacardWithButton
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
-        <BookPlacard
+        <BookPlacardWithButton
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
-        <BookPlacard
+        <BookPlacardWithButton
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
-        <BookPlacard
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacard
+        <BookPlacardWithButton
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
@@ -189,11 +184,16 @@ export default function SellAndBuyPage({navigation}) {
           },
         ]}>
         <SellAndBuyButton
+          onPress={() => {
+            navigation.pop();
+          }}
           title="آگهی‌ها"
-          imageAddress={require('../../resources/photos/PanelPages/megaphon-red.png')}
-          bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
-          textColor="red"
-          borderColor="red"
+          imageAddress={require('../../resources/photos/PanelPages/megaphon.png')}
+          bgColor={Colors.backgroundColor()}
+          textColor={window.Theme === 'dark' ? 'rgb(0,173,181)' : 'white'}
+          borderColor={
+            window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
+          }
           width="82%"
           height="70%"
           bottom="8%"
@@ -229,16 +229,11 @@ export default function SellAndBuyPage({navigation}) {
           />
         )}
         <SellAndBuyButton
-          onPress={() => {
-            navigation.push('myAdvertisementPage');
-          }}
           title="آگهی‌های من"
-          imageAddress={require('../../resources/photos/PanelPages/user-green.png')}
-          bgColor={Colors.backgroundColor()}
-          textColor={window.Theme === 'dark' ? 'rgb(0,173,181)' : 'white'}
-          borderColor={
-            window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
-          }
+          imageAddress={require('../../resources/photos/PanelPages/user-red.png')}
+          bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
+          textColor="red"
+          borderColor="red"
           width="82%"
           height="70%"
           bottom="8%"

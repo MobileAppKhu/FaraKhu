@@ -55,4 +55,12 @@ export default StyleSheet.create({
     flex: 1,
     resizeMode: 'contain',
   },
+  editButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
 });
