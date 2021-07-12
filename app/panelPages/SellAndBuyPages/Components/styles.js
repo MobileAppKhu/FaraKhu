@@ -15,6 +15,7 @@ export default StyleSheet.create({
   },
   buttonImage: {
     flex: 1,
+    width: '65%',
     resizeMode: 'center',
   },
   bookPlacard: {

@@ -194,8 +194,8 @@ export default function SellAndBuyPage({navigation}) {
           bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
           textColor="red"
           borderColor="red"
-          width="82%"
-          height="70%"
+          width={82}
+          height={78}
           bottom="8%"
         />
         {window.Theme === 'light' && (
@@ -209,8 +209,8 @@ export default function SellAndBuyPage({navigation}) {
             borderColor={
               window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
             }
-            width="97%"
-            height="85%"
+            width={90}
+            height={87}
             bottom="10%"
           />
         )}
@@ -223,8 +223,8 @@ export default function SellAndBuyPage({navigation}) {
             borderColor={
               window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
             }
-            width="97%"
-            height="85%"
+            width={90}
+            height={87}
             bottom="10%"
           />
         )}
@@ -239,8 +239,8 @@ export default function SellAndBuyPage({navigation}) {
           borderColor={
             window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
           }
-          width="82%"
-          height="70%"
+          width={82}
+          height={78}
           bottom="8%"
         />
       </View>
