@@ -200,6 +200,9 @@ export default function MyAdvertisementPage({navigation}) {
         />
         {window.Theme === 'light' && (
           <SellAndBuyButton
+            onPress={() => {
+              navigation.push('MakeAdvertisementPage');
+            }}
             title="ثبت آگهی"
             imageAddress={require('../../resources/photos/PanelPages/plus-light.png')}
             bgColor={
@@ -216,6 +219,9 @@ export default function MyAdvertisementPage({navigation}) {
         )}
         {window.Theme === 'dark' && (
           <SellAndBuyButton
+            onPress={() => {
+              navigation.push('MakeAdvertisementPage');
+            }}
             title="ثبت آگهی"
             imageAddress={require('../../resources/photos/PanelPages/plus-dark.png')}
             bgColor="rgb(0,173,181)"

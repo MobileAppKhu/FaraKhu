@@ -24,6 +24,7 @@ import EditProfilePage from './panelPages/profilePages/EditProfilePage';
 import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
 import SellAndBuyPage from './panelPages/SellAndBuyPages/SellAndBuyPage';
 import MyAdvertisementPage from './panelPages/SellAndBuyPages/MyAdvertisementPage';
+import MakeAdvertisementPage from './panelPages/SellAndBuyPages/MakeAdvertisementPage';
 
 const Stack = createStackNavigator();
 
@@ -89,6 +90,10 @@ export default function App() {
         <Stack.Screen
           name={'MyAdvertisementPage'}
           component={MyAdvertisementPage}
+        />
+        <Stack.Screen
+          name={'MakeAdvertisementPage'}
+          component={MakeAdvertisementPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
