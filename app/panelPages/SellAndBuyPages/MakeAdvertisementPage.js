@@ -177,7 +177,12 @@ export default function MakeAdvertisementPage({navigation}) {
             </View>
           </View>
           <View style={{marginTop: 30}}>
-            <FaraKhuButton message="تایید" />
+            <FaraKhuButton
+              message="تایید"
+              onPressFunction={() => {
+                navigation.navigate('MakeAdvertisementSuccessfully');
+              }}
+            />
           </View>
         </View>
       </View>
