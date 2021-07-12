@@ -151,13 +151,32 @@ export default function MyAdvertisementPage({navigation}) {
       {/* Book Placard Section */}
       <ScrollView style={styles.bookPlacardsContainer}>
         <BookPlacardWithButton
+          editButtonOnPress={() => {
+            navigation.navigate('EditAdvertisementPage', {
+              title: 'نیازمند به کتاب مبانی ریاضی نوشته لین و لین',
+              price: '20000',
+              description:
+                'سلام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000',
+              offerType: 'Buy',
+              imageAddress: '',
+            });
+          }}
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
         <BookPlacardWithButton
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
+          editButtonOnPress={() => {
+            navigation.navigate('EditAdvertisementPage', {
+              title: 'کتاب ریاضی 1 نوشته توماس',
+              price: '35000',
+              description: 'سلام کسی کتاب ریاضی 1 توماس رو داره؟ 0936656981',
+              offerType: 'Sell',
+              imageAddress: '',
+            });
+          }}
+          title="کتاب ریاضی 1 نوشته توماس"
+          price="35000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
         <BookPlacardWithButton

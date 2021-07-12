@@ -42,6 +42,7 @@ export default function BookPlacardWithButton({
   price,
   imageAddress,
   onPress,
+  editButtonOnPress,
 }) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
@@ -94,6 +95,7 @@ export default function BookPlacardWithButton({
         </View>
         <View style={styles.buttonContainer}>
           <EditButton
+            onPressFunction={editButtonOnPress}
             message="ویرایش"
             textColor="white"
             bgColor="rgb(0,173,181)"
