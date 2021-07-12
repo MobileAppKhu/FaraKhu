@@ -23,7 +23,7 @@ import ProfilePage from './panelPages/profilePages/ProfilePage';
 import EditProfilePage from './panelPages/profilePages/EditProfilePage';
 import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
 import SellAndBuyPage from './panelPages/SellAndBuyPages/SellAndBuyPage';
-import myAdvertisementPage from './panelPages/SellAndBuyPages/myAdvertisementPage';
+import MyAdvertisementPage from './panelPages/SellAndBuyPages/MyAdvertisementPage';
 
 const Stack = createStackNavigator();
 
@@ -87,8 +87,8 @@ export default function App() {
         />
         <Stack.Screen name={'SellAndBuyPage'} component={SellAndBuyPage} />
         <Stack.Screen
-          name={'myAdvertisementPage'}
-          component={myAdvertisementPage}
+          name={'MyAdvertisementPage'}
+          component={MyAdvertisementPage}
         />
       </Stack.Navigator>
     </NavigationContainer>

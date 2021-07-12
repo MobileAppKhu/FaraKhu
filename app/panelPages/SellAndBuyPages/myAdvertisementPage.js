@@ -14,7 +14,7 @@ import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
 import BookPlacardWithButton from './Components/BookPlacardWithButton';
 
-export default function SellAndBuyPage({navigation}) {
+export default function MyAdvertisementPage({navigation}) {
   return (
     <View
       style={[
@@ -194,7 +194,7 @@ export default function SellAndBuyPage({navigation}) {
           borderColor={
             window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
           }
-          width={82}
+          width={79}
           height={78}
           bottom="8%"
         />
@@ -234,7 +234,7 @@ export default function SellAndBuyPage({navigation}) {
           bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
           textColor="red"
           borderColor="red"
-          width={82}
+          width={79}
           height={78}
           bottom="8%"
         />
