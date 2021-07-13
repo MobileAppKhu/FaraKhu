@@ -9,16 +9,20 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Pressable,
+  Modal,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
 import BookPlacardWithButton from './Components/BookPlacardWithButton';
 import TypeFilterModal from './Components/TypeFilterModal';
+import {EditButton as ActionButton} from './Components/BookPlacardWithButton';
 
 export default function MyAdvertisementPage({navigation}) {
   const [checkedBuy, setCheckedBuy] = useState(false);
   const [checkedSell, setCheckedSell] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   return (
     <View
@@ -185,11 +189,22 @@ export default function MyAdvertisementPage({navigation}) {
               imageAddress: '',
             });
           }}
+          deleteButtonOnPress={() => {
+            setDeleteModalOpen(true);
+          }}
           title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
           price="20000"
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
         <BookPlacardWithButton
+          onPress={() => {
+            navigation.navigate('AdvertisementPage', {
+              title: 'کتاب ریاضی 1 نوشته توماس',
+              price: '35000',
+              description: 'سلام کسی کتاب ریاضی 1 توماس رو داره؟ 0936656981',
+              imageAddress: require('../../resources/photos/PanelPages/sampleBook.png'),
+            });
+          }}
           editButtonOnPress={() => {
             navigation.navigate('EditAdvertisementPage', {
               title: 'کتاب ریاضی 1 نوشته توماس',
@@ -198,6 +213,9 @@ export default function MyAdvertisementPage({navigation}) {
               offerType: 'Sell',
               imageAddress: '',
             });
+          }}
+          deleteButtonOnPress={() => {
+            setDeleteModalOpen(true);
           }}
           title="کتاب ریاضی 1 نوشته توماس"
           price="35000"
@@ -214,6 +232,73 @@ export default function MyAdvertisementPage({navigation}) {
           imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
         />
       </ScrollView>
+
+      {/* Delete Placard Modal */}
+      <Modal visible={deleteModalOpen} transparent={true} animationType="fade">
+        <Pressable
+          style={[
+            styles.mainViewOfDeletePlacardModal,
+            {
+              backgroundColor:
+                window.Theme === 'dark'
+                  ? 'rgba(41, 52, 82,0.6)'
+                  : 'rgba(41, 52, 82,0.5)',
+            },
+          ]}>
+          <View
+            style={[
+              styles.deletePlacardModal,
+              {
+                backgroundColor:
+                  window.Theme === 'dark'
+                    ? 'rgb(34,40,49)'
+                    : 'rgb(255,255,255)',
+              },
+            ]}>
+            <View style={styles.deletePlacardModalIcon}>
+              <Image
+                style={{height: '90%', aspectRatio: 1, resizeMode: 'cover'}}
+                source={require('../../resources/photos/PanelPages/exclamation.png')}
+              />
+            </View>
+            <Text style={styles.deletePlacardModalText}>
+              آیا از حذف آگهی خود مطمئنید؟
+            </Text>
+            <View style={styles.deletePlacardModalButtons}>
+              <ActionButton
+                message="بله"
+                textColor="white"
+                bgColor="rgb(0,173,181)"
+                borderRadius={12}
+                borderWidth={1}
+                borderColor="rgb(112,112,112)"
+                fontSize={14}
+                width={'47%'}
+                height={'55%'}
+              />
+              <ActionButton
+                onPressFunction={() => setDeleteModalOpen(false)}
+                message="خیر"
+                textColor={window.Theme === 'dark' ? 'white' : 'black'}
+                bgColor={
+                  window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(255,255,255)'
+                }
+                borderRadius={12}
+                borderWidth={1}
+                borderColor={
+                  window.Theme === 'dark'
+                    ? 'rgb(0,173,181)'
+                    : 'rgb(112,112,112)'
+                }
+                fontSize={14}
+                width={'47%'}
+                height={'55%'}
+              />
+            </View>
+          </View>
+        </Pressable>
+      </Modal>
+      {/* End of Delete Placard Modal */}
       {/* End of Book Placard Section  */}
 
       {/* footer section */}

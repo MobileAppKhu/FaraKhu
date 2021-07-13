@@ -169,4 +169,37 @@ export default StyleSheet.create({
     width: '75%',
     marginTop: 5,
   },
+  mainViewOfDeletePlacardModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deletePlacardModal: {
+    alignItems: 'center',
+    width: '80%',
+    height: '25%',
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: 'rgb(0,173,181)',
+    paddingHorizontal: 5,
+  },
+  deletePlacardModalIcon: {
+    width: '20%',
+    height: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  deletePlacardModalText: {
+    fontFamily: 'Samim',
+    fontSize: 18,
+    color: window.Theme === 'dark' ? 'white' : 'black',
+    marginTop: 10,
+  },
+  deletePlacardModalButtons: {
+    flexDirection: 'row-reverse',
+    width: '80%',
+    alignItems: 'flex-end',
+    justifyContent: 'space-around',
+  },
 });

@@ -43,6 +43,7 @@ export default function BookPlacardWithButton({
   imageAddress,
   onPress,
   editButtonOnPress,
+  deleteButtonOnPress,
 }) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
@@ -107,6 +108,7 @@ export default function BookPlacardWithButton({
             height={'66%'}
           />
           <EditButton
+            onPressFunction={deleteButtonOnPress}
             message="حذف"
             textColor={window.Theme === 'dark' ? 'white' : 'black'}
             bgColor={
