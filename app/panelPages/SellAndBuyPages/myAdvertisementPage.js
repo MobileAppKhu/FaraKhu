@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './styles';
 import Colors from '../colors';
 import {
@@ -13,8 +13,13 @@ import {
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
 import BookPlacardWithButton from './Components/BookPlacardWithButton';
+import TypeFilterModal from './Components/TypeFilterModal';
 
 export default function MyAdvertisementPage({navigation}) {
+  const [checkedBuy, setCheckedBuy] = useState(false);
+  const [checkedSell, setCheckedSell] = useState(false);
+  const [filterModalOpen, setFilterModalOpen] = useState(false);
+
   return (
     <View
       style={[
@@ -92,9 +97,9 @@ export default function MyAdvertisementPage({navigation}) {
           />
         </View>
         {/* end of search input */}
-
         {/* filter section */}
         <TouchableOpacity
+          onPress={() => setFilterModalOpen(true)}
           activeOpacity={0.5}
           style={[
             styles.filter,
@@ -133,6 +138,16 @@ export default function MyAdvertisementPage({navigation}) {
           )}
         </TouchableOpacity>
         {/* end of filter section */}
+        <TypeFilterModal
+          visible={filterModalOpen}
+          onScreenPress={() => setFilterModalOpen(false)}
+          buyCheckBoxValue={checkedBuy}
+          sellCheckBoxValue={checkedSell}
+          buyOnpress={() => setCheckedBuy(checkedBuy === false ? true : false)}
+          sellOnpress={() =>
+            setCheckedSell(checkedSell === false ? true : false)
+          }
+        />
       </View>
       {/* end of search section */}
 

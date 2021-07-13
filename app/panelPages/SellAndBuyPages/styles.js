@@ -99,7 +99,7 @@ export default StyleSheet.create({
     color: 'rgb(130,133,138)',
   },
   regularTextOfInputTitle: {
-    fontFamily: 'Samim-regular',
+    fontFamily: 'Samim',
     fontSize: 12,
     color: 'rgba(130,133,138,1)',
   },
@@ -123,7 +123,6 @@ export default StyleSheet.create({
     flex: 1,
   },
   placardTypeOption: {
-    // marginTop: 10,
     flexDirection: 'row-reverse',
     justifyContent: 'space-between',
     alignItems: 'center',
