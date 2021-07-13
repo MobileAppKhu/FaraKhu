@@ -10,7 +10,7 @@ export default StyleSheet.create({
     marginTop: 20,
   },
   separatorLine: {
-    opacity: 0.2,
+    opacity: 0.5,
     width: '80%',
     marginRight: 'auto',
     marginLeft: 'auto',
@@ -57,10 +57,10 @@ export default StyleSheet.create({
     flexDirection: 'row-reverse',
     justifyContent: 'space-around',
   },
-  backgroundStyleOfMakeAdvertisementPage: {
+  backgroundStyleOfAdvertisementPage: {
     flex: 1,
   },
-  mainBackgroundOfMakeAdvertisementPage: {
+  mainBackgroundOfAdvertisementPage: {
     width: '100%',
     height: '100%',
     borderTopLeftRadius: 200,
@@ -82,14 +82,12 @@ export default StyleSheet.create({
     marginTop: 40,
     width: '100%',
     height: '100%',
-    // backgroundColor: 'gold',
     alignItems: 'center',
   },
   inputContainer: {
     marginTop: 3,
     width: '90%',
     paddingRight: '6%',
-    // backgroundColor: 'red',
   },
   textInputTitle: {
     flexDirection: 'row-reverse',
@@ -119,23 +117,19 @@ export default StyleSheet.create({
     width: '90%',
     flexDirection: 'row-reverse',
     paddingHorizontal: '7%',
-    // backgroundColor: 'red',
     marginTop: 15,
   },
   placardType: {
     flex: 1,
-    // backgroundColor: 'gold',
   },
   placardTypeOption: {
     // marginTop: 10,
     flexDirection: 'row-reverse',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // backgroundColor: 'lightgreen',
   },
   placardImageSection: {
     flex: 1,
-    // backgroundColor: 'cyan',
     marginRight: '10%',
   },
   placardImageContainer: {
@@ -148,5 +142,32 @@ export default StyleSheet.create({
     borderColor: 'rgba(0,173,181, 0.5)',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  bookImageContainer: {
+    width: '90%',
+    height: '40%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bookImage: {
+    height: '90%',
+    aspectRatio: 1,
+    resizeMode: 'cover',
+  },
+  bookTitle: {
+    fontFamily: 'Samim',
+    fontSize: 20,
+    marginHorizontal: '12.5%',
+  },
+  bookPriceContainer: {
+    width: '75%',
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  bookDescription: {
+    width: '75%',
+    marginTop: 5,
   },
 });

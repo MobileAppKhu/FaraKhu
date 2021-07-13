@@ -4,7 +4,7 @@ import styles from './styles';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import CheckBox from '@react-native-community/checkbox';
 import Colors from '../colors';
-import FaraKhuButton from '../../panelPages/Component/FaraKhuButton';
+import FaraKhuButton from '../Component/FaraKhuButton';
 
 export default function EditAdvertisementPage({navigation, route}) {
   const [checked, setChecked] = useState(
@@ -13,12 +13,12 @@ export default function EditAdvertisementPage({navigation, route}) {
   return (
     <View
       style={[
-        styles.backgroundStyleOfMakeAdvertisementPage,
+        styles.backgroundStyleOfAdvertisementPage,
         {backgroundColor: Colors.topColor()},
       ]}>
       <View
         style={[
-          styles.mainBackgroundOfMakeAdvertisementPage,
+          styles.mainBackgroundOfAdvertisementPage,
           {backgroundColor: Colors.backgroundColor()},
         ]}>
         <FaraKhuBackButton

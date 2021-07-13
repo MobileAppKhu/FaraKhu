@@ -11,12 +11,12 @@ export default function MakeAdvertisementPage({navigation}) {
   return (
     <View
       style={[
-        styles.backgroundStyleOfMakeAdvertisementPage,
+        styles.backgroundStyleOfAdvertisementPage,
         {backgroundColor: Colors.topColor()},
       ]}>
       <View
         style={[
-          styles.mainBackgroundOfMakeAdvertisementPage,
+          styles.mainBackgroundOfAdvertisementPage,
           {backgroundColor: Colors.backgroundColor()},
         ]}>
         <FaraKhuBackButton

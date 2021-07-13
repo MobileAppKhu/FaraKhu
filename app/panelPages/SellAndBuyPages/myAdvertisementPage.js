@@ -151,6 +151,15 @@ export default function MyAdvertisementPage({navigation}) {
       {/* Book Placard Section */}
       <ScrollView style={styles.bookPlacardsContainer}>
         <BookPlacardWithButton
+          onPress={() => {
+            navigation.navigate('AdvertisementPage', {
+              title: 'نیازمند به کتاب مبانی ریاضی نوشته لین و لین',
+              price: 'توافقی',
+              description:
+                'لام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000لام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000 سلام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000',
+              imageAddress: require('../../resources/photos/PanelPages/sampleBook.png'),
+            });
+          }}
           editButtonOnPress={() => {
             navigation.navigate('EditAdvertisementPage', {
               title: 'نیازمند به کتاب مبانی ریاضی نوشته لین و لین',

@@ -27,6 +27,7 @@ import MyAdvertisementPage from './panelPages/SellAndBuyPages/MyAdvertisementPag
 import MakeAdvertisementPage from './panelPages/SellAndBuyPages/MakeAdvertisementPage';
 import EditAdvertisementPage from './panelPages/SellAndBuyPages/EditAdvertisementPage';
 import MakeAdvertisementSuccessfully from './panelPages/SellAndBuyPages/MakeAdvertisementSuccessfully';
+import AdvertisementPage from './panelPages/SellAndBuyPages/AdvertisementPage';
 
 const Stack = createStackNavigator();
 
@@ -104,6 +105,10 @@ export default function App() {
         <Stack.Screen
           name={'MakeAdvertisementSuccessfully'}
           component={MakeAdvertisementSuccessfully}
+        />
+        <Stack.Screen
+          name={'AdvertisementPage'}
+          component={AdvertisementPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
