@@ -7,11 +7,19 @@ export default StyleSheet.create({
     alignItems: 'center',
     width: '22%',
   },
+  imageContainerBackground: {
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    borderBottomRightRadius: 1000,
+    borderBottomLeftRadius: 1000,
+    borderWidth: 1,
+    borderTopWidth: 0,
+  },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 1000,
-    borderWidth: 2,
+    borderWidth: 1,
   },
   buttonImage: {
     flex: 1,

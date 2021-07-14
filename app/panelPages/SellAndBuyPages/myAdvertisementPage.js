@@ -312,7 +312,7 @@ export default function MyAdvertisementPage({navigation}) {
           {
             backgroundColor: Colors.topColor(),
             borderTopColor:
-              window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)',
+              window.Theme === 'dark' ? 'rgb(0,104,109)' : 'rgb(0, 156, 163)',
           },
         ]}>
         <SellAndBuyButton
@@ -326,9 +326,10 @@ export default function MyAdvertisementPage({navigation}) {
           borderColor={
             window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
           }
-          width={79}
-          height={78}
-          bottom="8%"
+          width={'85%'}
+          bgWidth={'90%'}
+          bgHeight={'50%'}
+          bottom="3.2%"
         />
         {window.Theme === 'light' && (
           <SellAndBuyButton
@@ -344,9 +345,10 @@ export default function MyAdvertisementPage({navigation}) {
             borderColor={
               window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
             }
-            width={90}
-            height={87}
-            bottom="10%"
+            width={'90%'}
+            bgWidth={'100%'}
+            bgHeight={'50%'}
+            bottom="3.2%"
           />
         )}
         {window.Theme === 'dark' && (
@@ -361,9 +363,10 @@ export default function MyAdvertisementPage({navigation}) {
             borderColor={
               window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
             }
-            width={90}
-            height={87}
-            bottom="10%"
+            width={'90%'}
+            bgWidth={'100%'}
+            bgHeight={'50%'}
+            bottom="3.2%"
           />
         )}
         <SellAndBuyButton
@@ -372,9 +375,10 @@ export default function MyAdvertisementPage({navigation}) {
           bgColor={window.Theme === 'dark' ? 'black' : 'rgb(34,40,49)'}
           textColor="red"
           borderColor="red"
-          width={79}
-          height={78}
-          bottom="8%"
+          width={'85%'}
+          bgWidth={'90%'}
+          bgHeight={'50%'}
+          bottom="3.2%"
         />
       </View>
     </View>

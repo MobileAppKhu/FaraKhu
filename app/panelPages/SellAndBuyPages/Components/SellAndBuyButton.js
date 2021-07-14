@@ -10,7 +10,8 @@ export default function SellAndBuyButton({
   onPress,
   borderColor,
   width,
-  height,
+  bgWidth,
+  bgHeight,
   bottom,
 }) {
   return (
@@ -20,22 +21,36 @@ export default function SellAndBuyButton({
       style={[styles.button, {bottom: bottom}]}>
       <View
         style={[
-          styles.imageContainer,
+          styles.imageContainerBackground,
           {
-            backgroundColor: bgColor,
-            borderColor: borderColor,
-            width: width,
-            height: height,
+            width: bgWidth,
+            height: bgHeight,
+            backgroundColor:
+              window.Theme === 'dark' ? 'rgb(57,62,70)' : 'rgb(238,238,238)',
+            borderColor:
+              window.Theme === 'dark' ? 'rgb(0,104,109)' : 'rgb(0, 156, 163)',
           },
         ]}>
-        <Image style={styles.buttonImage} source={imageAddress} />
+        <View
+          style={[
+            styles.imageContainer,
+            {
+              backgroundColor: bgColor,
+              borderColor: borderColor,
+              width: width,
+              aspectRatio: 1,
+              bottom: '11%',
+            },
+          ]}>
+          <Image style={styles.buttonImage} source={imageAddress} />
+        </View>
       </View>
       <Text
         style={{
           color: textColor,
           fontFamily: 'Samim',
           fontSize: 15,
-          marginTop: 10,
+          marginTop: 3,
         }}>
         {title}
       </Text>
