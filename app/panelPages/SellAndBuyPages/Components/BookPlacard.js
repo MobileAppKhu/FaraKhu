@@ -23,6 +23,7 @@ export default function BookPlacard({title, price, imageAddress, onPress}) {
               fontFamily: 'Samim',
               fontSize: 16,
               color: window.Theme === 'dark' ? 'white' : 'black',
+              textAlign: 'right',
             }}>
             {title}
           </Text>

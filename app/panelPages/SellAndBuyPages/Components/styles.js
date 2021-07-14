@@ -59,9 +59,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     borderWidth: 1.5,
+    overflow: 'hidden',
   },
   placardImage: {
-    flex: 1,
+    width: '100%',
     resizeMode: 'contain',
   },
   editButton: {
