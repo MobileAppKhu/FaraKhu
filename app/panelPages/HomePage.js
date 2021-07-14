@@ -213,6 +213,10 @@ function Home({navigation}) {
       />
       <View style={styles.towButtonViewStyle}>
         <SmallButtonOfMainMenu
+          onPressFunction={() => {
+            console.log('hi');
+            navigation.push('SellAndBuyPage');
+          }}
           message={'خرید و فروش کتاب'}
           imageAddress={require('../resources/photos/PanelPages/bookLogoLight.png')}
         />
