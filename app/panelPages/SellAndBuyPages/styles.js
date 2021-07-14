@@ -193,7 +193,6 @@ export default StyleSheet.create({
   deletePlacardModalText: {
     fontFamily: 'Samim',
     fontSize: 18,
-    color: window.Theme === 'dark' ? 'white' : 'black',
     marginTop: 10,
   },
   deletePlacardModalButtons: {

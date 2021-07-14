@@ -52,7 +52,7 @@ export default function EditAdvertisementPage({navigation, route}) {
                 },
               ]}>
               <TextInput
-                value={route.params.title}
+                defaultValue={route.params.title}
                 maxLength={40}
                 textAlign={'right'}
                 style={{
@@ -80,7 +80,7 @@ export default function EditAdvertisementPage({navigation, route}) {
                 },
               ]}>
               <TextInput
-                value={route.params.description}
+                defaultValue={route.params.description}
                 textAlign={'right'}
                 multiline={true}
                 style={{
@@ -104,7 +104,7 @@ export default function EditAdvertisementPage({navigation, route}) {
                 },
               ]}>
               <TextInput
-                value={route.params.price}
+                defaultValue={route.params.price}
                 keyboardType="numeric"
                 textAlign={'right'}
                 style={{

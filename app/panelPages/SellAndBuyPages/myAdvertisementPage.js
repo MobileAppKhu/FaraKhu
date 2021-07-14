@@ -261,7 +261,11 @@ export default function MyAdvertisementPage({navigation}) {
                 source={require('../../resources/photos/PanelPages/exclamation.png')}
               />
             </View>
-            <Text style={styles.deletePlacardModalText}>
+            <Text
+              style={[
+                styles.deletePlacardModalText,
+                {color: window.Theme === 'dark' ? 'white' : 'black'},
+              ]}>
               آیا از حذف آگهی خود مطمئنید؟
             </Text>
             <View style={styles.deletePlacardModalButtons}>
