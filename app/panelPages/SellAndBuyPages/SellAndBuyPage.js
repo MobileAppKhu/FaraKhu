@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
@@ -21,6 +22,7 @@ export default function SellAndBuyPage({navigation}) {
   const [placards, setPlacards] = useState([]);
 
   const [searchItem, setSearchItem] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
 
   async function getBookPlacards(searchInput = '') {
     let placardType; //placardType:  1 is Buy / 2 is Sell
@@ -220,7 +222,21 @@ export default function SellAndBuyPage({navigation}) {
       />
 
       {/* Book Placard Section */}
-      <ScrollView style={styles.bookPlacardsContainer}>
+      <ScrollView
+        style={styles.bookPlacardsContainer}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => {
+              setRefreshing(true);
+              getBookPlacards();
+              setTimeout(() => {
+                setRefreshing(false);
+              }, 1500);
+            }}
+            colors={['#4285F4', '#DB4437', '#F4B400', '#0F9D58']}
+          />
+        }>
         {placards.map(data => {
           return (
             <BookPlacard
