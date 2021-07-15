@@ -166,14 +166,16 @@ export default function EditAdvertisementPage({navigation, route}) {
                 <TouchableOpacity
                   activeOpacity={0.5}
                   style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     width: '100%',
                     height: '100%',
                   }}>
                   <Image
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      resizeMode: 'center',
+                      height: '80%',
+                      aspectRatio: 1,
+                      resizeMode: 'cover',
                     }}
                     source={require('../../resources/photos/PanelPages/plus-green.png')}
                   />

@@ -141,6 +141,7 @@ export default StyleSheet.create({
     borderColor: 'rgba(0,173,181, 0.5)',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
   },
   bookImageContainer: {
     width: '90%',
