@@ -41,7 +41,7 @@ export default function SellAndBuyPage({navigation}) {
           OfferType: placardType,
           Search: searchInput,
           Start: '0',
-          Step: '600',
+          Step: '50',
         }),
       })
         .then(async response => {
@@ -89,7 +89,7 @@ export default function SellAndBuyPage({navigation}) {
               activeOpacity={0.5}
               onPress={() => {
                 console.log(searchItem);
-                getBookPlacards(searchItem);
+                getBookPlacards(searchItem.trim());
               }}>
               <Image
                 style={{
@@ -106,7 +106,7 @@ export default function SellAndBuyPage({navigation}) {
               activeOpacity={0.5}
               onPress={() => {
                 console.log(searchItem);
-                getBookPlacards(searchItem);
+                getBookPlacards(searchItem.trim());
               }}>
               <Image
                 style={{
@@ -133,7 +133,7 @@ export default function SellAndBuyPage({navigation}) {
             onChangeText={data => setSearchItem(data)}
             onSubmitEditing={() => {
               console.log(searchItem);
-              getBookPlacards(searchItem);
+              getBookPlacards(searchItem.trim());
             }}
             placeholderTextColor={
               window.Theme === 'dark'

@@ -53,19 +53,66 @@ async function removePlacard(placardId) {
 }
 
 export default function MyAdvertisementPage({navigation}) {
-  const [checkedBuy, setCheckedBuy] = useState(false);
-  const [checkedSell, setCheckedSell] = useState(false);
+  const [checkedBuy, setCheckedBuy] = useState(true);
+  const [checkedSell, setCheckedSell] = useState(true);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const [outputPlacards, setOutputPlacards] = useState([]);
   const [myPlacards, setMyPlacards] = useState([]);
+  const [searchItem, setSearchItem] = useState('');
 
   const [removingPlacardId, setRemovingPlacardId] = useState('');
+
+  function searchPlacard(searchInput = '') {
+    let placardType;
+    if (checkedBuy === true && checkedSell === false) {
+      placardType = 'Buy';
+    } else if (checkedBuy === false && checkedSell === true) {
+      placardType = 'Sell';
+    } else {
+      placardType = 'Both';
+    }
+    if (searchInput !== '') {
+      if (placardType === 'Both') {
+        setOutputPlacards(
+          myPlacards.filter(placard => {
+            return (
+              placard.title.includes(searchInput) ||
+              placard.description.includes(searchInput)
+            );
+          }),
+        );
+      } else {
+        setOutputPlacards(
+          myPlacards.filter(placard => {
+            return (
+              placard.offerType === placardType &&
+              (placard.title.includes(searchInput) ||
+                placard.description.includes(searchInput))
+            );
+          }),
+        );
+      }
+    } else {
+      if (placardType === 'Both') {
+        setOutputPlacards(myPlacards);
+      } else {
+        setOutputPlacards(
+          myPlacards.filter(placard => {
+            return placard.offerType === placardType;
+          }),
+        );
+      }
+    }
+  }
 
   useEffect(() => {
     console.log('useEffect myAds run');
     getMyBookPlacards().then(data => {
       console.log(data.offers);
       setMyPlacards(data.offers);
+      setOutputPlacards(data.offers);
     });
   }, []);
 
@@ -94,7 +141,12 @@ export default function MyAdvertisementPage({navigation}) {
             },
           ]}>
           {window.Theme === 'dark' && (
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => {
+                console.log(searchItem);
+                searchPlacard(searchItem.trim());
+              }}>
               <Image
                 style={{
                   width: 30,
@@ -106,7 +158,12 @@ export default function MyAdvertisementPage({navigation}) {
             </TouchableOpacity>
           )}
           {window.Theme === 'light' && (
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => {
+                console.log(searchItem);
+                searchPlacard(searchItem.trim());
+              }}>
               <Image
                 style={{
                   width: 30,
@@ -129,6 +186,11 @@ export default function MyAdvertisementPage({navigation}) {
             ]}
           />
           <TextInput
+            onChangeText={data => setSearchItem(data)}
+            onSubmitEditing={() => {
+              console.log(searchItem);
+              searchPlacard(searchItem.trim());
+            }}
             placeholderTextColor={
               window.Theme === 'dark'
                 ? 'rgba(0,173,181,0.2)'
@@ -214,7 +276,7 @@ export default function MyAdvertisementPage({navigation}) {
 
       {/* Book Placard Section */}
       <ScrollView style={styles.bookPlacardsContainer}>
-        {myPlacards.map(data => {
+        {outputPlacards.map(data => {
           return (
             <BookPlacardWithButton
               title={data.title}
