@@ -14,38 +14,50 @@ import SellAndBuyButton from './Components/SellAndBuyButton';
 import BookPlacard from './Components/BookPlacard';
 import TypeFilterModal from './Components/TypeFilterModal';
 
-async function getBookPlacards() {
-  try {
-    return fetch('https://api.farakhu.markop.ir/api/Offer/ViewOffers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        OfferType: 1,
-        Search: '',
-        Start: '0',
-        Step: '600',
-      }),
-    }).then(async response => {
-      return await response.json();
-    });
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 export default function SellAndBuyPage({navigation}) {
-  const [checkedBuy, setCheckedBuy] = useState(false);
-  const [checkedSell, setCheckedSell] = useState(false);
+  const [checkedBuy, setCheckedBuy] = useState(true);
+  const [checkedSell, setCheckedSell] = useState(true);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [placards, setPlacards] = useState([]);
+
+  const [searchItem, setSearchItem] = useState('');
+
+  async function getBookPlacards(searchInput = '') {
+    let placardType; //placardType:  1 is Buy / 2 is Sell
+    if (checkedBuy === true && checkedSell === false) {
+      placardType = 1;
+    } else if (checkedBuy === false && checkedSell === true) {
+      placardType = 2;
+    } else {
+      placardType = 1; // *Need Edit
+    }
+    try {
+      fetch('https://api.farakhu.markop.ir/api/Offer/ViewOffers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          OfferType: placardType,
+          Search: searchInput,
+          Start: '0',
+          Step: '600',
+        }),
+      })
+        .then(async response => {
+          return await response.json();
+        })
+        .then(data => {
+          setPlacards(data.offer);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     console.log('useEffect sell and buy run');
-    getBookPlacards().then(data => {
-      console.log(data.offer);
-      setPlacards(data.offer);
-    });
+    getBookPlacards();
   }, []);
 
   return (
@@ -73,7 +85,12 @@ export default function SellAndBuyPage({navigation}) {
             },
           ]}>
           {window.Theme === 'dark' && (
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => {
+                console.log(searchItem);
+                getBookPlacards(searchItem);
+              }}>
               <Image
                 style={{
                   width: 30,
@@ -85,7 +102,12 @@ export default function SellAndBuyPage({navigation}) {
             </TouchableOpacity>
           )}
           {window.Theme === 'light' && (
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => {
+                console.log(searchItem);
+                getBookPlacards(searchItem);
+              }}>
               <Image
                 style={{
                   width: 30,
@@ -108,6 +130,11 @@ export default function SellAndBuyPage({navigation}) {
             ]}
           />
           <TextInput
+            onChangeText={data => setSearchItem(data)}
+            onSubmitEditing={() => {
+              console.log(searchItem);
+              getBookPlacards(searchItem);
+            }}
             placeholderTextColor={
               window.Theme === 'dark'
                 ? 'rgba(0,173,181,0.2)'
