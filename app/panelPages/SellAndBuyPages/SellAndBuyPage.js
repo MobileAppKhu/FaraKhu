@@ -220,26 +220,6 @@ export default function SellAndBuyPage({navigation}) {
       />
 
       {/* Book Placard Section */}
-      {/* <ScrollView style={styles.bookPlacardsContainer}> */}
-      {/* <BookPlacard
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacard
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-         */}
-      {/* <FlatList
-        style={styles.bookPlacardsContainer}
-        data={placards}
-        keyExtractor={data => data.offerId}
-        renderItem={data => {
-          return <BookPlacard title={data.title} price={data.price} />;
-        }}
-      /> */}
       <ScrollView style={styles.bookPlacardsContainer}>
         {placards.map(data => {
           return (

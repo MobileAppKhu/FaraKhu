@@ -348,6 +348,10 @@ export default function MyAdvertisementPage({navigation}) {
                   console.log('removing item: ' + removingPlacardId);
                   removePlacard(removingPlacardId).then(async response => {
                     if (response.status === 200) {
+                      getMyBookPlacards().then(data => {
+                        setMyPlacards(data.offers);
+                        setOutputPlacards(data.offers);
+                      });
                       if (Platform.OS === 'android') {
                         ToastAndroid.show(
                           'آگهی شما با موفقیت حذف شد',
