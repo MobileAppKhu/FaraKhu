@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './styles';
 import Colors from '../colors';
 import {
   View,
   Text,
   Image,
-  FlatList,
   TouchableOpacity,
   TextInput,
   ScrollView,
   Pressable,
   Modal,
+  Platform,
+  ToastAndroid,
+  AlertIOS,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
@@ -18,11 +20,54 @@ import BookPlacardWithButton from './Components/BookPlacardWithButton';
 import TypeFilterModal from './Components/TypeFilterModal';
 import {EditButton as ActionButton} from './Components/BookPlacardWithButton';
 
+async function getMyBookPlacards() {
+  try {
+    return fetch('https://api.farakhu.markop.ir/api/Offer/ViewUserOffers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    }).then(async response => {
+      return await response.json();
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function removePlacard(placardId) {
+  try {
+    return await fetch('https://api.farakhu.markop.ir/api/Offer/RemoveOffer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        OfferId: placardId,
+      }),
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export default function MyAdvertisementPage({navigation}) {
   const [checkedBuy, setCheckedBuy] = useState(false);
   const [checkedSell, setCheckedSell] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [myPlacards, setMyPlacards] = useState([]);
+
+  const [removingPlacardId, setRemovingPlacardId] = useState('');
+
+  useEffect(() => {
+    console.log('useEffect myAds run');
+    getMyBookPlacards().then(data => {
+      console.log(data.offers);
+      setMyPlacards(data.offers);
+    });
+  }, []);
 
   return (
     <View
@@ -169,68 +214,35 @@ export default function MyAdvertisementPage({navigation}) {
 
       {/* Book Placard Section */}
       <ScrollView style={styles.bookPlacardsContainer}>
-        <BookPlacardWithButton
-          onPress={() => {
-            navigation.navigate('AdvertisementPage', {
-              title: 'نیازمند به کتاب مبانی ریاضی نوشته لین و لین',
-              price: 'توافقی',
-              description:
-                'لام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000لام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000 سلام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000',
-              imageAddress: require('../../resources/photos/PanelPages/sampleBook.png'),
-            });
-          }}
-          editButtonOnPress={() => {
-            navigation.navigate('EditAdvertisementPage', {
-              title: 'نیازمند به کتاب مبانی ریاضی نوشته لین و لین',
-              price: '20000',
-              description:
-                'سلام من نیازمند یک کتاب مبانی ریاضی نوشته لین و لین چاپ 1389 هستم، اگر کسی هست لطفا با این شماره تماس بگیره: 093500000',
-              offerType: 'Buy',
-              imageAddress: '',
-            });
-          }}
-          deleteButtonOnPress={() => {
-            setDeleteModalOpen(true);
-          }}
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacardWithButton
-          onPress={() => {
-            navigation.navigate('AdvertisementPage', {
-              title: 'کتاب ریاضی 1 نوشته توماس',
-              price: '35000',
-              description: 'سلام کسی کتاب ریاضی 1 توماس رو داره؟ 0936656981',
-              imageAddress: require('../../resources/photos/PanelPages/sampleBook.png'),
-            });
-          }}
-          editButtonOnPress={() => {
-            navigation.navigate('EditAdvertisementPage', {
-              title: 'کتاب ریاضی 1 نوشته توماس',
-              price: '35000',
-              description: 'سلام کسی کتاب ریاضی 1 توماس رو داره؟ 0936656981',
-              offerType: 'Sell',
-              imageAddress: '',
-            });
-          }}
-          deleteButtonOnPress={() => {
-            setDeleteModalOpen(true);
-          }}
-          title="کتاب ریاضی 1 نوشته توماس"
-          price="35000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacardWithButton
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
-        <BookPlacardWithButton
-          title="نیازمند به کتاب مبانی ریاضی نوشته لین و لین"
-          price="20000"
-          imageAddress={require('../../resources/photos/PanelPages/sampleBook.png')}
-        />
+        {myPlacards.map(data => {
+          return (
+            <BookPlacardWithButton
+              title={data.title}
+              price={data.price}
+              key={data.offerId}
+              onPress={() => {
+                navigation.navigate('AdvertisementPage', {
+                  title: data.title,
+                  price: data.price,
+                  description: data.description,
+                });
+              }}
+              editButtonOnPress={() => {
+                navigation.navigate('EditAdvertisementPage', {
+                  title: data.title,
+                  price: data.price,
+                  description: data.description,
+                  offerType: data.offerType,
+                });
+              }}
+              deleteButtonOnPress={() => {
+                setDeleteModalOpen(true);
+                setRemovingPlacardId(data.offerId);
+                console.log(removingPlacardId); // state does not change immediately
+              }}
+            />
+          );
+        })}
       </ScrollView>
 
       {/* Delete Placard Modal */}
@@ -270,6 +282,32 @@ export default function MyAdvertisementPage({navigation}) {
             </Text>
             <View style={styles.deletePlacardModalButtons}>
               <ActionButton
+                onPressFunction={() => {
+                  console.log('removing item: ' + removingPlacardId);
+                  removePlacard(removingPlacardId).then(async response => {
+                    if (response.status === 200) {
+                      if (Platform.OS === 'android') {
+                        ToastAndroid.show(
+                          'آگهی شما با موفقیت حذف شد',
+                          ToastAndroid.TOP,
+                        );
+                      } else {
+                        AlertIOS.alert('آگهی شما با موفقیت حذف شد');
+                      }
+                    } else {
+                      const data = await response.json();
+                      if (Platform.OS === 'android') {
+                        ToastAndroid.show(
+                          data.errors[0].message,
+                          ToastAndroid.TOP,
+                        );
+                      } else {
+                        AlertIOS.alert(data.errors[0].message);
+                      }
+                    }
+                  });
+                  setDeleteModalOpen(false);
+                }}
                 message="بله"
                 textColor="white"
                 bgColor="rgb(0,173,181)"

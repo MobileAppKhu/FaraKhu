@@ -1,5 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  Platform,
+  ToastAndroid,
+  AlertIOS,
+} from 'react-native';
 import styles from './styles';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import CheckBox from '@react-native-community/checkbox';
@@ -8,6 +17,38 @@ import FaraKhuButton from '../../panelPages/Component/FaraKhuButton';
 
 export default function MakeAdvertisementPage({navigation}) {
   const [checked, setChecked] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [placardType, setPlacardType] = useState('');
+  const [price, setPrice] = useState('');
+
+  async function createPlacardFunction() {
+    console.log(title);
+    console.log(description);
+    console.log(price);
+    console.log(placardType);
+    try {
+      return await fetch(
+        'https://api.farakhu.markop.ir/api/Offer/CreateOffer',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Title: title,
+            Description: description,
+            OfferType: placardType,
+            Price: price,
+            AvatarId: 'smiley.png',
+          }),
+        },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <View
       style={[
@@ -50,6 +91,7 @@ export default function MakeAdvertisementPage({navigation}) {
                 },
               ]}>
               <TextInput
+                onChangeText={data => setTitle(data)}
                 maxLength={40}
                 textAlign={'right'}
                 style={{
@@ -77,6 +119,7 @@ export default function MakeAdvertisementPage({navigation}) {
                 },
               ]}>
               <TextInput
+                onChangeText={data => setDescription(data)}
                 textAlign={'right'}
                 multiline={true}
                 style={{
@@ -100,6 +143,7 @@ export default function MakeAdvertisementPage({navigation}) {
                 },
               ]}>
               <TextInput
+                onChangeText={data => setPrice(data)}
                 keyboardType="numeric"
                 textAlign={'right'}
                 style={{
@@ -134,7 +178,10 @@ export default function MakeAdvertisementPage({navigation}) {
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
                   value={checked === 'first' ? true : false}
-                  onValueChange={() => setChecked('first')}
+                  onValueChange={() => {
+                    setChecked('first');
+                    setPlacardType(1);
+                  }}
                 />
               </View>
               <View style={styles.placardTypeOption}>
@@ -144,7 +191,10 @@ export default function MakeAdvertisementPage({navigation}) {
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
                   value={checked === 'second' ? true : false}
-                  onValueChange={() => setChecked('second')}
+                  onValueChange={() => {
+                    setChecked('second');
+                    setPlacardType(2);
+                  }}
                 />
               </View>
             </View>
@@ -180,7 +230,37 @@ export default function MakeAdvertisementPage({navigation}) {
             <FaraKhuButton
               message="تایید"
               onPressFunction={() => {
-                navigation.navigate('MakeAdvertisementSuccessfully');
+                if (
+                  title !== '' &&
+                  description !== '' &&
+                  price !== '' &&
+                  placardType !== ''
+                ) {
+                  createPlacardFunction().then(async response => {
+                    if (response.status === 200) {
+                      navigation.navigate('MakeAdvertisementSuccessfully');
+                    } else {
+                      const data = await response.json();
+                      if (Platform.OS === 'android') {
+                        ToastAndroid.show(
+                          data.errors[0].message,
+                          ToastAndroid.TOP,
+                        );
+                      } else {
+                        AlertIOS.alert(data.errors[0].message);
+                      }
+                    }
+                  });
+                } else {
+                  if (Platform.OS === 'android') {
+                    ToastAndroid.show(
+                      'گزینه های بالا نمیتوانند خالی باشند',
+                      ToastAndroid.TOP,
+                    );
+                  } else {
+                    AlertIOS.alert('گزینه های بالا نمیتوانند خالی باشند');
+                  }
+                }
               }}
             />
           </View>

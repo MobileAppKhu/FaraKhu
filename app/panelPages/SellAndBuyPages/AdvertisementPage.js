@@ -100,6 +100,7 @@ export default function AdvertisementPage({navigation, route}) {
                 fontFamily: 'Samim',
                 fontSize: 15,
                 paddingTop: 7,
+                textAlign: 'right',
               }}>
               {route.params.description}
             </Text>
