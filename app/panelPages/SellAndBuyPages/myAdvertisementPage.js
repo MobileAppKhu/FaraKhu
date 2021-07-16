@@ -13,6 +13,7 @@ import {
   Platform,
   ToastAndroid,
   AlertIOS,
+  RefreshControl,
 } from 'react-native';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import SellAndBuyButton from './Components/SellAndBuyButton';
@@ -63,6 +64,7 @@ export default function MyAdvertisementPage({navigation}) {
   const [searchItem, setSearchItem] = useState('');
 
   const [removingPlacardId, setRemovingPlacardId] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
 
   function searchPlacard(searchInput = '') {
     let placardType;
@@ -275,7 +277,24 @@ export default function MyAdvertisementPage({navigation}) {
       />
 
       {/* Book Placard Section */}
-      <ScrollView style={styles.bookPlacardsContainer}>
+      <ScrollView
+        style={styles.bookPlacardsContainer}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => {
+              setRefreshing(true);
+              getMyBookPlacards().then(data => {
+                setMyPlacards(data.offers);
+                setOutputPlacards(data.offers);
+              });
+              setTimeout(() => {
+                setRefreshing(false);
+              }, 1500);
+            }}
+            colors={['#4285F4', '#DB4437', '#F4B400', '#0F9D58']}
+          />
+        }>
         {outputPlacards.map(data => {
           return (
             <BookPlacardWithButton
@@ -295,6 +314,7 @@ export default function MyAdvertisementPage({navigation}) {
                   price: data.price,
                   description: data.description,
                   offerType: data.offerType,
+                  offerId: data.offerId,
                 });
               }}
               deleteButtonOnPress={() => {

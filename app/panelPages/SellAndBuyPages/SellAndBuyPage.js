@@ -25,6 +25,7 @@ export default function SellAndBuyPage({navigation}) {
   const [refreshing, setRefreshing] = useState(false);
 
   async function getBookPlacards(searchInput = '') {
+    setRefreshing(true);
     let placardType; //placardType:  1 is Buy / 2 is Sell
     if (checkedBuy === true && checkedSell === false) {
       placardType = 1;
@@ -52,6 +53,7 @@ export default function SellAndBuyPage({navigation}) {
           })
           .then(data => {
             setPlacards(data.offer);
+            setRefreshing(false);
           });
       } catch (err) {
         console.log(err);
@@ -76,6 +78,7 @@ export default function SellAndBuyPage({navigation}) {
           })
           .then(data => {
             setPlacards(data.offer);
+            setRefreshing(false);
           });
       } catch (err) {
         console.log(err);
@@ -254,11 +257,7 @@ export default function SellAndBuyPage({navigation}) {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={() => {
-              setRefreshing(true);
               getBookPlacards();
-              setTimeout(() => {
-                setRefreshing(false);
-              }, 1500);
             }}
             colors={['#4285F4', '#DB4437', '#F4B400', '#0F9D58']}
           />
