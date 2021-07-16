@@ -1,5 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  Platform,
+  ToastAndroid,
+  AlertIOS,
+} from 'react-native';
 import styles from './styles';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import CheckBox from '@react-native-community/checkbox';
@@ -7,9 +16,37 @@ import Colors from '../colors';
 import FaraKhuButton from '../Component/FaraKhuButton';
 
 export default function EditAdvertisementPage({navigation, route}) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [placardType, setPlacardType] = useState('');
+  const [price, setPrice] = useState('');
   const [checked, setChecked] = useState(
     route.params.offerType === 'Buy' ? 'first' : 'second',
   );
+
+  async function updatePlacardFunction() {
+    try {
+      return await fetch(
+        'https://api.farakhu.markop.ir/api/Offer/UpdateOffer',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Title: title,
+            Description: description,
+            OfferType: placardType,
+            Price: price,
+            offerId: route.params.offerId,
+          }),
+        },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <View
       style={[
@@ -53,6 +90,9 @@ export default function EditAdvertisementPage({navigation, route}) {
               ]}>
               <TextInput
                 defaultValue={route.params.title}
+                onChangeText={data => {
+                  setTitle(data);
+                }}
                 maxLength={40}
                 textAlign={'right'}
                 style={{
@@ -81,6 +121,9 @@ export default function EditAdvertisementPage({navigation, route}) {
               ]}>
               <TextInput
                 defaultValue={route.params.description}
+                onChangeText={data => {
+                  setDescription(data);
+                }}
                 textAlign={'right'}
                 multiline={true}
                 style={{
@@ -105,6 +148,9 @@ export default function EditAdvertisementPage({navigation, route}) {
               ]}>
               <TextInput
                 defaultValue={route.params.price}
+                onChangeText={data => {
+                  setPrice(data);
+                }}
                 keyboardType="numeric"
                 textAlign={'right'}
                 style={{
@@ -139,7 +185,10 @@ export default function EditAdvertisementPage({navigation, route}) {
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
                   value={checked === 'first' ? true : false}
-                  onValueChange={() => setChecked('first')}
+                  onValueChange={() => {
+                    setChecked('first');
+                    setPlacardType(1);
+                  }}
                 />
               </View>
               <View style={styles.placardTypeOption}>
@@ -149,7 +198,10 @@ export default function EditAdvertisementPage({navigation, route}) {
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
                   value={checked === 'second' ? true : false}
-                  onValueChange={() => setChecked('second')}
+                  onValueChange={() => {
+                    setChecked('second');
+                    setPlacardType(2);
+                  }}
                 />
               </View>
             </View>
@@ -184,7 +236,34 @@ export default function EditAdvertisementPage({navigation, route}) {
             </View>
           </View>
           <View style={{marginTop: 30}}>
-            <FaraKhuButton message="تایید" />
+            <FaraKhuButton
+              message="تایید"
+              onPressFunction={() => {
+                updatePlacardFunction().then(async response => {
+                  if (response.status === 200) {
+                    if (Platform.OS === 'android') {
+                      ToastAndroid.show(
+                        'آگهی شما با موفقیت ویرایش شد',
+                        ToastAndroid.TOP,
+                      );
+                    } else {
+                      AlertIOS.alert('آگهی شما با موفقیت ویرایش شد');
+                    }
+                    navigation.pop();
+                  } else {
+                    const data = await response.json();
+                    if (Platform.OS === 'android') {
+                      ToastAndroid.show(
+                        data.errors[0].message,
+                        ToastAndroid.TOP,
+                      );
+                    } else {
+                      AlertIOS.alert(data.errors[0].message);
+                    }
+                  }
+                });
+              }}
+            />
           </View>
         </View>
       </View>
