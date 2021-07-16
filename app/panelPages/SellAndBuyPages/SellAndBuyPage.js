@@ -31,29 +31,55 @@ export default function SellAndBuyPage({navigation}) {
     } else if (checkedBuy === false && checkedSell === true) {
       placardType = 2;
     } else {
-      placardType = 1; // *Need Edit
+      placardType = 0;
     }
-    try {
-      fetch('https://api.farakhu.markop.ir/api/Offer/ViewOffers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          OfferType: placardType,
-          Search: searchInput,
-          Start: '0',
-          Step: '50',
-        }),
-      })
-        .then(async response => {
-          return await response.json();
+    if (placardType === 1 || placardType === 2) {
+      try {
+        fetch('https://api.farakhu.markop.ir/api/Offer/ViewOffers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            OfferType: placardType,
+            Search: searchInput,
+            Start: '0',
+            Step: '50',
+          }),
         })
-        .then(data => {
-          setPlacards(data.offer);
-        });
-    } catch (err) {
-      console.log(err);
+          .then(async response => {
+            return await response.json();
+          })
+          .then(data => {
+            setPlacards(data.offer);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    // get both Sell & Buy
+    else if (placardType === 0) {
+      try {
+        fetch('https://api.farakhu.markop.ir/api/Offer/ViewOffers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Search: searchInput,
+            Start: '0',
+            Step: '50',
+          }),
+        })
+          .then(async response => {
+            return await response.json();
+          })
+          .then(data => {
+            setPlacards(data.offer);
+          });
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
