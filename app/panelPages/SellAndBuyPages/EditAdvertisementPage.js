@@ -16,10 +16,12 @@ import Colors from '../colors';
 import FaraKhuButton from '../Component/FaraKhuButton';
 
 export default function EditAdvertisementPage({navigation, route}) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [placardType, setPlacardType] = useState('');
-  const [price, setPrice] = useState('');
+  const [title, setTitle] = useState(route.params.title);
+  const [description, setDescription] = useState(route.params.description);
+  const [placardType, setPlacardType] = useState(
+    route.params.offerType === 'Buy' ? 1 : 2,
+  );
+  const [price, setPrice] = useState(route.params.price);
   const [checked, setChecked] = useState(
     route.params.offerType === 'Buy' ? 'first' : 'second',
   );
@@ -239,29 +241,43 @@ export default function EditAdvertisementPage({navigation, route}) {
             <FaraKhuButton
               message="تایید"
               onPressFunction={() => {
-                updatePlacardFunction().then(async response => {
-                  if (response.status === 200) {
-                    if (Platform.OS === 'android') {
-                      ToastAndroid.show(
-                        'آگهی شما با موفقیت ویرایش شد',
-                        ToastAndroid.TOP,
-                      );
+                if (
+                  title !== '' &&
+                  description !== '' &&
+                  price !== '' &&
+                  placardType !== ''
+                ) {
+                  updatePlacardFunction().then(async response => {
+                    if (response.status === 200) {
+                      if (Platform.OS === 'android') {
+                        ToastAndroid.show(
+                          'آگهی شما با موفقیت ویرایش شد',
+                          ToastAndroid.TOP,
+                        );
+                      } else {
+                        AlertIOS.alert('آگهی شما با موفقیت ویرایش شد');
+                      }
+                      navigation.pop();
                     } else {
-                      AlertIOS.alert('آگهی شما با موفقیت ویرایش شد');
+                      const data = await response.json();
+                      console.log(data);
+                      if (Platform.OS === 'android') {
+                        ToastAndroid.show(data.errors, ToastAndroid.TOP);
+                      } else {
+                        AlertIOS.alert(data.errors);
+                      }
                     }
-                    navigation.pop();
+                  });
+                } else {
+                  if (Platform.OS === 'android') {
+                    ToastAndroid.show(
+                      'گزینه های بالا نمیتوانند خالی باشند',
+                      ToastAndroid.TOP,
+                    );
                   } else {
-                    const data = await response.json();
-                    if (Platform.OS === 'android') {
-                      ToastAndroid.show(
-                        data.errors[0].message,
-                        ToastAndroid.TOP,
-                      );
-                    } else {
-                      AlertIOS.alert(data.errors[0].message);
-                    }
+                    AlertIOS.alert('گزینه های بالا نمیتوانند خالی باشند');
                   }
-                });
+                }
               }}
             />
           </View>
