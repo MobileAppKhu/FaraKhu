@@ -14,6 +14,7 @@ import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import CheckBox from '@react-native-community/checkbox';
 import Colors from '../colors';
 import FaraKhuButton from '../../panelPages/Component/FaraKhuButton';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 export default function MakeAdvertisementPage({navigation}) {
   const [checked, setChecked] = useState('');
@@ -21,12 +22,9 @@ export default function MakeAdvertisementPage({navigation}) {
   const [description, setDescription] = useState('');
   const [placardType, setPlacardType] = useState('');
   const [price, setPrice] = useState('');
+  const [placardPhoto, setPlacardPhoto] = useState(null);
 
-  async function createPlacardFunction() {
-    console.log(title);
-    console.log(description);
-    console.log(price);
-    console.log(placardType);
+  async function createPlacardFunction(avatarId) {
     try {
       return await fetch(
         'https://api.farakhu.markop.ir/api/Offer/CreateOffer',
@@ -40,13 +38,55 @@ export default function MakeAdvertisementPage({navigation}) {
             Description: description,
             OfferType: placardType,
             Price: price,
-            AvatarId: 'smiley.png',
+            AvatarId: avatarId,
           }),
         },
       );
     } catch (err) {
       console.log(err);
     }
+  }
+
+  async function uploadPhoto() {
+    console.log('uploadPhoto run');
+    return await fetch('https://api.farakhu.markop.ir/api/File/Upload', {
+      method: 'POST',
+      body: createFormData(placardPhoto),
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log('upload successfull: ', response);
+        setPlacardPhoto(null);
+        return response.fileId;
+      })
+      .catch(err => {
+        console.log('upload error', err);
+      });
+  }
+
+  function handleChoosePhoto() {
+    const options = {mediaType: 'photo', includeBase64: true};
+    launchImageLibrary(options, response => {
+      // console.log(response);
+      if (response && !response.didCancel) {
+        if (response.assets[0].uri) {
+          setPlacardPhoto(response.assets[0]);
+        }
+      }
+    });
+  }
+
+  function createFormData(photo) {
+    const data = new FormData();
+    data.append('photo', {
+      name: photo.fileName,
+      type: photo.type,
+      uri:
+        Platform.OS === 'android'
+          ? photo.uri
+          : photo.uri.replace('file://', ''),
+    });
+    return data;
   }
 
   return (
@@ -209,6 +249,7 @@ export default function MakeAdvertisementPage({navigation}) {
                   },
                 ]}>
                 <TouchableOpacity
+                  onPress={() => handleChoosePhoto()}
                   activeOpacity={0.5}
                   style={{
                     alignItems: 'center',
@@ -222,7 +263,11 @@ export default function MakeAdvertisementPage({navigation}) {
                       aspectRatio: 1,
                       resizeMode: 'cover',
                     }}
-                    source={require('../../resources/photos/PanelPages/plus-green.png')}
+                    source={
+                      placardPhoto == null
+                        ? require('../../resources/photos/PanelPages/plus-green.png')
+                        : {uri: placardPhoto.uri}
+                    }
                   />
                 </TouchableOpacity>
               </View>
@@ -238,7 +283,12 @@ export default function MakeAdvertisementPage({navigation}) {
                   price !== '' &&
                   placardType !== ''
                 ) {
-                  createPlacardFunction().then(async response => {
+                  let avatarId = 'smiley.png';
+                  if (placardPhoto != null) {
+                    console.log('uplodaing');
+                    uploadPhoto().then(response => (avatarId = response));
+                  }
+                  createPlacardFunction(avatarId).then(async response => {
                     if (response.status === 200) {
                       navigation.navigate('MakeAdvertisementSuccessfully');
                     } else {
