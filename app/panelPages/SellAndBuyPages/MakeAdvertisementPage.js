@@ -25,6 +25,7 @@ export default function MakeAdvertisementPage({navigation}) {
   const [placardPhoto, setPlacardPhoto] = useState(null);
 
   async function createPlacardFunction(avatarId) {
+    console.log('cpf : ', avatarId);
     try {
       return await fetch(
         'https://api.farakhu.markop.ir/api/Offer/CreateOffer',
@@ -47,9 +48,9 @@ export default function MakeAdvertisementPage({navigation}) {
     }
   }
 
-  async function uploadPhoto() {
+  function uploadPhoto() {
     console.log('uploadPhoto run');
-    return await fetch('https://api.farakhu.markop.ir/api/File/Upload', {
+    return fetch('https://api.farakhu.markop.ir/api/File/Upload', {
       method: 'POST',
       body: createFormData(placardPhoto),
     })
@@ -67,7 +68,6 @@ export default function MakeAdvertisementPage({navigation}) {
   function handleChoosePhoto() {
     const options = {mediaType: 'photo', includeBase64: true};
     launchImageLibrary(options, response => {
-      // console.log(response);
       if (response && !response.didCancel) {
         if (response.assets[0].uri) {
           setPlacardPhoto(response.assets[0]);
@@ -285,24 +285,41 @@ export default function MakeAdvertisementPage({navigation}) {
                 ) {
                   let avatarId = 'smiley.png';
                   if (placardPhoto != null) {
-                    console.log('uplodaing');
-                    uploadPhoto().then(response => (avatarId = response));
-                  }
-                  createPlacardFunction(avatarId).then(async response => {
-                    if (response.status === 200) {
-                      navigation.navigate('MakeAdvertisementSuccessfully');
-                    } else {
-                      const data = await response.json();
-                      if (Platform.OS === 'android') {
-                        ToastAndroid.show(
-                          data.errors[0].message,
-                          ToastAndroid.TOP,
-                        );
+                    uploadPhoto().then(response => {
+                      avatarId = response;
+                      createPlacardFunction(avatarId).then(async response => {
+                        if (response.status === 200) {
+                          navigation.navigate('MakeAdvertisementSuccessfully');
+                        } else {
+                          const data = await response.json();
+                          if (Platform.OS === 'android') {
+                            ToastAndroid.show(
+                              data.errors[0].message,
+                              ToastAndroid.TOP,
+                            );
+                          } else {
+                            AlertIOS.alert(data.errors[0].message);
+                          }
+                        }
+                      });
+                    });
+                  } else {
+                    createPlacardFunction(avatarId).then(async response => {
+                      if (response.status === 200) {
+                        navigation.navigate('MakeAdvertisementSuccessfully');
                       } else {
-                        AlertIOS.alert(data.errors[0].message);
+                        const data = await response.json();
+                        if (Platform.OS === 'android') {
+                          ToastAndroid.show(
+                            data.errors[0].message,
+                            ToastAndroid.TOP,
+                          );
+                        } else {
+                          AlertIOS.alert(data.errors[0].message);
+                        }
                       }
-                    }
-                  });
+                    });
+                  }
                 } else {
                   if (Platform.OS === 'android') {
                     ToastAndroid.show(
