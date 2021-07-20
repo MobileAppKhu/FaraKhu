@@ -94,8 +94,6 @@ export default function BookPlacardWithButton({
               },
             ]}>
             <BookImage avatarId={avatarId} style={styles.placardImage} />
-
-            {/* <Image style={styles.placardImage} source={avatarId} /> */}
           </View>
         </View>
         <View style={styles.buttonContainer}>

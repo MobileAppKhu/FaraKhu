@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import CheckBox from '@react-native-community/checkbox';
 import Colors from '../colors';
 import FaraKhuButton from '../Component/FaraKhuButton';
+import {downloadPhoto} from './Components/BookPlacard';
 
 export default function EditAdvertisementPage({navigation, route}) {
   const [title, setTitle] = useState(route.params.title);
@@ -22,9 +23,16 @@ export default function EditAdvertisementPage({navigation, route}) {
     route.params.offerType === 'Buy' ? 1 : 2,
   );
   const [price, setPrice] = useState(route.params.price);
+  const [placardPhoto, setPlacardPhoto] = useState(null);
   const [checked, setChecked] = useState(
     route.params.offerType === 'Buy' ? 'first' : 'second',
   );
+
+  useEffect(() => {
+    downloadPhoto(route.params.imageAddress).then(imagePath => {
+      setPlacardPhoto(imagePath);
+    });
+  }, [route.params.imageAddress]);
 
   async function updatePlacardFunction() {
     try {
@@ -231,7 +239,11 @@ export default function EditAdvertisementPage({navigation, route}) {
                       aspectRatio: 1,
                       resizeMode: 'cover',
                     }}
-                    source={require('../../resources/photos/PanelPages/plus-green.png')}
+                    source={
+                      placardPhoto != null
+                        ? {uri: placardPhoto}
+                        : require('../../resources/photos/PanelPages/plus-green.png')
+                    }
                   />
                 </TouchableOpacity>
               </View>

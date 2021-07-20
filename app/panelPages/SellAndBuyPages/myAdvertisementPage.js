@@ -317,6 +317,7 @@ export default function MyAdvertisementPage({navigation}) {
                   description: data.description,
                   offerType: data.offerType,
                   offerId: data.offerId,
+                  imageAddress: data.avatarId,
                 });
               }}
               deleteButtonOnPress={() => {
