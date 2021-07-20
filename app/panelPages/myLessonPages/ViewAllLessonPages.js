@@ -26,7 +26,7 @@ export async function getAllLesson() {
   return ans;
 }
 
-export function MyLessonButton({nameOfLesson}) {
+export function MyLessonButton({nameOfLesson, courseId, navigation}) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -36,7 +36,12 @@ export function MyLessonButton({nameOfLesson}) {
           backgroundColor: Colors.topColor(),
           borderColor: Colors.borderTopColor(),
         },
-      ]}>
+      ]}
+      onPress={() => {
+        navigation.push('LessonPage', {
+          courseId: courseId,
+        });
+      }}>
       <BackgroundImage
         style={styles.myButtonImageStyle}
         resizeMode={'contain'}
@@ -99,7 +104,9 @@ export default function ViewAllLessonPages({navigation}) {
               return (
                 <MyLessonButton
                   key={data.courseId}
+                  courseId={data.courseId}
                   nameOfLesson={data.courseTitle}
+                  navigation={navigation}
                 />
               );
             })}

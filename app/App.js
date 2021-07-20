@@ -23,6 +23,7 @@ import ProfilePage from './panelPages/profilePages/ProfilePage';
 import EditProfilePage from './panelPages/profilePages/EditProfilePage';
 import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
 import PersonalCalender from './panelPages/calendarPages/PersonalCalender';
+import LessonPage from './panelPages/myLessonPages/LessonPage';
 
 const Stack = createStackNavigator();
 
@@ -85,6 +86,7 @@ export default function App() {
           component={ViewAllLessonPages}
         />
         <Stack.Screen name={'PersonalCalender'} component={PersonalCalender} />
+        <Stack.Screen name={'LessonPage'} component={LessonPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
