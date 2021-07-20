@@ -95,13 +95,21 @@ export default function EditProfilePage({navigation}) {
         <Image
           style={styles.profileImageStyle}
           resizeMode={'stretch'}
-          source={require('../../resources/photos/PanelPages/profilePhotoLight.png')}
+          source={
+            window.Theme === 'light'
+              ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
+              : require('../../resources/photos/PanelPages/profilePhotoDark.png')
+          }
         />
         <TouchableOpacity
           style={styles.changeProfilePhotoStyle}
           activeOpacity={0.5}>
           <Image
-            source={require('../../resources/photos/PanelPages/cameraLogo.png')}
+            source={
+              window.Theme === 'light'
+                ? require('../../resources/photos/PanelPages/cameraLogoLight.png')
+                : require('../../resources/photos/PanelPages/cameraLogoDark.png')
+            }
             style={styles.profileImageStyle}
             resizeMode={'stretch'}
           />
@@ -148,13 +156,17 @@ export default function EditProfilePage({navigation}) {
         textInputMessage={getFavourite.join(' ')}
       />
       <View style={styles.checkEmailShowView}>
-        <Text style={{fontSize: 18, fontFamily: 'Samim'}}>
+        <Text
+          style={[
+            {fontSize: 18, fontFamily: 'Samim'},
+            {color: Colors.accent()},
+          ]}>
           نشان دادن ایمیل:
         </Text>
         <CheckBox
           tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
           value={checked}
-          onValueChange={() => setChecked(checked === false ? true : false)}
+          onValueChange={() => setChecked(checked === false)}
         />
       </View>
       <FaraKhuButton

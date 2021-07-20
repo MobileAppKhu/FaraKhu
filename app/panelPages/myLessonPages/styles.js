@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   backgroundStyleOfMyLessonPage: {
@@ -20,8 +20,8 @@ export default StyleSheet.create({
   myButtonStyle: {
     marginBottom: 10,
     marginTop: 10,
-    width: 370,
-    height: 70,
+    width: Dimensions.get('window').width * 0.8,
+    height: Dimensions.get('window').height * 0.075,
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',

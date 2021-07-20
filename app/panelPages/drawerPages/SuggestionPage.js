@@ -51,7 +51,11 @@ export default function SuggestionPage(props) {
       </View>
       <ImageBackground
         style={styles.suggestionBackgroundImage}
-        source={require('../../resources/photos/PanelPages/suggestionImageLight.png')}>
+        source={
+          window.Theme === 'light'
+            ? require('../../resources/photos/PanelPages/suggestionImageLight.png')
+            : require('../../resources/photos/PanelPages/suggestionImageDark.png')
+        }>
         <Text style={styles.textOfSuggestion}>متن پیام</Text>
         <SuggestionTextInput
           onChangeText={data => {

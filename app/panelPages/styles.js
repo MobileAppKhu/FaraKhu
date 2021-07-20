@@ -10,10 +10,9 @@ export default StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   menuLogoImage: {
-    height: '36%',
-    width: '8%',
-    resizeMode: 'stretch',
-    marginRight: '10%',
+    height: '45%',
+    width: '10%',
+    marginRight: '5%',
   },
   towButtonViewStyle: {
     height: '12%',
@@ -45,9 +44,7 @@ export default StyleSheet.create({
     marginTop: '2.1%',
   },
   faraKhuLogo: {
-    width: '31%',
     height: '80%',
-    resizeMode: 'stretch',
     marginTop: '5%',
   },
   separatorLine: {
@@ -84,8 +81,8 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   profileTextStyle: {
-    marginTop: '11%',
+    position: 'absolute',
+    bottom: '15%',
     fontFamily: 'IranSans',
-    fontWeight: 'bold',
   },
 });

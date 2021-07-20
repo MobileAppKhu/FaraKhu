@@ -1,5 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 const Colors = {
   topColor: () =>
     window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(0,173,181)',
@@ -14,5 +12,7 @@ const Colors = {
   backgroundColor: () =>
     window.Theme === 'dark' ? 'rgb(57,62,70)' : 'rgb(238,238,238)',
   textHolderColor: () => (window.Theme === 'dark' ? 'grey' : 'black'),
+  backButtonColor: () =>
+    window.Theme === 'light' ? 'rgb(34,40,49)' : 'rgb(0,173,181)',
 };
 export default Colors;

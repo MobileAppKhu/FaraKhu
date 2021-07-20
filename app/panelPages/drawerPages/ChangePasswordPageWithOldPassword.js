@@ -45,7 +45,11 @@ export default function ChangePasswordPageWithOldPassword(props) {
         {backgroundColor: Colors.backgroundColor()},
       ]}>
       <BackgroundImage
-        source={require('../../resources/photos/PanelPages/ChangePasswordPageWithOldPasswordImageLight.png')}
+        source={
+          window.Theme === 'light'
+            ? require('../../resources/photos/PanelPages/ChangePasswordPageWithOldPasswordImageLight.png')
+            : require('../../resources/photos/PanelPages/ChangePasswordPageWithOldPasswordImageDark.png')
+        }
         style={styles.backgroundStyleOfChangePassword}>
         <View
           style={[

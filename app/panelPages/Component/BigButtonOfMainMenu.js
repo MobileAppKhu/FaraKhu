@@ -11,7 +11,13 @@ export default function BigButtonOfMainMenu({
   return (
     <TouchableOpacity
       onPress={onPressFunction}
-      style={[styles.bigButton, {backgroundColor: Colors.topColor()}]}
+      style={[
+        styles.bigButton,
+        {
+          backgroundColor: Colors.topColor(),
+          borderColor: Colors.borderTopColor(),
+        },
+      ]}
       activeOpacity={0.8}>
       <Text
         style={[styles.bigButtonText, {color: Colors.bigButtonTextColor()}]}>

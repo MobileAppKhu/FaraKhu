@@ -23,7 +23,10 @@ export default function SuccessfullyPage({navigation, imageAddress, message}) {
     <View>
       <BackgroundImage
         source={imageAddress}
-        style={styles.suggestionSuccessfullyImage}>
+        style={[
+          styles.suggestionSuccessfullyImage,
+          {backgroundColor: Colors.backgroundColor()},
+        ]}>
         <Animated.Text
           style={[
             styles.animatedTextStyle,

@@ -66,7 +66,11 @@ export default function ProfilePage({navigation}) {
           <Image
             style={styles.profileImageStyle}
             resizeMode={'stretch'}
-            source={require('../../resources/photos/PanelPages/profilePhotoLight.png')}
+            source={
+              window.Theme === 'light'
+                ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
+                : require('../../resources/photos/PanelPages/profilePhotoDark.png')
+            }
           />
         </View>
       </View>
@@ -86,7 +90,7 @@ export default function ProfilePage({navigation}) {
               fontFamily: 'IranSans',
               fontSize: 20,
             },
-            {color: colors.textHolderColor()},
+            {color: colors.accent()},
           ]}>
           علاقه مندی ها
         </Text>
@@ -98,7 +102,9 @@ export default function ProfilePage({navigation}) {
           style={{marginRight: '5%'}}
         />
       </View>
-      <View style={styles.separatorLine} />
+      <View
+        style={[styles.separatorLine, {backgroundColor: colors.accent()}]}
+      />
       <View style={{width: '100%', flex: 1, alignItems: 'center'}}>
         <Text style={styles.normalTextOfTopPart}>{getFavourite}</Text>
       </View>
@@ -109,7 +115,11 @@ export default function ProfilePage({navigation}) {
         ]}
       />
       <ProfileButton
-        address={require('../../resources/photos/PanelPages/homeImage.png')}
+        address={
+          window.Theme === 'light'
+            ? require('../../resources/photos/PanelPages/homeImageLight.png')
+            : require('../../resources/photos/PanelPages/homeImageDark.png')
+        }
         onPressFunction={() => {
           navigation.pop();
         }}

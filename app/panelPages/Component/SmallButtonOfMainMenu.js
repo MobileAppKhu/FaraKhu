@@ -3,9 +3,15 @@ import {Image, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
 
-export default function ({message, imageAddress, marginRight}) {
+export default function ({
+  message,
+  imageAddress,
+  marginRight,
+  onPressFunction,
+}) {
   return (
     <TouchableOpacity
+      onPress={onPressFunction}
       style={[
         styles.smallButton,
         {

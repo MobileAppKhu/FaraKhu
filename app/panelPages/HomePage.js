@@ -48,10 +48,13 @@ export function CustomDrawer(props) {
   return (
     <View>
       <View style={styles.customDrawerStyle}>
-        <Image
-          source={require('../resources/photos/PanelPages/faraKhuLogo.png')}
-          style={styles.faraKhuLogo}
-        />
+        <View style={styles.faraKhuLogo}>
+          <Image
+            resizeMode={'contain'}
+            source={require('../resources/photos/PanelPages/faraKhuLogo.png')}
+            style={{flex: 1, aspectRatio: 1}}
+          />
+        </View>
         <Text style={[styles.iconTextStyle, {color: 'rgb(238,238,238)'}]}>
           فراخو
         </Text>
@@ -189,12 +192,18 @@ function Home({navigation}) {
         <TouchableWithoutFeedback
           onPress={() => {
             navigation.toggleDrawer();
-          }}
-          style={styles.menuLogoImage}>
-          <Image
-            source={require('../resources/photos/PanelPages/menuLogoLight.png')}
-            style={styles.menuLogoImage}
-          />
+          }}>
+          <View style={styles.menuLogoImage}>
+            <Image
+              resizeMode={'contain'}
+              source={
+                window.Theme === 'light'
+                  ? require('../resources/photos/PanelPages/menuLogoLight.png')
+                  : require('../resources/photos/PanelPages/menuLogoDark.png')
+              }
+              style={{flex: 1, aspectRatio: 1}}
+            />
+          </View>
         </TouchableWithoutFeedback>
         <Text
           style={[
@@ -209,39 +218,70 @@ function Home({navigation}) {
           navigation.push('ViewAllLessonPages');
         }}
         message={'درس های من'}
-        imageAddress={require('../resources/photos/PanelPages/myLessonLogoLight.png')}
+        imageAddress={
+          window.Theme === 'light'
+            ? require('../resources/photos/PanelPages/myLessonLogoLight.png')
+            : require('../resources/photos/PanelPages/myLessonLogoDark.png')
+        }
       />
       <View style={styles.towButtonViewStyle}>
         <SmallButtonOfMainMenu
           message={'خرید و فروش کتاب'}
-          imageAddress={require('../resources/photos/PanelPages/bookLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/bookLogoLight.png')
+              : require('../resources/photos/PanelPages/bookLogoDark.png')
+          }
         />
         <SmallButtonOfMainMenu
+          onPressFunction={() => {
+            navigation.push('PersonalCalender');
+          }}
           message={'تقویم شخصی'}
           marginRight={'3.5%'}
-          imageAddress={require('../resources/photos/PanelPages/calendarLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/calendarLogoLight.png')
+              : require('../resources/photos/PanelPages/calendarLogoDark.png')
+          }
         />
       </View>
       <View style={styles.towButtonViewStyle}>
         <SmallButtonOfMainMenu
           message={'فراخوان ها'}
-          imageAddress={require('../resources/photos/PanelPages/callLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/callLogoLight.png')
+              : require('../resources/photos/PanelPages/callLogoDark.png')
+          }
         />
         <SmallButtonOfMainMenu
           marginRight={'3.5%'}
           message={'اخبار دانشگاه'}
-          imageAddress={require('../resources/photos/PanelPages/newsLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/newsLogoLight.png')
+              : require('../resources/photos/PanelPages/newsLogoDark.png')
+          }
         />
       </View>
       <View style={styles.towButtonViewStyle}>
         <SmallButtonOfMainMenu
           message={'انجمن های دانشگاه'}
-          imageAddress={require('../resources/photos/PanelPages/associationLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/associationLogoLight.png')
+              : require('../resources/photos/PanelPages/associationLogoDark.png')
+          }
         />
         <SmallButtonOfMainMenu
           message={'نقشه دانشگاه'}
           marginRight={'3.5%'}
-          imageAddress={require('../resources/photos/PanelPages/mapLogoLight.png')}
+          imageAddress={
+            window.Theme === 'light'
+              ? require('../resources/photos/PanelPages/mapLogoLight.png')
+              : require('../resources/photos/PanelPages/mapLogoDark.png')
+          }
         />
       </View>
       <View style={styles.viewOfTwoImage}>
@@ -278,7 +318,11 @@ function Home({navigation}) {
       </View>
       <ProfileButton
         navigation={navigation}
-        address={require('../resources/photos/PanelPages/profileLogo.png')}
+        address={
+          window.Theme === 'light'
+            ? require('../resources/photos/PanelPages/profileLogoLight.png')
+            : require('../resources/photos/PanelPages/profileLogoDark.png')
+        }
         onPressFunction={() => {
           navigation.push('ProfilePage');
         }}

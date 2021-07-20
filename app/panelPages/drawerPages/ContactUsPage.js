@@ -50,7 +50,11 @@ export default function ContactUsPage({navigation}) {
       <View style={styles.containerStyleOfImage}>
         <Image
           resizeMode={'stretch'}
-          source={require('../../resources/photos/PanelPages/emailLogo.png')}
+          source={
+            window.Theme === 'light'
+              ? require('../../resources/photos/PanelPages/contactUsEmailLogoLight.png')
+              : require('../../resources/photos/PanelPages/contactUsEmailLogoDark.png')
+          }
           style={styles.styleOfImage}
         />
       </View>

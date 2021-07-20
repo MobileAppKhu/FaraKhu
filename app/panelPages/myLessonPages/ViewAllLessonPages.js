@@ -40,7 +40,11 @@ export function MyLessonButton({nameOfLesson}) {
       <BackgroundImage
         style={styles.myButtonImageStyle}
         resizeMode={'contain'}
-        source={require('../../resources/photos/PanelPages/myLessonButtonImage.png')}>
+        source={
+          window.Theme === 'light'
+            ? require('../../resources/photos/PanelPages/myLessonButtonImageLight.png')
+            : require('../../resources/photos/PanelPages/myLessonButtonImageDark.png')
+        }>
         <View style={styles.myButtonViewStyle}>
           <Icon
             name={'leftcircleo'}
