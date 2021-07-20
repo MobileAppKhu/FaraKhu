@@ -4,12 +4,12 @@ import {View, Text, Image, TouchableOpacity, Platform} from 'react-native';
 import {Icon} from 'react-native-elements';
 import RNFS from 'react-native-fs';
 
-function getImageFilePath(imageName, extension) {
+export function getImageFilePath(imageName, extension) {
   const FILE = Platform.OS === 'ios' ? '' : 'file://';
   return FILE + RNFS.CachesDirectoryPath + '/' + imageName + '.' + extension;
 }
 
-function downloadPhoto(avatarId) {
+export function downloadPhoto(avatarId) {
   return new Promise(resolve => {
     fetch(
       'https://api.farakhu.markop.ir/api/File/Download' + '?FileId=' + avatarId,
@@ -52,7 +52,7 @@ function downloadPhoto(avatarId) {
   });
 }
 
-function BookImage({avatarId}) {
+export function BookImage({avatarId, style}) {
   const [imageAddress, setImageAddress] = useState(null);
   useEffect(() => {
     downloadPhoto(avatarId).then(imagePath => {
@@ -73,7 +73,7 @@ function BookImage({avatarId}) {
         />
       )}
       {imageAddress != null && (
-        <Image style={styles.placardImage} source={{uri: imageAddress}} />
+        <Image style={style} source={{uri: imageAddress}} />
       )}
     </>
   );
@@ -126,7 +126,7 @@ export default function BookPlacard({title, price, avatarId, onPress}) {
                   : 'rgba(112,112,112, 0.2)',
             },
           ]}>
-          <BookImage avatarId={avatarId} />
+          <BookImage avatarId={avatarId} style={styles.placardImage} />
         </View>
       </View>
     </TouchableOpacity>

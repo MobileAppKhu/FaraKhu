@@ -150,9 +150,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   bookImage: {
-    height: '90%',
+    height: '95%',
     aspectRatio: 1,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   bookTitle: {
     fontFamily: 'Samim',

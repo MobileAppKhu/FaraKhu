@@ -5,6 +5,7 @@ import Colors from '../colors';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import {TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native';
+import {BookImage} from './Components/BookPlacard';
 
 export default function AdvertisementPage({navigation, route}) {
   return (
@@ -24,7 +25,10 @@ export default function AdvertisementPage({navigation, route}) {
           }}
         />
         <TouchableOpacity activeOpacity={0.8} style={styles.bookImageContainer}>
-          <Image style={styles.bookImage} />
+          <BookImage
+            avatarId={route.params.imageAddress}
+            style={styles.bookImage}
+          />
         </TouchableOpacity>
         <Text
           style={[

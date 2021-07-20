@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Colors from '../../colors';
 import {StyleSheet} from 'react-native';
+import {BookImage} from './BookPlacard';
 
 export function EditButton({
   message,
@@ -40,7 +41,7 @@ export function EditButton({
 export default function BookPlacardWithButton({
   title,
   price,
-  imageAddress,
+  avatarId,
   onPress,
   editButtonOnPress,
   deleteButtonOnPress,
@@ -92,7 +93,9 @@ export default function BookPlacardWithButton({
                     : 'rgba(112,112,112, 0.2)',
               },
             ]}>
-            <Image style={styles.placardImage} source={imageAddress} />
+            <BookImage avatarId={avatarId} style={styles.placardImage} />
+
+            {/* <Image style={styles.placardImage} source={avatarId} /> */}
           </View>
         </View>
         <View style={styles.buttonContainer}>
@@ -176,7 +179,7 @@ const styles = StyleSheet.create({
   },
   placardImage: {
     width: '100%',
-    resizeMode: 'contain',
+    height: '100%',
   },
   editButton: {
     alignItems: 'center',

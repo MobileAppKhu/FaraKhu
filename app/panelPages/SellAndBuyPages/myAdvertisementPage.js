@@ -301,11 +301,13 @@ export default function MyAdvertisementPage({navigation}) {
               title={data.title}
               price={data.price}
               key={data.offerId}
+              avatarId={data.avatarId}
               onPress={() => {
                 navigation.navigate('AdvertisementPage', {
                   title: data.title,
                   price: data.price,
                   description: data.description,
+                  imageAddress: data.avatarId,
                 });
               }}
               editButtonOnPress={() => {
