@@ -24,7 +24,7 @@ export default function AdvertisementPage({navigation, route}) {
           }}
         />
         <TouchableOpacity activeOpacity={0.8} style={styles.bookImageContainer}>
-          <Image source={route.params.imageAddress} style={styles.bookImage} />
+          <Image style={styles.bookImage} />
         </TouchableOpacity>
         <Text
           style={[

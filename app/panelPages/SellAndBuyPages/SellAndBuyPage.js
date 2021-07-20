@@ -268,14 +268,13 @@ export default function SellAndBuyPage({navigation}) {
               title={data.title}
               price={data.price}
               key={data.offerId}
+              avatarId={data.avatarId}
               onPress={() => {
                 navigation.navigate('AdvertisementPage', {
                   title: data.title,
                   price: data.price,
                   description: data.description,
-                  imageAddress: {
-                    uri: 'https://www.dliflc.edu/wp-content/uploads/2018/11/book.jpg',
-                  },
+                  imageAddress: data.avatarId,
                 });
               }}
             />

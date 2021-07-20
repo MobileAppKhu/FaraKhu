@@ -66,7 +66,7 @@ export default function MakeAdvertisementPage({navigation}) {
   }
 
   function handleChoosePhoto() {
-    const options = {mediaType: 'photo', includeBase64: true};
+    const options = {mediaType: 'photo'};
     launchImageLibrary(options, response => {
       if (response && !response.didCancel) {
         if (response.assets[0].uri) {
@@ -287,6 +287,7 @@ export default function MakeAdvertisementPage({navigation}) {
                   if (placardPhoto != null) {
                     uploadPhoto().then(response => {
                       avatarId = response;
+                      console.log('avatarId: ', avatarId);
                       createPlacardFunction(avatarId).then(async response => {
                         if (response.status === 200) {
                           navigation.navigate('MakeAdvertisementSuccessfully');

@@ -63,7 +63,7 @@ export default StyleSheet.create({
   },
   placardImage: {
     width: '100%',
-    resizeMode: 'contain',
+    height: '100%',
   },
   editButton: {
     alignItems: 'center',
