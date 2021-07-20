@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import Colors from '../colors';
 
 export default StyleSheet.create({
   bigButton: {
@@ -69,7 +68,7 @@ export default StyleSheet.create({
     opacity: 0.5,
   },
   BackButton: {
-    position: 'absuloute',
+    position: 'absolute',
     opacity: 0.5,
     marginRight: '75%',
     marginTop: '3%',

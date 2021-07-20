@@ -86,23 +86,25 @@ export default function ViewAllLessonPages({navigation}) {
             navigation.popToTop();
           }}
         />
-        <Text
-          style={[
-            styles.textStyleOfTopTextOfMyLessonPage,
-            {color: Colors.accent()},
-          ]}>
-          درس های من
-        </Text>
-        <ScrollView>
-          {getArray.map(data => {
-            return (
-              <MyLessonButton
-                key={data.courseId}
-                nameOfLesson={data.courseTitle}
-              />
-            );
-          })}
-        </ScrollView>
+        <View style={styles.detailViewStyle}>
+          <Text
+            style={[
+              styles.textStyleOfTopTextOfMyLessonPage,
+              {color: Colors.accent()},
+            ]}>
+            درس های من
+          </Text>
+          <ScrollView>
+            {getArray.map(data => {
+              return (
+                <MyLessonButton
+                  key={data.courseId}
+                  nameOfLesson={data.courseTitle}
+                />
+              );
+            })}
+          </ScrollView>
+        </View>
       </View>
     </View>
   );

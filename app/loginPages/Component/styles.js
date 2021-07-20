@@ -19,7 +19,6 @@ export default StyleSheet.create({
   },
   customTextInput: {
     flexDirection: 'row-reverse',
-    //justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'grey',
