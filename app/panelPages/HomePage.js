@@ -226,6 +226,10 @@ function Home({navigation}) {
       />
       <View style={styles.towButtonViewStyle}>
         <SmallButtonOfMainMenu
+          onPressFunction={() => {
+            console.log('hi');
+            navigation.push('SellAndBuyPage');
+          }}
           message={'خرید و فروش کتاب'}
           imageAddress={
             window.Theme === 'light'

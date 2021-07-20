@@ -22,8 +22,12 @@ import LoadingPage from './loginPages/LoadingPage';
 import ProfilePage from './panelPages/profilePages/ProfilePage';
 import EditProfilePage from './panelPages/profilePages/EditProfilePage';
 import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
-import PersonalCalender from './panelPages/calendarPages/PersonalCalender';
-import LessonPage from './panelPages/myLessonPages/LessonPage';
+import SellAndBuyPage from './panelPages/SellAndBuyPages/SellAndBuyPage';
+import MyAdvertisementPage from './panelPages/SellAndBuyPages/MyAdvertisementPage';
+import MakeAdvertisementPage from './panelPages/SellAndBuyPages/MakeAdvertisementPage';
+import EditAdvertisementPage from './panelPages/SellAndBuyPages/EditAdvertisementPage';
+import MakeAdvertisementSuccessfully from './panelPages/SellAndBuyPages/MakeAdvertisementSuccessfully';
+import AdvertisementPage from './panelPages/SellAndBuyPages/AdvertisementPage';
 
 const Stack = createStackNavigator();
 
@@ -85,8 +89,27 @@ export default function App() {
           name={'ViewAllLessonPages'}
           component={ViewAllLessonPages}
         />
-        <Stack.Screen name={'PersonalCalender'} component={PersonalCalender} />
-        <Stack.Screen name={'LessonPage'} component={LessonPage} />
+        <Stack.Screen name={'SellAndBuyPage'} component={SellAndBuyPage} />
+        <Stack.Screen
+          name={'MyAdvertisementPage'}
+          component={MyAdvertisementPage}
+        />
+        <Stack.Screen
+          name={'MakeAdvertisementPage'}
+          component={MakeAdvertisementPage}
+        />
+        <Stack.Screen
+          name={'EditAdvertisementPage'}
+          component={EditAdvertisementPage}
+        />
+        <Stack.Screen
+          name={'MakeAdvertisementSuccessfully'}
+          component={MakeAdvertisementSuccessfully}
+        />
+        <Stack.Screen
+          name={'AdvertisementPage'}
+          component={AdvertisementPage}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
