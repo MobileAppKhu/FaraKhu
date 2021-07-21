@@ -193,29 +193,48 @@ export default function EditProfilePage({navigation}) {
                   />
                 </View>
                 <View style={styles.avatarModalPhotos}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    activeOpacity={0.5}
+                    style={{width: '50%', aspectRatio: 1}}>
                     <Image
+                      style={{width: '100%', height: '100%'}}
                       source={require('../../resources/photos/PanelPages/smiley.png')}
                     />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    activeOpacity={0.5}
+                    style={{width: '50%', aspectRatio: 1}}>
                     <Image
+                      style={{width: '100%', height: '100%'}}
                       source={require('../../resources/photos/PanelPages/sad.png')}
                     />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    activeOpacity={0.5}
+                    style={{width: '50%', aspectRatio: 1}}>
                     <Image
+                      style={{width: '100%', height: '100%'}}
                       source={require('../../resources/photos/PanelPages/poker.png')}
                     />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    activeOpacity={0.5}
+                    style={{width: '50%', aspectRatio: 1}}>
                     <Image
+                      style={{width: '100%', height: '100%'}}
                       source={require('../../resources/photos/PanelPages/blink.png')}
                     />
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity>
-                  <Text>انتخاب عکس دلخواه</Text>
+                <TouchableOpacity style={{marginTop: 10}}>
+                  <Text
+                    style={{
+                      fontSize: 19,
+                      fontFamily: 'Samim',
+                      color: Colors.accent(),
+                    }}>
+                    انتخاب عکس دلخواه
+                  </Text>
                 </TouchableOpacity>
               </View>
             </Pressable>

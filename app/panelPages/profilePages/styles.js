@@ -127,7 +127,7 @@ export default StyleSheet.create({
   },
   avatarModal: {
     alignItems: 'center',
-    width: '80%',
+    width: '85%',
     height: '44%',
     borderWidth: 1,
     borderRadius: 15,
@@ -141,5 +141,15 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '2%',
+  },
+  avatarModalPhotos: {
+    width: '100%',
+    paddingHorizontal: '10%',
+    // backgroundColor: 'gold',
+    flexDirection: 'row-reverse',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5,
   },
 });
