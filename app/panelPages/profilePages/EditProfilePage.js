@@ -101,6 +101,7 @@ export default function EditProfilePage({navigation}) {
   const [getFavourite, setFavourite] = useState('');
   const [checked, setChecked] = useState(false);
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
+  const [avatarPhoto, setAvatarPhoto] = useState(null);
   useEffect(() => {
     getData().then(data => {
       setEmail(data.email);
@@ -130,15 +131,28 @@ export default function EditProfilePage({navigation}) {
         />
       </View>
       <View style={styles.editProfileImage}>
-        <Image
-          style={styles.profileImageStyle}
-          resizeMode={'stretch'}
-          source={
-            window.Theme === 'light'
-              ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
-              : require('../../resources/photos/PanelPages/profilePhotoDark.png')
-          }
-        />
+        {window.Theme === 'light' && (
+          <Image
+            style={styles.profileImageStyle}
+            resizeMode={'stretch'}
+            source={
+              avatarPhoto != null
+                ? avatarPhoto
+                : require('../../resources/photos/PanelPages/profilePhotoLight.png')
+            }
+          />
+        )}
+        {window.Theme === 'dark' && (
+          <Image
+            style={styles.profileImageStyle}
+            resizeMode={'stretch'}
+            source={
+              avatarPhoto != null
+                ? avatarPhoto
+                : require('../../resources/photos/PanelPages/profilePhotoDark.png')
+            }
+          />
+        )}
         <TouchableOpacity
           onPress={() => setAvatarModalOpen(true)}
           style={styles.changeProfilePhotoStyle}
@@ -194,6 +208,12 @@ export default function EditProfilePage({navigation}) {
                 </View>
                 <View style={styles.avatarModalPhotos}>
                   <TouchableOpacity
+                    onPress={() => {
+                      setAvatarPhoto(
+                        require('../../resources/photos/PanelPages/smiley.png'),
+                      );
+                      setAvatarModalOpen(false);
+                    }}
                     activeOpacity={0.5}
                     style={{width: '50%', aspectRatio: 1}}>
                     <Image
@@ -202,6 +222,12 @@ export default function EditProfilePage({navigation}) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
+                    onPress={() => {
+                      setAvatarPhoto(
+                        require('../../resources/photos/PanelPages/sad.png'),
+                      );
+                      setAvatarModalOpen(false);
+                    }}
                     activeOpacity={0.5}
                     style={{width: '50%', aspectRatio: 1}}>
                     <Image
@@ -210,6 +236,12 @@ export default function EditProfilePage({navigation}) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
+                    onPress={() => {
+                      setAvatarPhoto(
+                        require('../../resources/photos/PanelPages/poker.png'),
+                      );
+                      setAvatarModalOpen(false);
+                    }}
                     activeOpacity={0.5}
                     style={{width: '50%', aspectRatio: 1}}>
                     <Image
@@ -218,6 +250,12 @@ export default function EditProfilePage({navigation}) {
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
+                    onPress={() => {
+                      setAvatarPhoto(
+                        require('../../resources/photos/PanelPages/blink.png'),
+                      );
+                      setAvatarModalOpen(false);
+                    }}
                     activeOpacity={0.5}
                     style={{width: '50%', aspectRatio: 1}}>
                     <Image
