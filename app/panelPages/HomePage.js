@@ -10,6 +10,7 @@ import colors from './colors';
 import {Icon} from 'react-native-elements';
 import ContactUsPage from './drawerPages/ContactUsPage';
 import Colors from './colors';
+import CookieManager from '@react-native-cookies/cookies';
 
 const IconForDrawerItem = ({iconName, iconType, iconSize, text}) => {
   return (
@@ -181,6 +182,9 @@ export default function HomePage() {
 }
 
 function Home({navigation}) {
+  CookieManager.get('https://api.farakhu.markop.ir').then(cookies => {
+    console.log('CookieManager.get =>', cookies);
+  });
   return (
     <View
       style={{

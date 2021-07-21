@@ -16,6 +16,7 @@ export async function getAllLesson() {
       },
       body: JSON.stringify({}),
     }).then(async data => {
+      console.log(data);
       await data.json().then(allLesson => {
         ans = allLesson.courses.courses;
       });

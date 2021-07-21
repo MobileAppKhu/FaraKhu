@@ -1,30 +1,29 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Dimensions} from 'react-native';
 import Colors from '../colors';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
+import {BackgroundImage} from 'react-native-elements/dist/config';
 
 export default function PersonalCalender({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
-      <FaraKhuBackButton
-        navigationFunction={() => {
-          navigation.pop();
-        }}
-      />
-      <View
-        style={[
-          {backgroundColor: Colors.topColor()},
-          {
-            width: '140%',
-            borderBottomLeftRadius: 5000,
-            borderBottomRightRadius: 5000,
-            height: '30%',
-            marginTop: '-25%',
-          },
-        ]}>
-        <FaraKhuBackButton />
-      </View>
+      <BackgroundImage
+        source={require('../../resources/photos/PanelPages/topPartOfCalender.png')}
+        resizeMode={'stretch'}
+        style={{
+          position: 'absolute',
+          height: Dimensions.get('window').height * 0.15,
+          width: Dimensions.get('window').width,
+          flex: 1,
+          aspectRatio: 1,
+        }}>
+        <FaraKhuBackButton
+          navigationFunction={() => {
+            navigation.pop();
+          }}
+        />
+      </BackgroundImage>
     </View>
   );
 }
