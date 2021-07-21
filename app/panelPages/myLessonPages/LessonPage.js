@@ -10,7 +10,6 @@ export default function LessonPage({navigation, route}) {
       setData(courseData.course);
     });
   }, []);
-  console.log(data);
   return (
     <View style={[{backgroundColor: Colors.topColor()}, {flex: 1}]}>
       <View
@@ -26,7 +25,8 @@ export default function LessonPage({navigation, route}) {
         <View style={{alignItems: 'flex-end', marginTop: '20%', width: '90%'}}>
           <Text
             style={{fontSize: 20, color: Colors.accent(), fontFamily: 'Samim'}}>
-            استاد درس :{data.instructor.firstName} {data.instructor.lastName}
+            استاد درس :{data.length !== 0 ? data.instructor.firstName : ''}{' '}
+            {data.length !== 0 ? data.instructor.lastName : ''}
           </Text>
           <View style={{flexDirection: 'row'}} />
         </View>

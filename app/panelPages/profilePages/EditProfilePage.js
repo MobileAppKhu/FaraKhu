@@ -35,6 +35,7 @@ export function CustomTextInput({
 }
 
 export async function editProfileFunction(firstName, lastName, favourites) {
+  let id;
   try {
     await fetch('https://api.farakhu.markop.ir/api/User/UpdateProfile', {
       method: 'POST',
@@ -49,11 +50,38 @@ export async function editProfileFunction(firstName, lastName, favourites) {
     getData().then(async data => {
       data.firstName = firstName;
       data.lastName = lastName;
-      data.favourites = favourites;
-      JSON.parse(await AsyncStorage.setItem('userData', JSON.stringify(data)));
+      if (data.favourites.length === 0) {
+        console.log('hello');
+        addFavourite(favourites).then(idFav => {
+          data.favourites = [{favouriteId: idFav, description: favourites}];
+        });
+      } else {
+        data.favourites[0].description = favourites;
+        id = data.favourites[0].favouriteId;
+      }
+      await AsyncStorage.removeItem('userData');
+      await AsyncStorage.setItem('userData', JSON.stringify(data));
+      console.log(data);
+      getData().then(asd => {
+        console.log(asd);
+      });
     });
   } catch (err) {
     console.log(err);
+  }
+  try {
+    await fetch('https://api.farakhu.markop.ir/api/User/UpdateFavourite', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Description: favourites,
+        FavouriteId: id,
+      }),
+    });
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -62,7 +90,7 @@ export default function EditProfilePage({navigation}) {
   const [getFirstName, setFirstName] = useState('');
   const [getLastName, setLastName] = useState('');
   const [getId, setId] = useState('');
-  const [getFavourite, setFavourite] = useState([]);
+  const [getFavourite, setFavourite] = useState('');
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     getData().then(data => {
@@ -70,7 +98,8 @@ export default function EditProfilePage({navigation}) {
       setFirstName(data.firstName);
       setLastName(data.lastName);
       setId(data.id);
-      setFavourite(data.favourites);
+      console.log(data);
+      setFavourite(data.favourites[0].description);
     });
   }, []);
 
@@ -149,11 +178,11 @@ export default function EditProfilePage({navigation}) {
       />
       <CustomTextInput
         onChangeText={data => {
-          setFavourite(data.split(' '));
+          setFavourite(data);
         }}
         topic={'علاقه مندی ها'}
         editable={true}
-        textInputMessage={getFavourite.join(' ')}
+        textInputMessage={getFavourite}
       />
       <View style={styles.checkEmailShowView}>
         <Text
@@ -187,4 +216,25 @@ export default function EditProfilePage({navigation}) {
       />
     </View>
   );
+}
+
+async function addFavourite(description) {
+  let id;
+  try {
+    fetch('https://api.farakhu.markop.ir/api/User/AddFavourite', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Description: description,
+      }),
+    }).then(async response => {
+      let data = await response.json();
+      id = data.favouriteId;
+    });
+  } catch (e) {
+    console.log(e);
+  }
+  return id;
 }

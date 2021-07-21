@@ -17,12 +17,14 @@ export default function ProfilePage({navigation}) {
   const [getId, setId] = useState('');
   const [getFavourite, setFavourite] = useState('');
   getData().then(data => {
+    console.log(data);
     setEmail(data.email);
     setName(data.firstName + ' ' + data.lastName);
     setId(data.id);
-    setFavourite(data.favourites.length === 0 ? ' ' : data.favourites[0]);
+    setFavourite(
+      data.favourites.length === 0 ? '' : data.favourites[0].description,
+    );
   });
-  //console.log(data);
   return (
     <View
       style={[
