@@ -120,4 +120,26 @@ export default StyleSheet.create({
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
   },
+  mainViewOfAvatarModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatarModal: {
+    alignItems: 'center',
+    width: '80%',
+    height: '44%',
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: 'rgb(0,173,181)',
+    paddingHorizontal: 10,
+  },
+  avatarModalTitleContainer: {
+    // backgroundColor: 'red',
+    width: '100%',
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '2%',
+  },
 });

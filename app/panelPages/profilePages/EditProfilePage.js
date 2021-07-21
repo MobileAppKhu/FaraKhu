@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Image, View, TouchableOpacity, Text, TextInput} from 'react-native';
+import {
+  Image,
+  View,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  Modal,
+  Pressable,
+} from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
@@ -7,6 +15,7 @@ import {getData} from './ProfilePage';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 export function CustomTextInput({
   topic,
@@ -91,6 +100,7 @@ export default function EditProfilePage({navigation}) {
   const [getId, setId] = useState('');
   const [getFavourite, setFavourite] = useState('');
   const [checked, setChecked] = useState(false);
+  const [avatarModalOpen, setAvatarModalOpen] = useState(false);
   useEffect(() => {
     getData().then(data => {
       setEmail(data.email);
@@ -130,6 +140,7 @@ export default function EditProfilePage({navigation}) {
           }
         />
         <TouchableOpacity
+          onPress={() => setAvatarModalOpen(true)}
           style={styles.changeProfilePhotoStyle}
           activeOpacity={0.5}>
           <Image
@@ -141,6 +152,75 @@ export default function EditProfilePage({navigation}) {
             style={styles.profileImageStyle}
             resizeMode={'stretch'}
           />
+          {/* Choose Avatar Modal */}
+          <Modal
+            visible={avatarModalOpen}
+            transparent={true}
+            animationType="fade">
+            <Pressable
+              onPress={() => setAvatarModalOpen(false)}
+              style={[
+                styles.mainViewOfAvatarModal,
+                {
+                  backgroundColor:
+                    window.Theme === 'dark'
+                      ? 'rgba(41, 52, 82,0.6)'
+                      : 'rgba(41, 52, 82,0.5)',
+                },
+              ]}>
+              <View
+                style={[
+                  styles.avatarModal,
+                  {
+                    backgroundColor:
+                      window.Theme === 'dark'
+                        ? 'rgb(34,40,49)'
+                        : 'rgb(255,255,255)',
+                  },
+                ]}>
+                <View style={styles.avatarModalTitleContainer}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontFamily: 'Samim',
+                      color: Colors.accent(),
+                    }}>
+                    انتخاب آواتار :
+                  </Text>
+                  <Image
+                    style={{width: '8%', aspectRatio: 1}}
+                    source={require('../../resources/photos/PanelPages/closeModal.png')}
+                  />
+                </View>
+                <View style={styles.avatarModalPhotos}>
+                  <TouchableOpacity>
+                    <Image
+                      source={require('../../resources/photos/PanelPages/smiley.png')}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Image
+                      source={require('../../resources/photos/PanelPages/sad.png')}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Image
+                      source={require('../../resources/photos/PanelPages/poker.png')}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Image
+                      source={require('../../resources/photos/PanelPages/blink.png')}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <TouchableOpacity>
+                  <Text>انتخاب عکس دلخواه</Text>
+                </TouchableOpacity>
+              </View>
+            </Pressable>
+          </Modal>
+          {/* End of Choose Avatar Modal */}
         </TouchableOpacity>
       </View>
       <CustomTextInput
