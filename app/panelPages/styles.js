@@ -82,7 +82,7 @@ export default StyleSheet.create({
   },
   profileTextStyle: {
     position: 'absolute',
-    bottom: '15%',
+    bottom: '5%',
     fontFamily: 'IranSans',
   },
 });

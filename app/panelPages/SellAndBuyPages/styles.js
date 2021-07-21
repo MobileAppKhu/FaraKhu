@@ -150,7 +150,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   bookImage: {
-    height: '95%',
+    height: '90%',
     aspectRatio: 1,
     resizeMode: 'contain',
   },

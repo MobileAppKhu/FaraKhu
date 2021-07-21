@@ -45,5 +45,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  detailViewStyle: {alignItems: 'center', marginTop: '10%'},
+  detailViewStyle: {
+    alignItems: 'center',
+    marginTop: '1%',
+  },
 });
