@@ -234,7 +234,25 @@ export default function EditProfilePage({navigation}) {
       </View>
       <View style={styles.editProfileImage}>
         {avatarPhoto == null && (
-          <AvatarPhoto avatarId={avatarId} style={styles.profileImageStyle} />
+          <>
+            {avatarId != null && (
+              <AvatarPhoto
+                avatarId={avatarId}
+                style={styles.profileImageStyle}
+              />
+            )}
+            {avatarId == null && (
+              <Image
+                style={styles.profileImageStyle}
+                resizeMode={'stretch'}
+                source={
+                  window.Theme === 'light'
+                    ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
+                    : require('../../resources/photos/PanelPages/profilePhotoDark.png')
+                }
+              />
+            )}
+          </>
         )}
         {avatarPhoto != null && (
           <Image source={avatarPhoto} style={styles.profileImageStyle} />
