@@ -7,6 +7,7 @@ import {
   TextInput,
   Modal,
   Pressable,
+  Platform,
 } from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
@@ -42,7 +43,12 @@ export function CustomTextInput({
   );
 }
 
-export async function editProfileFunction(firstName, lastName, favourites) {
+export async function editProfileFunction(
+  firstName,
+  lastName,
+  favourites,
+  avatarPhoto,
+) {
   let id;
   try {
     await fetch('https://api.farakhu.markop.ir/api/User/UpdateProfile', {
@@ -91,6 +97,110 @@ export async function editProfileFunction(firstName, lastName, favourites) {
   } catch (e) {
     console.log(e);
   }
+  if (avatarPhoto != null) {
+    console.log('avatar:  ', avatarPhoto);
+    if (avatarPhoto === 24) {
+      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FileId: 'smiley.png',
+          DeleteAvatar: false,
+        }),
+      })
+        .then(response => console.log('smiley.png upload successful'))
+        .catch(err => console.log(err));
+    } else if (avatarPhoto === 25) {
+      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FileId: 'sad.png',
+          DeleteAvatar: false,
+        }),
+      })
+        .then(response => console.log('sad.png upload successful'))
+        .catch(err => console.log(err));
+    } else if (avatarPhoto === 26) {
+      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FileId: 'poker.png',
+          DeleteAvatar: false,
+        }),
+      })
+        .then(response => console.log('smiley.png poker successful'))
+        .catch(err => console.log(err));
+    } else if (avatarPhoto === 27) {
+      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FileId: 'blink.png',
+          DeleteAvatar: false,
+        }),
+      })
+        .then(response => console.log('smiley.png blink successful'))
+        .catch(err => console.log(err));
+    } else {
+      try {
+        uploadPhoto(avatarPhoto).then(avatarId => {
+          fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              FileId: avatarId,
+              DeleteAvatar: false,
+            }),
+          }).then(response => {
+            if (response.status === 200) {
+              console.log('the avatar uploaded successfully');
+            }
+          });
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+}
+
+function uploadPhoto(avatarPhoto) {
+  console.log('uploadPhoto run');
+  return fetch('https://api.farakhu.markop.ir/api/File/Upload', {
+    method: 'POST',
+    body: createFormData(avatarPhoto),
+  })
+    .then(response => response.json())
+    .then(response => {
+      console.log('upload successfull: ', response);
+      return response.fileId;
+    })
+    .catch(err => {
+      console.log('upload error', err);
+    });
+}
+
+function createFormData(photo) {
+  const data = new FormData();
+  data.append('photo', {
+    name: photo.fileName,
+    type: photo.type,
+    uri:
+      Platform.OS === 'android' ? photo.uri : photo.uri.replace('file://', ''),
+  });
+  return data;
 }
 
 export default function EditProfilePage({navigation}) {
@@ -112,6 +222,18 @@ export default function EditProfilePage({navigation}) {
       setFavourite(data.favourites[0].description);
     });
   }, []);
+
+  function handleChoosePhoto() {
+    const options = {mediaType: 'photo'};
+    launchImageLibrary(options, response => {
+      if (response && !response.didCancel) {
+        if (response.assets[0].uri) {
+          setAvatarPhoto(response.assets[0]);
+          setAvatarModalOpen(false);
+        }
+      }
+    });
+  }
 
   return (
     <View
@@ -264,7 +386,9 @@ export default function EditProfilePage({navigation}) {
                     />
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={{marginTop: 10}}>
+                <TouchableOpacity
+                  onPress={() => handleChoosePhoto()}
+                  style={{marginTop: 10}}>
                   <Text
                     style={{
                       fontSize: 19,
@@ -337,11 +461,14 @@ export default function EditProfilePage({navigation}) {
       <FaraKhuButton
         message={'ذخیره تغییرات'}
         onPressFunction={() => {
-          editProfileFunction(getFirstName, getLastName, getFavourite).then(
-            () => {
-              navigation.pop();
-            },
-          );
+          editProfileFunction(
+            getFirstName,
+            getLastName,
+            getFavourite,
+            avatarPhoto,
+          ).then(() => {
+            navigation.pop();
+          });
         }}
       />
       <View
