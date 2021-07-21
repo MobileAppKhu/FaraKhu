@@ -286,7 +286,8 @@ export default function MyAdvertisementPage({navigation}) {
               setRefreshing(true);
               getMyBookPlacards().then(data => {
                 setMyPlacards(data.offers);
-                setOutputPlacards(data.offers);
+                // setOutputPlacards(data.offers);
+                searchPlacard();
               });
               setTimeout(() => {
                 setRefreshing(false);

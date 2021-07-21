@@ -23,7 +23,7 @@ import ProfilePage from './panelPages/profilePages/ProfilePage';
 import EditProfilePage from './panelPages/profilePages/EditProfilePage';
 import ViewAllLessonPages from './panelPages/myLessonPages/ViewAllLessonPages';
 import SellAndBuyPage from './panelPages/SellAndBuyPages/SellAndBuyPage';
-import MyAdvertisementPage from './panelPages/SellAndBuyPages/MyAdvertisementPage';
+import MyAdvertisementPage from './panelPages/SellAndBuyPages/myAdvertisementPage';
 import MakeAdvertisementPage from './panelPages/SellAndBuyPages/MakeAdvertisementPage';
 import EditAdvertisementPage from './panelPages/SellAndBuyPages/EditAdvertisementPage';
 import MakeAdvertisementSuccessfully from './panelPages/SellAndBuyPages/MakeAdvertisementSuccessfully';

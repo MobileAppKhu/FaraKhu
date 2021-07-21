@@ -281,30 +281,13 @@ export default function MakeAdvertisementPage({navigation}) {
                   title !== '' &&
                   description !== '' &&
                   price !== '' &&
-                  placardType !== ''
+                  placardType !== '' &&
+                  placardPhoto != null
                 ) {
-                  let avatarId = 'smiley.png';
-                  if (placardPhoto != null) {
-                    uploadPhoto().then(response => {
-                      avatarId = response;
-                      console.log('avatarId: ', avatarId);
-                      createPlacardFunction(avatarId).then(async response => {
-                        if (response.status === 200) {
-                          navigation.navigate('MakeAdvertisementSuccessfully');
-                        } else {
-                          const data = await response.json();
-                          if (Platform.OS === 'android') {
-                            ToastAndroid.show(
-                              data.errors[0].message,
-                              ToastAndroid.TOP,
-                            );
-                          } else {
-                            AlertIOS.alert(data.errors[0].message);
-                          }
-                        }
-                      });
-                    });
-                  } else {
+                  let avatarId;
+                  uploadPhoto().then(response => {
+                    avatarId = response;
+                    console.log('avatarId: ', avatarId);
                     createPlacardFunction(avatarId).then(async response => {
                       if (response.status === 200) {
                         navigation.navigate('MakeAdvertisementSuccessfully');
@@ -320,7 +303,7 @@ export default function MakeAdvertisementPage({navigation}) {
                         }
                       }
                     });
-                  }
+                  });
                 } else {
                   if (Platform.OS === 'android') {
                     ToastAndroid.show(
