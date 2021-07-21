@@ -4,9 +4,14 @@ import Colors from '../colors';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 
-export default function PersonalCalender() {
+export default function PersonalCalender({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
+      <FaraKhuBackButton
+        navigationFunction={() => {
+          navigation.pop();
+        }}
+      />
       <View
         style={[
           {backgroundColor: Colors.topColor()},

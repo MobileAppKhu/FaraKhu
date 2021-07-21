@@ -68,7 +68,7 @@ export default StyleSheet.create({
     opacity: 0.5,
   },
   BackButton: {
-    position: 'absolute',
+    position: 'relative',
     opacity: 0.5,
     marginRight: '75%',
     marginTop: '3%',

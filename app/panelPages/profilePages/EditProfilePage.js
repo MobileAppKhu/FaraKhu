@@ -23,7 +23,6 @@ export function CustomTextInput({
           styles.customTextInputTextInputStyle,
           {
             color: editable ? Colors.accent() : 'grey',
-            textAlignVertical: 'bottom',
           },
         ]}
         value={textInputMessage}

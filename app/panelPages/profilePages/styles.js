@@ -85,6 +85,7 @@ export default StyleSheet.create({
     marginBottom: '4%',
   },
   customTextInputTextInputStyle: {
+    textAlignVertical: 'bottom',
     justifyContent: 'flex-end',
     width: '100%',
     textAlign: 'right',

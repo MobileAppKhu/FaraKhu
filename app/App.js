@@ -29,6 +29,7 @@ import EditAdvertisementPage from './panelPages/SellAndBuyPages/EditAdvertisemen
 import MakeAdvertisementSuccessfully from './panelPages/SellAndBuyPages/MakeAdvertisementSuccessfully';
 import AdvertisementPage from './panelPages/SellAndBuyPages/AdvertisementPage';
 import LessonPage from './panelPages/myLessonPages/LessonPage';
+import PersonalCalender from './panelPages/calendarPages/PersonalCalender';
 
 const Stack = createStackNavigator();
 
@@ -112,6 +113,7 @@ export default function App() {
           component={AdvertisementPage}
         />
         <Stack.Screen name={'LessonPage'} component={LessonPage} />
+        <Stack.Screen name={'PersonalCalender'} component={PersonalCalender} />
       </Stack.Navigator>
     </NavigationContainer>
   );
