@@ -49,6 +49,7 @@ export async function editProfileFunction(
   lastName,
   favourites,
   avatarPhoto,
+  avatarId,
 ) {
   let id;
   try {
@@ -100,57 +101,18 @@ export async function editProfileFunction(
   }
   if (avatarPhoto != null) {
     console.log('avatar:  ', avatarPhoto);
-    if (avatarPhoto === 24) {
+    if (typeof avatarPhoto === 'number') {
       fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          FileId: 'smiley.png',
+          FileId: avatarId,
           DeleteAvatar: false,
         }),
       })
-        .then(response => console.log('smiley.png upload successful'))
-        .catch(err => console.log(err));
-    } else if (avatarPhoto === 25) {
-      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          FileId: 'sad.png',
-          DeleteAvatar: false,
-        }),
-      })
-        .then(response => console.log('sad.png upload successful'))
-        .catch(err => console.log(err));
-    } else if (avatarPhoto === 26) {
-      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          FileId: 'poker.png',
-          DeleteAvatar: false,
-        }),
-      })
-        .then(response => console.log('smiley.png poker successful'))
-        .catch(err => console.log(err));
-    } else if (avatarPhoto === 27) {
-      fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          FileId: 'blink.png',
-          DeleteAvatar: false,
-        }),
-      })
-        .then(response => console.log('smiley.png blink successful'))
+        .then(response => console.log('default avatar uploaded successful'))
         .catch(err => console.log(err));
     } else {
       try {
@@ -183,6 +145,7 @@ export async function editProfileFunction(
 }
 
 function uploadPhoto(avatarPhoto) {
+  console.log(avatarPhoto);
   console.log('uploadPhoto run');
   return fetch('https://api.farakhu.markop.ir/api/File/Upload', {
     method: 'POST',
@@ -471,6 +434,7 @@ export default function EditProfilePage({navigation}) {
             getLastName,
             getFavourite,
             avatarPhoto,
+            avatarId,
           ).then(() => {
             navigation.pop();
           });

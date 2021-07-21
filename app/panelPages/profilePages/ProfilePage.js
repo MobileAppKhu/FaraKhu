@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Image, Text, View} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from '../Component/FaraKhuButton';
@@ -6,6 +6,7 @@ import {Icon} from 'react-native-elements';
 import ProfileButton from '../Component/ProfileButton';
 import colors from '../colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {BookImage as AvatarPhoto} from '../SellAndBuyPages/Components/BookPlacard';
 
 export async function getData() {
   return JSON.parse(await AsyncStorage.getItem('userData'));
@@ -16,15 +17,19 @@ export default function ProfilePage({navigation}) {
   const [getName, setName] = useState('');
   const [getId, setId] = useState('');
   const [getFavourite, setFavourite] = useState('');
-  getData().then(data => {
-    console.log(data);
-    setEmail(data.email);
-    setName(data.firstName + ' ' + data.lastName);
-    setId(data.id);
-    setFavourite(
-      data.favourites.length === 0 ? '' : data.favourites[0].description,
-    );
-  });
+  const [avatarId, setAvatarId] = useState(null);
+  useEffect(() => {
+    getData().then(data => {
+      console.log(data);
+      setEmail(data.email);
+      setName(data.firstName + ' ' + data.lastName);
+      setId(data.id);
+      setFavourite(
+        data.favourites.length === 0 ? '' : data.favourites[0].description,
+      );
+      setAvatarId(data.avatarId);
+    });
+  }, []);
   return (
     <View
       style={[
@@ -65,15 +70,20 @@ export default function ProfilePage({navigation}) {
           </Text>
         </View>
         <View style={styles.profileViewStyle}>
-          <Image
-            style={styles.profileImageStyle}
-            resizeMode={'stretch'}
-            source={
-              window.Theme === 'light'
-                ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
-                : require('../../resources/photos/PanelPages/profilePhotoDark.png')
-            }
-          />
+          {avatarId != null && (
+            <AvatarPhoto avatarId={avatarId} style={styles.profileImageStyle} />
+          )}
+          {avatarId == null && (
+            <Image
+              style={styles.profileImageStyle}
+              resizeMode={'stretch'}
+              source={
+                window.Theme === 'light'
+                  ? require('../../resources/photos/PanelPages/profilePhotoLight.png')
+                  : require('../../resources/photos/PanelPages/profilePhotoDark.png')
+              }
+            />
+          )}
         </View>
       </View>
       <View style={{marginTop: '27%'}}>
