@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';

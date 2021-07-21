@@ -256,10 +256,8 @@ export default function MyAdvertisementPage({navigation}) {
           onScreenPress={() => setFilterModalOpen(false)}
           buyCheckBoxValue={checkedBuy}
           sellCheckBoxValue={checkedSell}
-          buyOnpress={() => setCheckedBuy(checkedBuy === false ? true : false)}
-          sellOnpress={() =>
-            setCheckedSell(checkedSell === false ? true : false)
-          }
+          buyOnpress={() => setCheckedBuy(checkedBuy === false)}
+          sellOnpress={() => setCheckedSell(checkedSell === false)}
         />
       </View>
       {/* end of search section */}

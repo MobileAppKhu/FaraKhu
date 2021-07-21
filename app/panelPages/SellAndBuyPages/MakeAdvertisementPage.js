@@ -217,7 +217,7 @@ export default function MakeAdvertisementPage({navigation}) {
                 </Text>
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
-                  value={checked === 'first' ? true : false}
+                  value={checked === 'first'}
                   onValueChange={() => {
                     setChecked('first');
                     setPlacardType(1);
@@ -230,7 +230,7 @@ export default function MakeAdvertisementPage({navigation}) {
                 </Text>
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
-                  value={checked === 'second' ? true : false}
+                  value={checked === 'second'}
                   onValueChange={() => {
                     setChecked('second');
                     setPlacardType(2);
@@ -288,11 +288,11 @@ export default function MakeAdvertisementPage({navigation}) {
                     uploadPhoto().then(response => {
                       avatarId = response;
                       console.log('avatarId: ', avatarId);
-                      createPlacardFunction(avatarId).then(async response => {
-                        if (response.status === 200) {
+                      createPlacardFunction(avatarId).then(async respons => {
+                        if (respons.status === 200) {
                           navigation.navigate('MakeAdvertisementSuccessfully');
                         } else {
-                          const data = await response.json();
+                          const data = await respons.json();
                           if (Platform.OS === 'android') {
                             ToastAndroid.show(
                               data.errors[0].message,

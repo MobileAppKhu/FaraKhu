@@ -194,7 +194,7 @@ export default function EditAdvertisementPage({navigation, route}) {
                 </Text>
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
-                  value={checked === 'first' ? true : false}
+                  value={checked === 'first'}
                   onValueChange={() => {
                     setChecked('first');
                     setPlacardType(1);
@@ -207,7 +207,7 @@ export default function EditAdvertisementPage({navigation, route}) {
                 </Text>
                 <CheckBox
                   tintColors={{true: 'rgb(0,173,181)', false: 'gray'}}
-                  value={checked === 'second' ? true : false}
+                  value={checked === 'second'}
                   onValueChange={() => {
                     setChecked('second');
                     setPlacardType(2);

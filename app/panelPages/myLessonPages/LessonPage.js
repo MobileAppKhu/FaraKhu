@@ -28,9 +28,7 @@ export default function LessonPage({navigation, route}) {
             style={{fontSize: 20, color: Colors.accent(), fontFamily: 'Samim'}}>
             استاد درس :{data.instructor.firstName} {data.instructor.lastName}
           </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Icon />{' '}
-          </View>
+          <View style={{flexDirection: 'row'}} />
         </View>
       </View>
     </View>
