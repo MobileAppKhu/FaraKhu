@@ -17,6 +17,7 @@ import FaraKhuButton from '../Component/FaraKhuButton';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {BookImage as AvatarPhoto} from '../SellAndBuyPages/Components/BookPlacard';
 
 export function CustomTextInput({
   topic,
@@ -154,19 +155,24 @@ export async function editProfileFunction(
     } else {
       try {
         uploadPhoto(avatarPhoto).then(avatarId => {
-          fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              FileId: avatarId,
-              DeleteAvatar: false,
-            }),
-          }).then(response => {
-            if (response.status === 200) {
-              console.log('the avatar uploaded successfully');
-            }
+          getData().then(async data => {
+            data.avatarId = avatarId;
+            await AsyncStorage.removeItem('userData');
+            await AsyncStorage.setItem('userData', JSON.stringify(data));
+            fetch('https://api.farakhu.markop.ir/api/User/UpdateAvatar', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                FileId: avatarId,
+                DeleteAvatar: false,
+              }),
+            }).then(response => {
+              if (response.status === 200) {
+                console.log('the avatar uploaded successfully');
+              }
+            });
           });
         });
       } catch (e) {
@@ -212,6 +218,7 @@ export default function EditProfilePage({navigation}) {
   const [checked, setChecked] = useState(false);
   const [avatarModalOpen, setAvatarModalOpen] = useState(false);
   const [avatarPhoto, setAvatarPhoto] = useState(null);
+  const [avatarId, setAvatarId] = useState(null);
   useEffect(() => {
     getData().then(data => {
       setEmail(data.email);
@@ -220,8 +227,18 @@ export default function EditProfilePage({navigation}) {
       setId(data.id);
       console.log(data);
       setFavourite(data.favourites[0].description);
+      setAvatarId(data.avatarId);
     });
   }, []);
+
+  function AvatarIdSetter(id) {
+    setAvatarId(id);
+    getData().then(async data => {
+      data.avatarId = id;
+      await AsyncStorage.removeItem('userData');
+      await AsyncStorage.setItem('userData', JSON.stringify(data));
+    });
+  }
 
   function handleChoosePhoto() {
     const options = {mediaType: 'photo'};
@@ -253,27 +270,11 @@ export default function EditProfilePage({navigation}) {
         />
       </View>
       <View style={styles.editProfileImage}>
-        {window.Theme === 'light' && (
-          <Image
-            style={styles.profileImageStyle}
-            resizeMode={'stretch'}
-            source={
-              avatarPhoto != null
-                ? avatarPhoto
-                : require('../../resources/photos/PanelPages/profilePhotoLight.png')
-            }
-          />
+        {avatarPhoto == null && (
+          <AvatarPhoto avatarId={avatarId} style={styles.profileImageStyle} />
         )}
-        {window.Theme === 'dark' && (
-          <Image
-            style={styles.profileImageStyle}
-            resizeMode={'stretch'}
-            source={
-              avatarPhoto != null
-                ? avatarPhoto
-                : require('../../resources/photos/PanelPages/profilePhotoDark.png')
-            }
-          />
+        {avatarPhoto != null && (
+          <Image source={avatarPhoto} style={styles.profileImageStyle} />
         )}
         <TouchableOpacity
           onPress={() => setAvatarModalOpen(true)}
@@ -334,6 +335,7 @@ export default function EditProfilePage({navigation}) {
                       setAvatarPhoto(
                         require('../../resources/photos/PanelPages/smiley.png'),
                       );
+                      AvatarIdSetter('smiley.png');
                       setAvatarModalOpen(false);
                     }}
                     activeOpacity={0.5}
@@ -348,6 +350,7 @@ export default function EditProfilePage({navigation}) {
                       setAvatarPhoto(
                         require('../../resources/photos/PanelPages/sad.png'),
                       );
+                      AvatarIdSetter('sad.png');
                       setAvatarModalOpen(false);
                     }}
                     activeOpacity={0.5}
@@ -362,6 +365,7 @@ export default function EditProfilePage({navigation}) {
                       setAvatarPhoto(
                         require('../../resources/photos/PanelPages/poker.png'),
                       );
+                      AvatarIdSetter('poker.png');
                       setAvatarModalOpen(false);
                     }}
                     activeOpacity={0.5}
@@ -376,6 +380,7 @@ export default function EditProfilePage({navigation}) {
                       setAvatarPhoto(
                         require('../../resources/photos/PanelPages/blink.png'),
                       );
+                      AvatarIdSetter('blink.png');
                       setAvatarModalOpen(false);
                     }}
                     activeOpacity={0.5}
