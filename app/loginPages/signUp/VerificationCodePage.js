@@ -4,7 +4,6 @@ import styles from './styles';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import FaraKhuText from '../Component/FaraKhuText';
 import FaraKhuBackButton from '../Component/FaraKhuBackButton';
-import SignUpSuccessfully from './SignUpSuccessfully';
 
 export default function VerificationCodePage(props) {
   const input1Ref = useRef();
@@ -18,7 +17,7 @@ export default function VerificationCodePage(props) {
       ? 'https://api.farakhu.markop.ir/api/Account/ResetPasswordValidation'
       : 'https://api.farakhu.markop.ir/api/Account/EmailVerify';
     try {
-      const {data, status} = await fetch(address, {
+      const data = await fetch(address, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +28,8 @@ export default function VerificationCodePage(props) {
         }),
       });
       console.log(address);
-      return status;
+      console.log(data);
+      return data.status;
     } catch (e) {
       return e;
     }
@@ -132,6 +132,7 @@ export default function VerificationCodePage(props) {
           color={'white'}
           function={() => {
             verificationCode().then(responseJson => {
+              console.log(responseJson);
               if (responseJson === 200) {
                 if (props.route.params.isChangePasswordPage) {
                   props.navigation.push('ChangePasswordPage', {

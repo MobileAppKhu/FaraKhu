@@ -36,7 +36,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   profileViewStyle: {
-    borderRadius: 1000,
+    borderRadius: 5000,
     width: '23%',
     height: '45%',
     top: '85%',
@@ -45,7 +45,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(238,238,238)',
     transform: [{rotate: '28deg'}],
   },
-  profileImageStyle: {flex: 1, aspectRatio: 1, borderRadius: 1000},
+  profileImageStyle: {flex: 1, aspectRatio: 1, borderRadius: 5000},
   separatorLine: {
     height: 1,
     width: '80.5%',

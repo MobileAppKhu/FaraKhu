@@ -3,11 +3,13 @@ import {Animated, View} from 'react-native';
 import styles from './styles';
 import FaraKhuButton from './Component/FaraKhuButton';
 import FaraKhuText from './Component/FaraKhuText';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MainPage({navigation}) {
   const animated = useRef(new Animated.Value(0));
 
-  useEffect(() => {
+  useEffect(async () => {
+    await AsyncStorage.setItem('theme', 'dark');
     Animated.timing(animated.current, {
       toValue: 1,
       duration: 2000,

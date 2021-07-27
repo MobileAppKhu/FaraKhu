@@ -4,7 +4,7 @@ const Colors = {
   borderTopColor: () =>
     window.Theme !== 'dark' ? 'rgba(34,40,49,0.5)' : 'rgba(0,173,181,0.5)',
   bigButtonTextColor: () =>
-    window.Theme !== 'light' ? 'rgb(0,173,181)' : 'rgb(238,238,238)',
+    window.Theme !== 'light' ? 'rgb(0,173,181)' : 'rgb(258,258,258)',
   contactUsPageTextColor: () =>
     window.Theme !== 'light' ? 'rgb(0,173,181)' : 'rgb(34,40,49)',
 
@@ -14,5 +14,6 @@ const Colors = {
   textHolderColor: () => (window.Theme === 'dark' ? 'grey' : 'black'),
   backButtonColor: () =>
     window.Theme === 'light' ? 'rgb(34,40,49)' : 'rgb(0,173,181)',
+  calendarTextColor: () => (window.Theme === 'dark' ? '#000000' : '#ffffff'),
 };
 export default Colors;

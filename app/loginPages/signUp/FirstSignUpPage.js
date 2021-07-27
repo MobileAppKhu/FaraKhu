@@ -86,6 +86,13 @@ export default function FirstSignUpPage(props) {
             onPressCheck={true}
           />
         </View>
+        {!getEmail.endsWith('@khu.ac.ir') && (
+          <View>
+            <FaraKhuText style={{color: 'rgb(225,74,74)'}}>
+              پسوند ایمیل باید khu.ac.ir@
+            </FaraKhuText>
+          </View>
+        )}
         <View style={styles.toolTipIconView}>
           <FaraKhuTextInput
             sizeOfIcon={60}
@@ -123,13 +130,7 @@ export default function FirstSignUpPage(props) {
             onPressCheck={false}
           />
         </View>
-        {/*{!getEmail.endsWith('@khu.ac.ir') && (*/}
-        {/*  <View>*/}
-        {/*    <FaraKhuText style={{color: 'rgb(225,74,74)'}}>*/}
-        {/*      پسوند ایمیل باید khu.ac.ir@*/}
-        {/*    </FaraKhuText>*/}
-        {/*  </View>*/}
-        {/*)}*/}
+
         {getRepeatPassword !== getPassword && (
           <View>
             <FaraKhuText style={{color: 'rgb(225,74,74)'}}>

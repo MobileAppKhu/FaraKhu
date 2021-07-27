@@ -1,4 +1,80 @@
-import {StyleSheet} from 'react-native';
-import Colors from './colors';
+import {Dimensions, StyleSheet} from 'react-native';
 
-export default StyleSheet.create({});
+export default StyleSheet.create({
+  mainView: {flex: 1, alignItems: 'center'},
+  topPartImage: {
+    position: 'absolute',
+    height: Dimensions.get('window').height * 0.15,
+    width: Dimensions.get('window').width,
+    flex: 1,
+    justifyContent: 'flex-start',
+    aspectRatio: 1,
+  },
+  todayText: {
+    fontFamily: 'Samim',
+    fontSize: 35,
+    marginTop: '-5%',
+    marginRight: '10%',
+  },
+  textOfTopPart: {alignItems: 'center', marginTop: '-10%'},
+  monthTextTopPart: {fontSize: 30, fontFamily: 'Samim'},
+  yearTextTopPart: {fontSize: 30, fontFamily: 'Samim'},
+  dividerLineTopPart: {
+    width: 0.9,
+    height: '50%',
+    marginLeft: '38.5%',
+    marginTop: '-15%',
+  },
+  dayTextTopPart: {
+    fontSize: 40,
+    fontFamily: 'Samim',
+    marginTop: '-13%',
+    marginLeft: '27%',
+  },
+  calenderView: {
+    marginTop: '26.7%',
+    height: '50%',
+    width: '100%',
+    alignItems: 'center',
+  },
+  pickersView: {
+    marginTop: '-3%',
+    justifyContent: 'center',
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  pickerStyle: {
+    marginLeft: '1.5%',
+    marginRight: '1.5%',
+    width: '25%',
+    justifyContent: 'center',
+    height: '40%',
+    borderWidth: 1,
+    borderRadius: 20,
+  },
+  pickerItems: {
+    alignItems: 'center',
+    fontSize: 15,
+    fontFamily: 'Samim',
+  },
+  bottomPartImage: {
+    position: 'absolute',
+    bottom: '-25%',
+    width: Dimensions.get('window').width,
+    height: '77.5%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  moreInfoText: {marginTop: '4%', fontSize: 17, fontFamily: 'Samim'},
+  calenderButton: {
+    width: '50%',
+    alignItems: 'center',
+    height: '9.5%',
+    justifyContent: 'center',
+    borderRadius: 25,
+    borderWidth: 1,
+    marginTop: '7%',
+  },
+  calenderButtonLabel: {fontSize: 20, fontFamily: 'Samim', color: 'white'},
+});
