@@ -34,8 +34,8 @@ export default function PersonalCalender({navigation}) {
     '1409',
     '1410',
   ]);
-  const [getMonth, setMonth] = useState(1);
-  const [getYear, setYear] = useState(1);
+  const [getMonth, setMonth] = useState(0);
+  const [getYear, setYear] = useState(0);
   return (
     <View
       style={[styles.mainView, {backgroundColor: Colors.backgroundColor()}]}>
