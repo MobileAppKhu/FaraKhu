@@ -96,6 +96,15 @@ export default function PersonalCalender({navigation}) {
             }}
           />
         </View>
+        <View style={{flexDirection: 'row'}}>
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+        </View>
       </View>
       <BackgroundImage
         source={require('../../resources/photos/PanelPages/calenderBottomPartLight.png')}
@@ -158,6 +167,27 @@ function PickerGroup({month, onChangeFunction, value}) {
           );
         })}
       </Picker>
+    </View>
+  );
+}
+
+function ShowDay({dayName, numbers}) {
+  return (
+    <View style={{alignItems: 'center', marginLeft: '5%'}}>
+      <Text style={{fontFamily: 'WasmFont', fontSize: 20}}>{dayName}</Text>
+      {numbers.map(data => {
+        return (
+          <Text
+            style={{
+              marginTop: '10%',
+              fontFamily: 'WasmFont',
+              fontSize: 20,
+              marginBottom: '10%',
+            }}>
+            {data}
+          </Text>
+        );
+      })}
     </View>
   );
 }

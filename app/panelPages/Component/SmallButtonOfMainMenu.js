@@ -17,7 +17,7 @@ export default function ({
         {
           marginRight: marginRight,
           backgroundColor: Colors.topColor(),
-          borderColor: Colors.borderTopColor(),
+          borderColor: Colors.homeButtonBorderColor(),
         },
       ]}
       activeOpacity={0.8}>

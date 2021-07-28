@@ -454,7 +454,8 @@ export default function EditProfilePage({navigation}) {
             avatarPhoto,
             avatarId,
           ).then(() => {
-            navigation.pop();
+            navigation.popToTop();
+            navigation.push('ProfilePage');
           });
         }}
       />

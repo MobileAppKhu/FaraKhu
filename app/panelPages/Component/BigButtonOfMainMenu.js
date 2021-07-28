@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import Colors from '../colors';
 
@@ -15,7 +15,7 @@ export default function BigButtonOfMainMenu({
         styles.bigButton,
         {
           backgroundColor: Colors.topColor(),
-          borderColor: Colors.borderTopColor(),
+          borderColor: Colors.homeButtonBorderColor(),
         },
       ]}
       activeOpacity={0.8}>
@@ -23,7 +23,13 @@ export default function BigButtonOfMainMenu({
         style={[styles.bigButtonText, {color: Colors.bigButtonTextColor()}]}>
         {message}
       </Text>
-      <Image source={imageAddress} style={styles.bigButtonImage} />
+      <View style={styles.bigButtonImageView}>
+        <Image
+          source={imageAddress}
+          style={styles.bigButtonImage}
+          resizeMode={'stretch'}
+        />
+      </View>
     </TouchableOpacity>
   );
 }

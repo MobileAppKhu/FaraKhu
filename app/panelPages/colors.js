@@ -15,5 +15,6 @@ const Colors = {
   backButtonColor: () =>
     window.Theme === 'light' ? 'rgb(34,40,49)' : 'rgb(0,173,181)',
   calendarTextColor: () => (window.Theme === 'dark' ? '#000000' : '#ffffff'),
+  homeButtonBorderColor: () => ('light' ? 'rgb(40,100,100)' : 'rgb(0,173,181)'),
 };
 export default Colors;
