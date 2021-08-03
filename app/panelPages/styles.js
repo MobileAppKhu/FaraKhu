@@ -1,9 +1,7 @@
 import {StyleSheet} from 'react-native';
-import Colors from './colors';
 
 export default StyleSheet.create({
   topPart: {
-    // backgroundColor: Colors.topColor(),
     height: '9%',
     width: '100%',
     alignItems: 'center',
@@ -23,6 +21,7 @@ export default StyleSheet.create({
   },
   viewOfTwoImage: {
     flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
     height: '23%',
     width: '100%',
   },
@@ -33,8 +32,8 @@ export default StyleSheet.create({
   rightPhotoContainerStyle: {
     // height: '100%',
     // marginRight: '-3.8%',
-    width: '43.5%',
-    marginLeft: '17%',
+    width: '39.5%',
+    // marginLeft: '17%',
   },
   leftPhotoContainerStyle: {width: '43.5%'},
   bottomPart: {
@@ -44,19 +43,21 @@ export default StyleSheet.create({
     marginTop: '2.1%',
   },
   faraKhuLogo: {
-    height: '80%',
-    marginTop: '5%',
+    height: '95%',
+    marginTop: '2%',
   },
   separatorLine: {
     opacity: 0.2,
     width: '90%',
     height: 1,
-    backgroundColor: 'rgb(238,238,238)',
+    marginTop: '1.5%',
+    marginBottom: '1.5%',
     marginLeft: '5%',
   },
   iconTextStyle: {
-    fontSize: 11,
-    fontFamily: 'IranSans',
+    fontSize: 12,
+    opacity: 0.9,
+    fontFamily: 'Samim',
     fontWeight: '200',
   },
   iconViewStyle: {

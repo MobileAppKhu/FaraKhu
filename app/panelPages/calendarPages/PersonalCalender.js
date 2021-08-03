@@ -5,6 +5,7 @@ import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import {BackgroundImage} from 'react-native-elements/dist/config';
 import {Picker} from '@react-native-picker/picker';
 import styles from './styles';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default function PersonalCalender({navigation}) {
   const [month] = useState([
@@ -48,36 +49,57 @@ export default function PersonalCalender({navigation}) {
             navigation.pop();
           }}
         />
-        <Text style={styles.todayText}>امروز</Text>
-        <View style={styles.textOfTopPart}>
-          <Text
-            key={'month'}
+
+        <View
+          style={{
+            backgroundColor: 'red',
+            marginLeft: '-50%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            height: '40%',
+          }}>
+          <View style={{marginRight: '20%'}}>
+            <Text
+              style={{
+                fontFamily: 'IRANSans-Regular',
+                fontSize: RFValue(36, 812),
+              }}>
+              20
+            </Text>
+          </View>
+          <View
             style={[
-              styles.monthTextTopPart,
-              {color: Colors.calendarTextColor()},
-            ]}>
-            خرداد
-          </Text>
-          <Text
-            key={'year'}
-            style={[
-              styles.yearTextTopPart,
-              {color: Colors.calendarTextColor()},
-            ]}>
-            ۱۴۰۰
-          </Text>
+              styles.dividerLineTopPart,
+              {backgroundColor: Colors.calendarTextColor()},
+            ]}
+          />
+
+          <View>
+            <Text style={{fontFamily: 'Samim', fontSize: RFValue(20, 812)}}>
+              خرداد
+            </Text>
+            <Text style={{fontFamily: 'Samim', fontSize: RFValue(20, 812)}}>
+              1400
+            </Text>
+          </View>
         </View>
         <View
-          style={[
-            styles.dividerLineTopPart,
-            {backgroundColor: Colors.calendarTextColor()},
-          ]}
-        />
-        <Text
-          key={'day'}
-          style={[styles.dayTextTopPart, {color: Colors.calendarTextColor()}]}>
-          ۲۰
-        </Text>
+          style={{
+            marginTop: '5%',
+            alignItems: 'center',
+            flex: 1,
+            // backgroundColor: 'red',
+            marginLeft: '-10%',
+          }}>
+          <Text
+            style={{
+              fontFamily: 'Samim',
+              fontSize: RFValue(28, 812),
+              fontWeight: '100',
+            }}>
+            امروز
+          </Text>
+        </View>
       </BackgroundImage>
       <View style={styles.calenderView}>
         <View style={styles.pickersView}>
@@ -96,19 +118,25 @@ export default function PersonalCalender({navigation}) {
             }}
           />
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View
+          style={{
+            flexDirection: 'row-reverse',
+            height: '100%',
+            width: '80%',
+            justifyContent: 'space-between',
+          }}>
           <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
-          <ShowDay dayName={'شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'یکشنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'دوشنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'سه شنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'چهارشنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'پنجشنبه'} numbers={['1', '2', '3', '4', '5']} />
+          <ShowDay dayName={'جمعه'} numbers={['1', '2', '3', '4', '5']} />
         </View>
       </View>
       <BackgroundImage
         source={require('../../resources/photos/PanelPages/calenderBottomPartLight.png')}
-        resizeMode={'contain'}
+        resizeMode={'stretch'}
         style={styles.bottomPartImage}>
         <Text style={[styles.moreInfoText, {color: Colors.topColor()}]}>
           جهت دیدن رویداد ها روی تاریخ مورد نظر کلیک نمایید
@@ -161,7 +189,7 @@ function PickerGroup({month, onChangeFunction, value}) {
             <Picker.Item
               key={index}
               label={data}
-              value={index + 1}
+              value={index}
               style={styles.pickerItems}
             />
           );
@@ -173,21 +201,29 @@ function PickerGroup({month, onChangeFunction, value}) {
 
 function ShowDay({dayName, numbers}) {
   return (
-    <View style={{alignItems: 'center', marginLeft: '5%'}}>
-      <Text style={{fontFamily: 'WasmFont', fontSize: 20}}>{dayName}</Text>
-      {numbers.map(data => {
-        return (
-          <Text
-            style={{
-              marginTop: '10%',
-              fontFamily: 'WasmFont',
-              fontSize: 20,
-              marginBottom: '10%',
-            }}>
-            {data}
-          </Text>
-        );
-      })}
+    <View style={{alignItems: 'center', height: '100%'}}>
+      <View style={{height: '10%'}}>
+        <Text
+          style={{fontFamily: 'IRANSans-Regular', fontSize: RFValue(12, 812)}}>
+          {dayName}
+        </Text>
+      </View>
+      <View style={{alignItems: 'center', justifyContent: 'space-around'}}>
+        {numbers.map((data, index) => {
+          return (
+            <Text
+              adjustsFontSizeToFit
+              key={index}
+              style={{
+                marginBottom: RFValue(12, 812),
+                fontFamily: 'IRANSans-Regular',
+                fontSize: RFValue(14, 812),
+              }}>
+              {data}
+            </Text>
+          );
+        })}
+      </View>
     </View>
   );
 }

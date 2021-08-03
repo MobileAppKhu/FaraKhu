@@ -3,9 +3,17 @@ import FaraKhuBackButton from '../Component/FaraKhuBackButton';
 import FaraKhuTextInput from '../Component/FaraKhuTextInput';
 import FaraKhuButton from '../Component/FaraKhuButton';
 import styles from './styles';
-import {Image, View, ToastAndroid, Platform, AlertIOS} from 'react-native';
+import {
+  Image,
+  View,
+  ToastAndroid,
+  Platform,
+  AlertIOS,
+  TouchableOpacity,
+} from 'react-native';
 import FaraKhuText from '../Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
 export function IconReturn({marginTop, message, onPressCheck, color}) {
   return (
@@ -32,6 +40,10 @@ export default function FirstSignUpPage(props) {
   const [getEmail, setEmail] = useState('');
   const [getPassword, setPassword] = useState('');
   const [getRepeatPassword, setRepeatPassword] = useState('');
+  const [emailOnBlur, setEmailOnBlur] = useState(false);
+  const [passwordOnBlur, setPasswordOnBlur] = useState(false);
+  const [studentLogo, setStudentLogo] = useState(false);
+  const [professorLogo, setProfessorLogo] = useState(false);
   return (
     <View style={styles.background}>
       <FaraKhuBackButton
@@ -48,22 +60,40 @@ export default function FirstSignUpPage(props) {
       </View>
       <FaraKhuText style={styles.whoAreYou}> کدام یک هستید ؟</FaraKhuText>
       <View style={[styles.logoSortView, {height: '13%'}]}>
-        <View style={styles.studentLogoContainer}>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={[
+            styles.studentLogoContainer,
+            {height: studentLogo ? '110%' : '100%'},
+          ]}
+          onPress={() => {
+            setStudentLogo(true);
+            setProfessorLogo(false);
+          }}>
           <Image
             resizeMode={'stretch'}
             source={require('../../resources/photos/LoginPages/studentLogo.png')}
             style={styles.studentLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>دانشجو</FaraKhuText>
-        </View>
-        <View style={styles.professorLogoContainer}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={[
+            styles.professorLogoContainer,
+            {height: professorLogo ? '110%' : '100%'},
+          ]}
+          onPress={() => {
+            setProfessorLogo(true);
+            setStudentLogo(false);
+          }}>
           <Image
             resizeMode={'stretch'}
             source={require('../../resources/photos/LoginPages/professorLogo.png')}
             style={styles.professorLogo}
           />
           <FaraKhuText style={styles.firstSignUpPageText}>استاد</FaraKhuText>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.greenPartDownPage}>
         <View style={styles.toolTipIconView}>
@@ -78,6 +108,9 @@ export default function FirstSignUpPage(props) {
             onChangeText={data => {
               setEmail(data);
             }}
+            onBlur={() => {
+              setEmailOnBlur(true);
+            }}
           />
           <IconReturn
             marginTop={'3%'}
@@ -86,7 +119,7 @@ export default function FirstSignUpPage(props) {
             onPressCheck={true}
           />
         </View>
-        {!getEmail.endsWith('@khu.ac.ir') && (
+        {emailOnBlur && !getEmail.endsWith('@khu.ac.ir') && (
           <View>
             <FaraKhuText style={{color: 'rgb(225,74,74)'}}>
               پسوند ایمیل باید khu.ac.ir@
@@ -123,6 +156,9 @@ export default function FirstSignUpPage(props) {
             onChangeText={data => {
               setRepeatPassword(data);
             }}
+            onBlur={() => {
+              setPasswordOnBlur(true);
+            }}
           />
           <IconReturn
             marginTop={'-1%'}
@@ -131,7 +167,7 @@ export default function FirstSignUpPage(props) {
           />
         </View>
 
-        {getRepeatPassword !== getPassword && (
+        {passwordOnBlur && getRepeatPassword !== getPassword && (
           <View>
             <FaraKhuText style={{color: 'rgb(225,74,74)'}}>
               رمز عبور و تکرار آن باید یکسان باشند
@@ -154,13 +190,15 @@ export default function FirstSignUpPage(props) {
               props.navigation.push('SecondSignUpPage', {
                 email: getEmail,
                 password: getPassword,
+                userType: studentLogo ? 1 : 2,
               });
             }
           }}
           pressAble={
             getEmail.trim() === '' ||
             getPassword.trim() === '' ||
-            getRepeatPassword.trim() === ''
+            getRepeatPassword.trim() === '' ||
+            !(professorLogo || studentLogo)
           }
         />
       </View>

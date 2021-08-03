@@ -18,6 +18,14 @@ export default StyleSheet.create({
     borderColor: 'rgba(0,0,0, 0.4)',
   },
   customTextInput: {
+    shadowOpacity: 0.1,
+    elevation: 5,
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 12,
+      width: 12,
+    },
+    shadowRadius: 1000,
     flexDirection: 'row-reverse',
     alignItems: 'center',
     borderWidth: 1,

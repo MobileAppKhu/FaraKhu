@@ -17,7 +17,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderColor: 'rgb(40,100,100)',
     borderRadius: 20,
-    borderWidth: 2.5,
+    borderWidth: 1.5,
     marginTop: '8%',
     marginBottom: '2.5%',
   },
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginRight: '-3%',
     marginLeft: '20%',
-    fontSize: 27,
+    fontSize: 21,
     fontFamily: 'Samim',
   },
   bigButtonImageView: {
@@ -49,7 +49,7 @@ export default StyleSheet.create({
     width: '48%',
     alignItems: 'center',
     borderRadius: 20,
-    borderWidth: 2.5,
+    borderWidth: 1.5,
   },
   smallButtonImage: {
     marginTop: '5%',
@@ -59,7 +59,7 @@ export default StyleSheet.create({
   },
   smallButtonText: {
     marginTop: '2%',
-    fontSize: 15,
+    fontSize: 13,
     fontFamily: 'Samim',
     fontWeight: '100',
   },
@@ -100,6 +100,14 @@ export default StyleSheet.create({
     width: 238,
     borderWidth: 1,
     borderRadius: 20,
+    shadowOpacity: 1,
+    shadowOffset: {
+      height: 0,
+      width: 25,
+    },
+    elevation: 3,
+    shadowColor: '#000000',
+    shadowRadius: 2,
   },
   textOfFaraKhuButton: {
     fontFamily: 'Samim',
@@ -117,12 +125,19 @@ export default StyleSheet.create({
   },
   customTextInput: {
     flexDirection: 'row-reverse',
-    //justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'grey',
     height: '6.4%',
     width: '80%',
     borderRadius: 20,
+    shadowOpacity: 0.4,
+    shadowOffset: {
+      height: 25,
+      width: 25,
+    },
+    elevation: 3,
+    shadowColor: '#000000',
+    shadowRadius: 2,
   },
 });

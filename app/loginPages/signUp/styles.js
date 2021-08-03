@@ -22,10 +22,10 @@ export default StyleSheet.create({
     aspectRatio: 1,
   },
   whoAreYou: {
-    fontSize: 22,
+    fontSize: 24,
     color: 'rgb(238,238,238)',
-    marginTop: '-5%',
-    fontWeight: '400',
+    marginTop: '-7%',
+    fontFamily: 'IRANSans-regular',
   },
   logoSortView: {
     marginTop: '3%',

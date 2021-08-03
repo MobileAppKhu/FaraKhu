@@ -11,7 +11,7 @@ export default function ProfileButton({address, onPressFunction}) {
         styles.profileStyle,
         {
           backgroundColor: Colors.topColor(),
-          borderColor: Colors.bigButtonTextColor(),
+          borderColor: Colors.backgroundColor(),
         },
       ]}
       onPress={onPressFunction}>

@@ -16,8 +16,20 @@ export default function FaraKhuTextInput({
   placeholderText,
   onChangeText,
   keyboardType,
+  onBlur,
 }) {
   const [hidePass, setHidePass] = useState(isPasswordInput);
+  const shadowOpt = {
+    width: 160,
+    height: 170,
+    color: 'black',
+    border: 2,
+    radius: 3,
+    opacity: 0.2,
+    x: 0,
+    y: 3,
+    style: {marginVertical: 5},
+  };
   return (
     <View
       style={[
@@ -50,6 +62,7 @@ export default function FaraKhuTextInput({
         secureTextEntry={hidePass}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
+        onBlur={onBlur}
       />
       {isPasswordInput && (
         <View

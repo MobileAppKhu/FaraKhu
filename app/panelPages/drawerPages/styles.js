@@ -48,7 +48,7 @@ export default StyleSheet.create({
     width: '80.8%',
     height: '37.3%',
     borderWidth: 2,
-    borderRadius: 25,
+    borderRadius: 100,
     marginBottom: '6%',
   },
   containerStyleOfImage: {

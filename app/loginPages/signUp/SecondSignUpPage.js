@@ -23,7 +23,7 @@ export default function SecondSignUpPage(props) {
             FirstName: getFirstName,
             LastName: getLastName,
             Email: props.route.params.email,
-            UserType: 2,
+            UserType: props.route.params.userType,
             Id: getID,
             Password: props.route.params.password,
           }),

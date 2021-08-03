@@ -56,11 +56,26 @@ export function CustomDrawer(props) {
             style={{flex: 1, aspectRatio: 1}}
           />
         </View>
-        <Text style={[styles.iconTextStyle, {color: 'rgb(238,238,238)'}]}>
+        <Text
+          style={[
+            styles.iconTextStyle,
+            {
+              color: 'rgb(238,238,238)',
+              fontFamily: 'WasmFontBold',
+              marginTop: '-5%',
+              fontSize: 17,
+            },
+          ]}>
           فراخو
         </Text>
       </View>
-      <View style={[styles.separatorLine, {marginBottom: '-5%'}]} />
+      <View
+        style={[
+          styles.separatorLine,
+          {marginBottom: '-5%'},
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         onPress={() => {}}
@@ -77,7 +92,12 @@ export function CustomDrawer(props) {
           flexDirection: 'column-reverse',
         }}
       />
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         onPress={() => {
@@ -92,7 +112,12 @@ export function CustomDrawer(props) {
           />
         )}
       />
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         onPress={() => {
@@ -107,7 +132,12 @@ export function CustomDrawer(props) {
           />
         )}
       />
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         icon={() => (
@@ -122,7 +152,12 @@ export function CustomDrawer(props) {
           props.navigation.push('ChangePasswordPageWithOldPassword');
         }}
       />
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         onPress={() => {
@@ -142,7 +177,12 @@ export function CustomDrawer(props) {
           />
         )}
       />
-      <View style={styles.separatorLine} />
+      <View
+        style={[
+          styles.separatorLine,
+          {backgroundColor: Colors.bigButtonTextColor()},
+        ]}
+      />
       <DrawerItem
         label={''}
         onPress={async () => {
@@ -171,10 +211,24 @@ export default function HomePage() {
       drawerContent={CustomDrawer}
       initialRouteName="Home"
       drawerPosition="right"
-      drawerStyle={{
-        backgroundColor: colors.topColor(),
-        width: '49%',
-      }}>
+      drawerStyle={[
+        {
+          backgroundColor: colors.topColor(),
+          width: '49%',
+          borderWidth: 1,
+          shadowOpacity: 1,
+          shadowOffset: {
+            height: 0,
+            width: 25,
+          },
+          elevation: 20,
+          shadowRadius: 2,
+        },
+        {
+          borderColor: 'black',
+          shadowColor: 'black',
+        },
+      ]}>
       <Drawer.Screen name={'home'} component={Home} />
       <Drawer.Screen name={'contactUs'} component={ContactUsPage} />
     </Drawer.Navigator>
