@@ -52,8 +52,7 @@ export default function PersonalCalender({navigation}) {
 
         <View
           style={{
-            backgroundColor: 'red',
-            marginLeft: '-50%',
+            marginLeft: '-63%',
             flexDirection: 'row',
             alignItems: 'center',
             height: '40%',
@@ -61,10 +60,11 @@ export default function PersonalCalender({navigation}) {
           <View style={{marginRight: '20%'}}>
             <Text
               style={{
+                color: 'white',
                 fontFamily: 'IRANSans-Regular',
                 fontSize: RFValue(36, 812),
               }}>
-              20
+              ۲۰
             </Text>
           </View>
           <View
@@ -75,11 +75,21 @@ export default function PersonalCalender({navigation}) {
           />
 
           <View>
-            <Text style={{fontFamily: 'Samim', fontSize: RFValue(20, 812)}}>
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'IRANSans-Regular',
+                fontSize: RFValue(20, 812),
+              }}>
               خرداد
             </Text>
-            <Text style={{fontFamily: 'Samim', fontSize: RFValue(20, 812)}}>
-              1400
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'IRANSans-Regular',
+                fontSize: RFValue(20, 812),
+              }}>
+              ۱۴۰۰
             </Text>
           </View>
         </View>
@@ -89,11 +99,11 @@ export default function PersonalCalender({navigation}) {
             alignItems: 'center',
             flex: 1,
             // backgroundColor: 'red',
-            marginLeft: '-10%',
+            marginLeft: '-15%',
           }}>
           <Text
             style={{
-              fontFamily: 'Samim',
+              fontFamily: 'IRANSans-Regular',
               fontSize: RFValue(28, 812),
               fontWeight: '100',
             }}>

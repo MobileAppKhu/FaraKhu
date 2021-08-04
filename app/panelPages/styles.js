@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default StyleSheet.create({
   topPart: {
@@ -55,7 +56,7 @@ export default StyleSheet.create({
     marginLeft: '5%',
   },
   iconTextStyle: {
-    fontSize: 12,
+    fontSize: RFValue(13, 812),
     opacity: 0.9,
     fontFamily: 'Samim',
     fontWeight: '200',

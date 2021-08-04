@@ -21,6 +21,7 @@ export default StyleSheet.create({
   dividerLineTopPart: {
     width: 0.9,
     height: '50%',
+    marginRight: '10%',
   },
   dayTextTopPart: {
     fontSize: 40,

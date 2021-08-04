@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import Colors from '../colors';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default StyleSheet.create({
   rectangleOfTop: {
@@ -60,8 +61,8 @@ export default StyleSheet.create({
     aspectRatio: 1,
   },
   contactTextStyle: {
-    fontFamily: 'IranSans',
-    fontSize: 17,
+    fontFamily: 'IRANSans-Regular',
+    fontSize: RFValue(17, 812),
   },
   contactEmailStyle: {
     fontFamily: 'Samim',
@@ -107,11 +108,11 @@ export default StyleSheet.create({
   suggestionSuccessfullyImage: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
+    shadowColor: 'black',
+    elevation: 5,
     borderColor: 'black',
     height: '100%',
     width: '100%',
-    resizeMode: 'stretch',
     borderTopRightRadius: 75,
     borderBottomLeftRadius: 75,
   },

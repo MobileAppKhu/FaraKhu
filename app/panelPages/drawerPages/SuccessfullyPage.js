@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Animated, View} from 'react-native';
+import {Animated, View} from 'react-native';
 import styles from './styles';
 import {BackgroundImage} from 'react-native-elements/dist/config';
 import Colors from '../colors';
@@ -20,13 +20,14 @@ export default function SuccessfullyPage({navigation, imageAddress, message}) {
     navigation.replace('HomePage');
   }, 3000);
   return (
-    <View>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <BackgroundImage
         source={imageAddress}
         style={[
           styles.suggestionSuccessfullyImage,
           {backgroundColor: Colors.backgroundColor()},
-        ]}>
+        ]}
+        resizeMode={'stretch'}>
         <Animated.Text
           style={[
             styles.animatedTextStyle,

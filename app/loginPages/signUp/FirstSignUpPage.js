@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import FaraKhuText from '../Component/FaraKhuText';
 import {Icon} from 'react-native-elements';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
 export function IconReturn({marginTop, message, onPressCheck, color}) {
   return (

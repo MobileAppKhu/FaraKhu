@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default StyleSheet.create({
   bigButton: {
@@ -65,12 +66,12 @@ export default StyleSheet.create({
   },
   profileStyle: {
     flex: 1,
-    width: 90,
-    height: 90,
+    width: '18%',
+    height: '10.5%',
     borderRadius: 1000,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 4,
+    borderWidth: RFValue(4, 812),
     position: 'absolute',
     bottom: '4%',
   },

@@ -73,7 +73,11 @@ export function BookImage({avatarId, style}) {
         />
       )}
       {imageAddress != null && (
-        <Image style={style} source={{uri: imageAddress}} />
+        <Image
+          style={style}
+          source={{uri: imageAddress}}
+          resizeMode={'contain'}
+        />
       )}
     </>
   );

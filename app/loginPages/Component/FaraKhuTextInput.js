@@ -3,6 +3,7 @@ import {TextInput, View} from 'react-native';
 import styles from './styles';
 import {Icon} from 'react-native-elements';
 import Colors from '../../panelPages/colors';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default function FaraKhuTextInput({
   marginTop,
@@ -19,17 +20,6 @@ export default function FaraKhuTextInput({
   onBlur,
 }) {
   const [hidePass, setHidePass] = useState(isPasswordInput);
-  const shadowOpt = {
-    width: 160,
-    height: 170,
-    color: 'black',
-    border: 2,
-    radius: 3,
-    opacity: 0.2,
-    x: 0,
-    y: 3,
-    style: {marginVertical: 5},
-  };
   return (
     <View
       style={[
@@ -54,7 +44,7 @@ export default function FaraKhuTextInput({
         placeholder={placeholderText}
         style={{
           flex: 1,
-          fontSize: 20,
+          fontSize: RFValue(20, 812),
           color: 'rgb(238,238,238)',
           fontFamily: 'Samim',
         }}
