@@ -110,9 +110,7 @@ export default function MyAdvertisementPage({navigation}) {
   }
 
   useEffect(() => {
-    console.log('useEffect myAds run');
     getMyBookPlacards().then(data => {
-      console.log(data.offers);
       setMyPlacards(data.offers);
       setOutputPlacards(data.offers);
     });
@@ -136,52 +134,30 @@ export default function MyAdvertisementPage({navigation}) {
           style={[
             styles.searchTextInput,
             {
-              backgroundColor:
-                window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(255,255,255)',
+              backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
             },
           ]}>
-          {window.Theme === 'dark' && (
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => {
-                console.log(searchItem);
-                searchPlacard(searchItem.trim());
-              }}>
-              <Image
-                style={{
-                  width: 30,
-                  resizeMode: 'contain',
-                  marginRight: '3%',
-                }}
-                source={require('../../resources/photos/PanelPages/magnifying-glass-green.png')}
-              />
-            </TouchableOpacity>
-          )}
-          {window.Theme === 'light' && (
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => {
-                console.log(searchItem);
-                searchPlacard(searchItem.trim());
-              }}>
-              <Image
-                style={{
-                  width: 30,
-                  resizeMode: 'contain',
-                  marginRight: '3%',
-                }}
-                source={require('../../resources/photos/PanelPages/magnifying-glass-gray.png')}
-              />
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => {
+              console.log(searchItem);
+              searchPlacard(searchItem.trim());
+            }}>
+            <Image
+              style={styles.magnifyImage}
+              source={
+                window.Theme === 'dark'
+                  ? require('../../resources/photos/PanelPages/magnifying-glass-green.png')
+                  : require('../../resources/photos/PanelPages/magnifying-glass-gray.png')
+              }
+            />
+          </TouchableOpacity>
+
           <View
             style={[
               styles.verticalSeparatorLine,
               {
-                backgroundColor:
-                  window.Theme === 'dark'
-                    ? 'rgba(0,173,181,0.5)'
-                    : 'rgba(112,112,112, 0.5)',
+                backgroundColor: Colors.verticalSeparatorLineColor(),
               },
             ]}
           />
@@ -215,8 +191,7 @@ export default function MyAdvertisementPage({navigation}) {
           style={[
             styles.filter,
             {
-              backgroundColor:
-                window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(255,255,255)',
+              backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
             },
           ]}>
           <Text
@@ -227,26 +202,19 @@ export default function MyAdvertisementPage({navigation}) {
             }}>
             فیلتر
           </Text>
-          {window.Theme === 'light' && (
-            <Image
-              style={{
-                aspectRatio: 1,
-                marginRight: '10%',
-                width: '28%',
-              }}
-              source={require('../../resources/photos/PanelPages/filter-gray.png')}
-            />
-          )}
-          {window.Theme === 'dark' && (
-            <Image
-              style={{
-                aspectRatio: 1,
-                marginRight: '10%',
-                width: '28%',
-              }}
-              source={require('../../resources/photos/PanelPages/filter-green.png')}
-            />
-          )}
+
+          <Image
+            style={{
+              aspectRatio: 1,
+              marginRight: '10%',
+              width: '28%',
+            }}
+            source={
+              window.Theme === 'light'
+                ? require('../../resources/photos/PanelPages/filter-gray.png')
+                : require('../../resources/photos/PanelPages/filter-green.png')
+            }
+          />
         </TouchableOpacity>
         {/* end of filter section */}
         <TypeFilterModal
@@ -445,7 +413,7 @@ export default function MyAdvertisementPage({navigation}) {
           }}
           title="آگهی‌ها"
           imageAddress={require('../../resources/photos/PanelPages/megaphon.png')}
-          bgColor={Colors.backgroundColor()}
+          bgColor={Colors.makeAdvertisementTextInputBackColor()}
           textColor={window.Theme === 'dark' ? 'rgb(0,173,181)' : 'white'}
           borderColor={
             window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
@@ -455,17 +423,19 @@ export default function MyAdvertisementPage({navigation}) {
           bgHeight={'50%'}
           bottom="3.2%"
         />
-        {window.Theme === 'light' && (
+        {
           <SellAndBuyButton
             onPress={() => {
               navigation.push('MakeAdvertisementPage');
             }}
             title="ثبت آگهی"
-            imageAddress={require('../../resources/photos/PanelPages/plus-light.png')}
-            bgColor={
-              window.Theme === 'dark' ? 'rgb(34,40,49)' : 'rgb(0,173,181)'
+            imageAddress={
+              window.Theme === 'light'
+                ? require('../../resources/photos/PanelPages/plus-light.png')
+                : require('../../resources/photos/PanelPages/plus-dark.png')
             }
-            textColor="white"
+            bgColor={'rgb(0,173,181)'}
+            textColor={Colors.bigButtonTextColor()}
             borderColor={
               window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
             }
@@ -474,25 +444,7 @@ export default function MyAdvertisementPage({navigation}) {
             bgHeight={'50%'}
             bottom="3.2%"
           />
-        )}
-        {window.Theme === 'dark' && (
-          <SellAndBuyButton
-            onPress={() => {
-              navigation.push('MakeAdvertisementPage');
-            }}
-            title="ثبت آگهی"
-            imageAddress={require('../../resources/photos/PanelPages/plus-dark.png')}
-            bgColor="rgb(0,173,181)"
-            textColor="rgb(0,173,181)"
-            borderColor={
-              window.Theme === 'dark' ? 'rgb(0,173,181)' : 'rgb(0, 156, 163)'
-            }
-            width={'90%'}
-            bgWidth={'100%'}
-            bgHeight={'50%'}
-            bottom="3.2%"
-          />
-        )}
+        }
         <SellAndBuyButton
           title="آگهی‌های من"
           imageAddress={require('../../resources/photos/PanelPages/user-red.png')}

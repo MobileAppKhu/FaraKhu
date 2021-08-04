@@ -56,7 +56,7 @@ export default function ChangePasswordPageWithOldPassword(props) {
             styles.topPartOfChangePassword,
             {
               backgroundColor: Colors.topColor(),
-              borderBottomColor: Colors.borderTopColor(),
+              borderBottomColor: Colors.blackOrGray(),
             },
           ]}>
           <FaraKhuBackButton
@@ -148,7 +148,9 @@ export default function ChangePasswordPageWithOldPassword(props) {
             styles.bottomPartOfChangePassword,
             {
               backgroundColor: Colors.topColor(),
-              borderBottomColor: Colors.borderTopColor(),
+              borderTopColor: Colors.blackOrGray(),
+              borderLeftColor: Colors.blackOrGray(),
+              borderRightColor: Colors.blackOrGray(),
             },
           ]}
         />

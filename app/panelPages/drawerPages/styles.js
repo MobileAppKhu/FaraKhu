@@ -114,7 +114,7 @@ export default StyleSheet.create({
     height: '100%',
     width: '100%',
     borderTopRightRadius: 75,
-    borderBottomLeftRadius: 75,
+    borderBottomLeftRadius: 250,
   },
   changePasswordStyle: {
     flex: 1,

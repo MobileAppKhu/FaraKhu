@@ -17,6 +17,7 @@ export default function FaraKhuButton({
         styles.faraKhuButton,
         {
           backgroundColor: Colors.topColor(),
+          borderColor: Colors.borderTopColor(),
         },
       ]}
       onPress={onPressFunction}>

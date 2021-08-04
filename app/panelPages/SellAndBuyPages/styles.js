@@ -231,4 +231,9 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   marginTopForSubmitButton: {marginTop: 30},
+  magnifyImage: {
+    width: 30,
+    resizeMode: 'contain',
+    marginRight: '3%',
+  },
 });

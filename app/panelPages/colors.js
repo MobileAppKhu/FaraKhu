@@ -18,5 +18,8 @@ const Colors = {
   homeButtonBorderColor: () => ('light' ? 'rgb(40,100,100)' : 'rgb(0,173,181)'),
   makeAdvertisementTextInputBackColor: () =>
     window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+  verticalSeparatorLineColor: () =>
+    window.Theme === 'dark' ? 'rgba(0,173,181,0.5)' : 'rgba(112,112,112, 0.5)',
+  blackOrGray: () => (window.Theme === 'light' ? 'dark' : 'grey'),
 };
 export default Colors;
