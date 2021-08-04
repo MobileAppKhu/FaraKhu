@@ -25,7 +25,6 @@ export default function MakeAdvertisementPage({navigation}) {
   const [placardPhoto, setPlacardPhoto] = useState(null);
 
   async function createPlacardFunction(avatarId) {
-    console.log('cpf : ', avatarId);
     try {
       return await fetch(
         'https://api.farakhu.markop.ir/api/Offer/CreateOffer',
@@ -49,14 +48,12 @@ export default function MakeAdvertisementPage({navigation}) {
   }
 
   function uploadPhoto() {
-    console.log('uploadPhoto run');
     return fetch('https://api.farakhu.markop.ir/api/File/Upload', {
       method: 'POST',
       body: createFormData(placardPhoto),
     })
       .then(response => response.json())
       .then(response => {
-        console.log('upload successfull: ', response);
         setPlacardPhoto(null);
         return response.fileId;
       })
@@ -109,7 +106,7 @@ export default function MakeAdvertisementPage({navigation}) {
           <Text
             style={[
               styles.titleOfMakeAdvertisementPageText,
-              {color: window.Theme === 'dark' ? 'rgb(0,173,181)' : 'black'},
+              {color: Colors.contactUsPageTextColor()},
             ]}>
             ایجاد آگهی
           </Text>
@@ -119,31 +116,29 @@ export default function MakeAdvertisementPage({navigation}) {
             <View style={styles.textInputTitle}>
               <Text style={styles.boldTextOfInputTitle}>عنوان: </Text>
               <Text style={styles.regularTextOfInputTitle}>
-                (محدودیت تعداد حرف 40 عدد)
+                (محدودیت تعداد حرف ۴۰ عدد)
               </Text>
             </View>
             <View
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
               ]}>
               <TextInput
                 onChangeText={data => setTitle(data)}
                 maxLength={40}
                 textAlign={'right'}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {color: Colors.borderTopColor()},
+                  styles.subjectTextInput,
+                ]}
               />
             </View>
           </View>
           <View style={styles.inputContainer}>
-            <View style={[styles.textInputTitle, {}]}>
+            <View style={styles.textInputTitle}>
               <Text style={styles.boldTextOfInputTitle}>توضیحات: </Text>
               <Text style={styles.regularTextOfInputTitle}>
                 (راه ارتباطی ذکر شود)
@@ -153,20 +148,18 @@ export default function MakeAdvertisementPage({navigation}) {
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
-                  height: 150,
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
+                styles.height150,
               ]}>
               <TextInput
                 onChangeText={data => setDescription(data)}
                 textAlign={'right'}
                 multiline={true}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {color: Colors.borderTopColor()},
+                  styles.subjectTextInput,
+                ]}
               />
             </View>
           </View>
@@ -178,41 +171,32 @@ export default function MakeAdvertisementPage({navigation}) {
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
               ]}>
               <TextInput
                 onChangeText={data => setPrice(data)}
                 keyboardType="numeric"
                 textAlign={'right'}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {color: Colors.borderTopColor()},
+                  styles.subjectTextInput,
+                ]}
               />
               <Text
-                style={[
-                  styles.boldTextOfInputTitle,
-                  {
-                    color: 'rgba(130,133,138,0.5)',
-                    position: 'absolute',
-                    top: 7,
-                    left: 15,
-                  },
-                ]}>
+                style={[styles.boldTextOfInputTitle, styles.priceTextInput]}>
                 تومان
               </Text>
             </View>
           </View>
           <View style={styles.placardTypeAndImageContainer}>
             <View style={styles.placardType}>
-              <Text style={[styles.boldTextOfInputTitle, {marginBottom: 8}]}>
+              <Text style={[styles.boldTextOfInputTitle, styles.marginBottom8]}>
                 نوع آگهی:
               </Text>
               <View style={styles.placardTypeOption}>
-                <Text style={[styles.regularTextOfInputTitle, {fontSize: 14}]}>
+                <Text
+                  style={[styles.regularTextOfInputTitle, styles.fontSize14]}>
                   خرید(نیازمندی)
                 </Text>
                 <CheckBox
@@ -225,7 +209,8 @@ export default function MakeAdvertisementPage({navigation}) {
                 />
               </View>
               <View style={styles.placardTypeOption}>
-                <Text style={[styles.regularTextOfInputTitle, {fontSize: 14}]}>
+                <Text
+                  style={[styles.regularTextOfInputTitle, styles.fontSize14]}>
                   فروش
                 </Text>
                 <CheckBox
@@ -245,24 +230,16 @@ export default function MakeAdvertisementPage({navigation}) {
                   styles.placardImageContainer,
                   {
                     backgroundColor:
-                      window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                      Colors.makeAdvertisementTextInputBackColor(),
                   },
                 ]}>
                 <TouchableOpacity
                   onPress={() => handleChoosePhoto()}
                   activeOpacity={0.5}
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                    height: '100%',
-                  }}>
+                  style={styles.uploadPictureButton}>
                   <Image
-                    style={{
-                      height: '80%',
-                      aspectRatio: 1,
-                      resizeMode: 'cover',
-                    }}
+                    style={styles.uploadPictureButtonImage}
+                    resizeMode={'contain'}
                     source={
                       placardPhoto == null
                         ? require('../../resources/photos/PanelPages/plus-green.png')
@@ -273,7 +250,7 @@ export default function MakeAdvertisementPage({navigation}) {
               </View>
             </View>
           </View>
-          <View style={{marginTop: 30}}>
+          <View style={styles.marginTopForSubmitButton}>
             <FaraKhuButton
               message="تایید"
               onPressFunction={() => {
@@ -288,11 +265,11 @@ export default function MakeAdvertisementPage({navigation}) {
                   uploadPhoto().then(response => {
                     avatarId = response;
                     console.log('avatarId: ', avatarId);
-                    createPlacardFunction(avatarId).then(async response => {
-                      if (response.status === 200) {
+                    createPlacardFunction(avatarId).then(async newResponse => {
+                      if (newResponse.status === 200) {
                         navigation.navigate('MakeAdvertisementSuccessfully');
                       } else {
-                        const data = await response.json();
+                        const data = await newResponse.json();
                         if (Platform.OS === 'android') {
                           ToastAndroid.show(
                             data.errors[0].message,

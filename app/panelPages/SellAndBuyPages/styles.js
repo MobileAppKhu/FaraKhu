@@ -103,6 +103,15 @@ export default StyleSheet.create({
     fontSize: 12,
     color: 'rgba(130,133,138,1)',
   },
+  fontSize14: {
+    fontSize: 14,
+  },
+  marginBottom8: {
+    marginBottom: 8,
+  },
+  height150: {
+    height: 150,
+  },
   customTextInput: {
     width: '90%',
     backgroundColor: 'white',
@@ -113,11 +122,27 @@ export default StyleSheet.create({
     marginTop: 3,
     paddingRight: 5,
   },
+  subjectTextInput: {fontSize: 16, fontFamily: 'Samim'},
   placardTypeAndImageContainer: {
     width: '90%',
     flexDirection: 'row-reverse',
     paddingHorizontal: '7%',
     marginTop: 15,
+  },
+  priceTextInput: {
+    color: 'rgba(130,133,138,0.5)',
+    position: 'absolute',
+    top: 7,
+    left: 15,
+  },
+  uploadPictureButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  uploadPictureButtonImage: {
+    height: '60%',
+    aspectRatio: 1,
   },
   placardType: {
     flex: 1,
@@ -202,4 +227,5 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'space-around',
   },
+  marginTopForSubmitButton: {marginTop: 30},
 });
