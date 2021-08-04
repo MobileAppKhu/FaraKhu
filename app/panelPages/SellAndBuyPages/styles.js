@@ -141,8 +141,11 @@ export default StyleSheet.create({
     flex: 1,
   },
   uploadPictureButtonImage: {
-    height: '60%',
+    height: '80%',
     aspectRatio: 1,
+  },
+  marginTop30: {
+    marginTop: 30,
   },
   placardType: {
     flex: 1,

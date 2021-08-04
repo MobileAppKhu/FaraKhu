@@ -77,7 +77,7 @@ export default function EditAdvertisementPage({navigation, route}) {
           <Text
             style={[
               styles.titleOfMakeAdvertisementPageText,
-              {color: window.Theme === 'dark' ? 'rgb(0,173,181)' : 'black'},
+              {color: Colors.contactUsPageTextColor()},
             ]}>
             ویرایش آگهی
           </Text>
@@ -94,8 +94,7 @@ export default function EditAdvertisementPage({navigation, route}) {
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
               ]}>
               <TextInput
@@ -105,11 +104,12 @@ export default function EditAdvertisementPage({navigation, route}) {
                 }}
                 maxLength={40}
                 textAlign={'right'}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {
+                    color: Colors.borderTopColor(),
+                  },
+                  styles.subjectTextInput,
+                ]}
               />
             </View>
           </View>
@@ -124,10 +124,9 @@ export default function EditAdvertisementPage({navigation, route}) {
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
-                  height: 150,
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
+                styles.height150,
               ]}>
               <TextInput
                 defaultValue={route.params.description}
@@ -136,11 +135,12 @@ export default function EditAdvertisementPage({navigation, route}) {
                 }}
                 textAlign={'right'}
                 multiline={true}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {
+                    color: Colors.borderTopColor(),
+                  },
+                  styles.subjectTextInput,
+                ]}
               />
             </View>
           </View>
@@ -152,8 +152,7 @@ export default function EditAdvertisementPage({navigation, route}) {
               style={[
                 styles.customTextInput,
                 {
-                  backgroundColor:
-                    window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                  backgroundColor: Colors.makeAdvertisementTextInputBackColor(),
                 },
               ]}>
               <TextInput
@@ -163,33 +162,27 @@ export default function EditAdvertisementPage({navigation, route}) {
                 }}
                 keyboardType="numeric"
                 textAlign={'right'}
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'Samim',
-                  color: Colors.borderTopColor(),
-                }}
+                style={[
+                  {
+                    color: Colors.borderTopColor(),
+                  },
+                  styles.subjectTextInput,
+                ]}
               />
               <Text
-                style={[
-                  styles.boldTextOfInputTitle,
-                  {
-                    color: 'rgba(130,133,138,0.5)',
-                    position: 'absolute',
-                    top: 7,
-                    left: 15,
-                  },
-                ]}>
+                style={[styles.boldTextOfInputTitle, styles.priceTextInput]}>
                 تومان
               </Text>
             </View>
           </View>
           <View style={styles.placardTypeAndImageContainer}>
             <View style={styles.placardType}>
-              <Text style={[styles.boldTextOfInputTitle, {marginBottom: 8}]}>
+              <Text style={[styles.boldTextOfInputTitle, styles.marginBottom8]}>
                 نوع آگهی:
               </Text>
               <View style={styles.placardTypeOption}>
-                <Text style={[styles.regularTextOfInputTitle, {fontSize: 14}]}>
+                <Text
+                  style={[styles.regularTextOfInputTitle, styles.fontSize14]}>
                   خرید(نیازمندی)
                 </Text>
                 <CheckBox
@@ -202,7 +195,8 @@ export default function EditAdvertisementPage({navigation, route}) {
                 />
               </View>
               <View style={styles.placardTypeOption}>
-                <Text style={[styles.regularTextOfInputTitle, {fontSize: 14}]}>
+                <Text
+                  style={[styles.regularTextOfInputTitle, styles.fontSize14]}>
                   فروش
                 </Text>
                 <CheckBox
@@ -222,23 +216,15 @@ export default function EditAdvertisementPage({navigation, route}) {
                   styles.placardImageContainer,
                   {
                     backgroundColor:
-                      window.Theme === 'dark' ? 'rgb(34,40,49)' : 'white',
+                      Colors.makeAdvertisementTextInputBackColor(),
                   },
                 ]}>
                 <TouchableOpacity
                   activeOpacity={0.5}
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                    height: '100%',
-                  }}>
+                  style={styles.uploadPictureButton}>
                   <Image
-                    style={{
-                      height: '80%',
-                      aspectRatio: 1,
-                      resizeMode: 'cover',
-                    }}
+                    style={styles.uploadPictureButtonImage}
+                    resizeMode={'stretch'}
                     source={
                       placardPhoto != null
                         ? {uri: placardPhoto}
@@ -249,7 +235,7 @@ export default function EditAdvertisementPage({navigation, route}) {
               </View>
             </View>
           </View>
-          <View style={{marginTop: 30}}>
+          <View style={styles.marginTop30}>
             <FaraKhuButton
               message="تایید"
               onPressFunction={() => {

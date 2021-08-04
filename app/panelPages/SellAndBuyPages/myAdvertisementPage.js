@@ -131,9 +131,7 @@ export default function MyAdvertisementPage({navigation}) {
           }}
         />
       </View>
-      {/* search Section */}
       <View style={styles.searchSection}>
-        {/* search input */}
         <View
           style={[
             styles.searchTextInput,
